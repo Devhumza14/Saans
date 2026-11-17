@@ -30,7 +30,7 @@ export default async function Member({ params }: { params: Promise<{ id: string 
             <span className="text-sm text-body">{describeMember(m)}</span>
           </div>
         </div>
-        <PlanView memberId={m.id} />
+        <PlanView memberId={m.id} name={m.name} />
       </main>
     </>
   );

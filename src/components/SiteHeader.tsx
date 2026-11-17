@@ -3,7 +3,10 @@ import { LogOut } from "lucide-react";
 import { LangToggle } from "@/components/LangProvider";
 import { signOut } from "@/app/login/actions";
 
-const NAV = [{ href: "/dashboard", label: "Dashboard" }];
+const NAV = [
+  { href: "/dashboard", label: "Dashboard" },
+  { href: "/compare", label: "Muqabla" },
+];
 
 export function SiteHeader({ cta, signedIn }: { cta?: { href: string; label: string }; signedIn?: boolean }) {
   return (

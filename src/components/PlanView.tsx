@@ -1,7 +1,8 @@
 "use client";
 import { useCallback, useEffect, useState } from "react";
-import { Activity, AlertTriangle, Clock, Droplets, Home, HeartPulse, Phone, RefreshCw, ShieldCheck, Sun } from "lucide-react";
+import { Activity, AlertTriangle, Clock, Droplets, Home, HeartPulse, MessageCircle, Phone, RefreshCw, ShieldCheck, Square, Sun, Volume2 } from "lucide-react";
 import { T, useLang, type Lang } from "@/components/LangProvider";
+import { planToText } from "@/lib/ai/planText";
 import type { Loc, PlanResponse } from "@/lib/ai/schemas";
 import { RISK_STYLE } from "@/lib/risk/style";
 
@@ -17,6 +18,9 @@ const UI = {
   avoid: { ur: "بچیں", roman: "Bachein", en: "Avoid" },
   regen: { ur: "نیا پلان", roman: "Naya plan", en: "Regenerate" },
   call: { ur: "۱۱۲۲ کال کریں", roman: "1122 call karein", en: "Call 1122" },
+  listen: { ur: "سنیں", roman: "Sunein", en: "Listen" },
+  stop: { ur: "روکیں", roman: "Rokein", en: "Stop" },
+  share: { ur: "واٹس ایپ", roman: "WhatsApp par bhejein", en: "Share on WhatsApp" },
   writing: { ur: "پلان لکھا جا رہا ہے…", roman: "Plan likha ja raha hai…", en: "Writing the plan…" },
 } satisfies Record<string, Loc>;
 
@@ -41,6 +45,54 @@ const Items = ({ items }: { items: Loc[] }) => (
   </ul>
 );
 
+/** Read-aloud via the browser's speech engine. Urdu voice for Urdu/Roman Urdu, English voice for English. Hidden when no voice exists. */
+function useSpeech(text: string, lang: Lang) {
+  const tag = lang === "en" ? "en-US" : "ur-PK";
+  const [available, setAvailable] = useState(false);
+  const [speaking, setSpeaking] = useState(false);
+  useEffect(() => {
+    try {
+      const synth = window.speechSynthesis;
+      if (!synth) return;
+      const check = () => setAvailable(synth.getVoices().some((v) => v.lang.toLowerCase().startsWith(tag.slice(0, 2).toLowerCase())));
+      check();
+      synth.addEventListener?.("voiceschanged", check);
+      return () => { synth.removeEventListener?.("voiceschanged", check); synth.cancel(); };
+    } catch { setAvailable(false); }
+  }, [tag]);
+  const toggle = () => {
+    try {
+      const synth = window.speechSynthesis;
+      if (speaking) { synth.cancel(); return setSpeaking(false); }
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = tag;
+      u.onend = u.onerror = () => setSpeaking(false);
+      synth.cancel();
+      synth.speak(u);
+      setSpeaking(true);
+    } catch { setSpeaking(false); }
+  };
+  return { available, speaking, toggle };
+}
+
+function Actions({ data, name }: { data: PlanResponse; name: string }) {
+  const { lang } = useLang();
+  const spokenLang = lang === "en" ? "en" : "ur";
+  const speech = useSpeech(planToText(data.plan, spokenLang, name, { area: data.area, aqi: data.aqi }, { footer: false }), lang);
+  const wa = `https://wa.me/?text=${encodeURIComponent(planToText(data.plan, lang, name, { area: data.area, aqi: data.aqi }))}`;
+  const btn = "inline-flex min-h-11 items-center gap-2 rounded-lg border border-hairline bg-canvas px-4 text-sm font-medium text-ink hover:bg-soft";
+  return (
+    <div className="flex flex-wrap gap-2">
+      {speech.available && (
+        <button type="button" onClick={speech.toggle} aria-pressed={speech.speaking} className={btn}>
+          {speech.speaking ? <Square size={16} aria-hidden /> : <Volume2 size={16} aria-hidden />}<Txt k={speech.speaking ? "stop" : "listen"} />
+        </button>
+      )}
+      <a href={wa} target="_blank" rel="noopener noreferrer" className={btn}><MessageCircle size={16} aria-hidden /><Txt k="share" /></a>
+    </div>
+  );
+}
+
 export function PlanSkeleton() {
   const { lang } = useLang();
   return (
@@ -52,7 +104,7 @@ export function PlanSkeleton() {
   );
 }
 
-export function PlanView({ memberId }: { memberId: string }) {
+export function PlanView({ memberId, name }: { memberId: string; name: string }) {
   const [state, setState] = useState<State>({ status: "loading" });
 
   const load = useCallback(async (force = false) => {
@@ -97,6 +149,8 @@ export function PlanView({ memberId }: { memberId: string }) {
           <button type="button" onClick={() => load(true)} className="inline-flex min-h-9 items-center gap-1.5 rounded-lg border border-hairline bg-canvas px-3 font-medium text-ink hover:bg-soft"><RefreshCw size={14} aria-hidden /><Txt k="regen" /></button>
         </div>
       </div>
+
+      <Actions data={state.data} name={name} />
 
       <Section icon={<Sun size={18} />} title="outdoor">
         <p className="text-[15px] leading-relaxed"><T text={plan.outdoor.advice} /></p>
