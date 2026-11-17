@@ -1,14 +1,6 @@
 import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = {
-  turbopack: {
-    rules: {
-      "*.css": {
-        loaders: ["@tailwindcss/turbopack"],
-        as: "*.css",
-      },
-    },
-  },
-};
+// Built with webpack (see package.json): Turbopack's CSS loader process is killed on the managed host.
+const nextConfig: NextConfig = {};
 
 export default nextConfig;
