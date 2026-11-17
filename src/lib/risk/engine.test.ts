@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { aqiBand, bestWindows, personalRisk, sensitivity, shouldAlert, type MemberProfile } from "./engine";
+import { aqiBand, bestWindows, maskFor, personalRisk, riskyWindows, sensitivity, shouldAlert, type MemberProfile } from "./engine";
 
 const healthy: MemberProfile = { ageGroup: "adult", conditions: [], isPregnant: false, exposure: "indoor", commute: "car" };
 const ammi: MemberProfile = { ageGroup: "senior", conditions: ["asthma", "heart"], isPregnant: false, exposure: "indoor", commute: "none" };
@@ -65,4 +65,17 @@ describe("shouldAlert", () => {
     expect(d.reason).toMatch(/forecast/);
   });
   it("stays quiet in clean air", () => expect(shouldAlert(healthy, 40, day([40, 45, 50])).alert).toBe(false));
+});
+
+describe("plan helpers", () => {
+  it("picks masks from level and AQI", () => {
+    expect(maskFor("low", 40)).toBe("none");
+    expect(maskFor("moderate", 90)).toBe("none");
+    expect(maskFor("moderate", 106)).toBe("N95/KN95");
+    expect(maskFor("severe", 300)).toBe("N95/KN95");
+  });
+  it("lists the hours that are risky for this person", () => {
+    expect(riskyWindows(day([100, 300, 300, 100]), ali)).toEqual(["09:00-11:00"]);
+    expect(riskyWindows(day([100, 100]), ali)).toEqual([]);
+  });
 });

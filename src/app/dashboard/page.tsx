@@ -6,10 +6,14 @@ import { ForecastChart } from "@/components/ForecastChart";
 import { PageTint } from "@/components/PageTint";
 import { SiteHeader } from "@/components/SiteHeader";
 import { getAirData, hhmm, type AirResult } from "@/lib/air/openmeteo";
+import { redirect } from "next/navigation";
+import { FamilyCard, type FamilyCardProps } from "@/components/FamilyCard";
+import type { Loc } from "@/lib/ai/schemas";
 import { DEFAULT_AREA, findArea } from "@/lib/areas";
-import { DEMO_FAMILY, DEMO_HOUSEHOLD } from "@/lib/demo";
-import { aqiBand, bestWindows, personalRisk, whoMultiple, type AqiBand } from "@/lib/risk/engine";
-import { RISK_STYLE } from "@/lib/risk/style";
+import { describeMember, getHousehold, toProfile } from "@/lib/data";
+import { DEMO_FAMILY, DEMO_HOUSEHOLD, avatarFor } from "@/lib/demo";
+import { supabaseConfigured, supabaseServer } from "@/lib/supabase/server";
+import { aqiBand, bestWindows, personalRisk, whoMultiple, type AqiBand, type MemberProfile } from "@/lib/risk/engine";
 
 export const dynamic = "force-dynamic";
 
@@ -22,9 +26,33 @@ const LINE: Record<AqiBand["key"], string> = {
   hazardous: "Sirf zaroorat par bahar niklein, N95 ke saath. Hassas log ghar par rahein.",
 };
 
+type Fam = { householdName: string; area: string | null; signedIn: boolean; members: { id?: string; name: string; summary: string; avatar: { bg: string; fg: string }; profile: MemberProfile; headline: Loc | null }[] };
+
+/** Signed-in: the user's own household (RLS). No Supabase configured: the synthetic demo family. */
+async function loadFamily(): Promise<Fam> {
+  if (!supabaseConfigured()) {
+    return {
+      householdName: DEMO_HOUSEHOLD.name, area: null, signedIn: false,
+      members: DEMO_FAMILY.map((m) => ({ name: m.name, summary: `${m.age} · ${m.summary}`, avatar: m.avatar, profile: m.profile, headline: null })),
+    };
+  }
+  const sb = await supabaseServer();
+  if (!(await sb.auth.getUser()).data.user) redirect("/login?next=/dashboard");
+  const h = await getHousehold(sb);
+  if (!h) redirect("/onboarding");
+  const { data: plans } = await sb.from("plans").select("member_id, plan, created_at").in("member_id", h.members.map((m) => m.id)).order("created_at", { ascending: false });
+  const headline = new Map<string, Loc>();
+  for (const p of plans ?? []) if (!headline.has(p.member_id)) headline.set(p.member_id, (p.plan as { headline: Loc }).headline);
+  return {
+    householdName: h.household.name, area: h.household.area, signedIn: true,
+    members: h.members.map((m, i) => ({ id: m.id, name: m.name, summary: describeMember(m), avatar: avatarFor(m.avatar ?? i), profile: toProfile(m), headline: headline.get(m.id) ?? null })),
+  };
+}
+
 export default async function Dashboard({ searchParams }: { searchParams: Promise<{ area?: string }> }) {
   const { area: q } = await searchParams;
-  const area = findArea(q ?? "") ?? DEFAULT_AREA;
+  const fam = await loadFamily();
+  const area = findArea(q ?? "") ?? findArea(fam.area ?? "") ?? DEFAULT_AREA;
 
   let air: AirResult | null = null;
   try {
@@ -36,7 +64,7 @@ export default async function Dashboard({ searchParams }: { searchParams: Promis
   if (!air) {
     return (
       <>
-        <SiteHeader />
+        <SiteHeader signedIn={fam.signedIn} />
         <main className="mx-auto flex max-w-[640px] flex-col items-start gap-4 px-4 py-24 sm:px-8">
           <AlertTriangle aria-hidden className="text-[#8a4510]" />
           <h1 className="font-serif text-4xl tracking-[-0.8px]">Hawa ka data abhi nahi mil raha</h1>
@@ -61,11 +89,11 @@ export default async function Dashboard({ searchParams }: { searchParams: Promis
   return (
     <>
       <PageTint tint={band.tint} />
-      <SiteHeader />
+      <SiteHeader signedIn={fam.signedIn} />
       <main className="mx-auto flex max-w-[1200px] flex-col gap-6 px-4 pb-16 pt-8 sm:px-8">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div className="flex flex-col gap-1">
-            <p className="text-sm text-muted">Assalam-o-alaikum, {DEMO_HOUSEHOLD.name}</p>
+            <p className="text-sm text-muted">Assalam-o-alaikum, {fam.householdName}</p>
             <h1 className="font-serif text-[40px] leading-[1.1] tracking-[-0.8px]">Aaj ki hawa</h1>
           </div>
           <div className="flex flex-wrap items-center gap-2.5">
@@ -140,29 +168,12 @@ export default async function Dashboard({ searchParams }: { searchParams: Promis
         </section>
 
         <section aria-labelledby="fam-h" className="flex flex-col gap-4">
-          <h2 id="fam-h" className="font-serif text-[28px] tracking-[-0.3px]">Ghar ke log <span className="text-base font-sans text-muted">· {DEMO_HOUSEHOLD.name}, demo family</span></h2>
+          <h2 id="fam-h" className="font-serif text-[28px] tracking-[-0.3px]">Ghar ke log <span className="font-sans text-base text-muted">· {fam.householdName}{fam.signedIn ? "" : ", demo family"}</span></h2>
           <div className="grid gap-4 [grid-template-columns:repeat(auto-fit,minmax(250px,1fr))]">
-            {DEMO_FAMILY.map((m) => {
+            {fam.members.map((m) => {
               const r = personalRisk(c.aqi, m.profile);
-              const s = RISK_STYLE[r.level];
-              return (
-                <article key={m.key} className="flex flex-col gap-3.5 rounded-2xl border border-hairline bg-canvas p-6">
-                  <div className="flex items-center gap-3">
-                    <span className="grid size-12 shrink-0 place-items-center rounded-full text-lg font-semibold" style={{ background: m.avatar.bg, color: m.avatar.fg }} aria-hidden>{m.name[0]}</span>
-                    <div className="min-w-0">
-                      <h3 className="text-lg font-medium">{m.name}</h3>
-                      <span className="text-[13px] text-muted">{m.age} · {m.summary}</span>
-                    </div>
-                  </div>
-                  <span className="inline-flex items-center gap-1.5 self-start rounded-full px-2.5 py-1.5 text-xs font-semibold uppercase tracking-wide" style={{ background: s.bg, color: s.fg }}>
-                    <span className="size-[7px] rounded-full" style={{ background: s.fg }} />{s.label} risk
-                  </span>
-                  <p className="font-mono text-xs text-muted">sensitivity {r.score}× → effective AQI {r.effectiveAqi}</p>
-                  <ul className="flex flex-wrap gap-1.5">
-                    {r.reasons.length ? r.reasons.map((x) => <li key={x} className="rounded-md bg-dark px-2 py-1 font-mono text-xs text-canvas">{x}</li>) : <li className="text-sm text-muted">No extra risk factors</li>}
-                  </ul>
-                </article>
-              );
+              const props: FamilyCardProps = { id: m.id, name: m.name, summary: m.summary, avatar: m.avatar, level: r.level, score: r.score, effectiveAqi: r.effectiveAqi, reasons: r.reasons, headline: m.headline };
+              return <FamilyCard key={m.id ?? m.name} {...props} />;
             })}
           </div>
         </section>

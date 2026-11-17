@@ -161,3 +161,29 @@ export function shouldAlert(m: MemberProfile, currentAqi: number, hourly: HourPo
 // ---------- WHO guideline ----------
 export const WHO_PM25_24H = 15; // µg/m³, WHO 2021 24-hour guideline
 export const whoMultiple = (pm25: number) => Math.round((pm25 / WHO_PM25_24H) * 10) / 10;
+
+// ---------- Plan helpers (deterministic facts the LLM must copy, not invent) ----------
+export type MaskType = "none" | "N95/KN95";
+
+/** Mask advice from the engine: none in clean air, N95/KN95 once AQI passes 100 or risk is high. */
+export function maskFor(level: RiskLevel, aqi: number): MaskType {
+  return level === "low" || (level === "moderate" && aqi < 101) ? "none" : "N95/KN95";
+}
+
+/** Contiguous "HH:00-HH:00" ranges where this person's risk is high or worse. */
+export function riskyWindows(hourly: HourPoint[], m: MemberProfile): string[] {
+  const out: string[] = [];
+  let start = -1;
+  hourly.forEach((p, i) => {
+    const bad = RISK_RANK[personalRisk(p.aqi, m).level] >= RISK_RANK.high;
+    if (bad && start < 0) start = i;
+    if ((!bad || i === hourly.length - 1) && start >= 0) {
+      const end = bad ? i : i - 1;
+      out.push(`${hh(hourly[start].time)}-${addHours(hourly[end].time, 1)}`);
+      start = -1;
+    }
+  });
+  return out;
+}
+
+export const formatWindow = (w: Window) => `${w.start}-${w.end}`;

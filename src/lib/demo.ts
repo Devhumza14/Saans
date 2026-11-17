@@ -35,3 +35,14 @@ export const DEMO_FAMILY: DemoMember[] = [
     profile: { ageGroup: "child", conditions: ["allergies"], isPregnant: false, exposure: "indoor", commute: "walk" },
   },
 ];
+
+/** Avatar colours for members created in onboarding (members.avatar stores the index). */
+export const AVATARS = [
+  { bg: "#e8d5c9", fg: "#6b3420" },
+  { bg: "#d3e2ea", fg: "#1e4a5f" },
+  { bg: "#ead6e0", fg: "#6a2a4a" },
+  { bg: "#f0dcc0", fg: "#6b4310" },
+  { bg: "#dfe6d6", fg: "#34502a" },
+  { bg: "#e0dcef", fg: "#3d3470" },
+];
+export const avatarFor = (i: number | string | null | undefined) => AVATARS[Math.abs(Number(i) || 0) % AVATARS.length];
