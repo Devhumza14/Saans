@@ -179,7 +179,8 @@ export function riskyWindows(hourly: HourPoint[], m: MemberProfile): string[] {
     if (bad && start < 0) start = i;
     if ((!bad || i === hourly.length - 1) && start >= 0) {
       const end = bad ? i : i - 1;
-      out.push(`${hh(hourly[start].time)}-${addHours(hourly[end].time, 1)}`);
+      const whole = start === 0 && end === hourly.length - 1 && hourly.length >= 24; // 12:00-12:00 would read as empty
+      out.push(whole ? "All day" : `${hh(hourly[start].time)}-${addHours(hourly[end].time, 1)}`);
       start = -1;
     }
   });

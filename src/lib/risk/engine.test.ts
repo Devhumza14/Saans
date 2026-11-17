@@ -77,5 +77,6 @@ describe("plan helpers", () => {
   it("lists the hours that are risky for this person", () => {
     expect(riskyWindows(day([100, 300, 300, 100]), ali)).toEqual(["09:00-11:00"]);
     expect(riskyWindows(day([100, 100]), ali)).toEqual([]);
+    expect(riskyWindows(day(Array(24).fill(300), 12), ali)).toEqual(["All day"]);
   });
 });
