@@ -27,7 +27,7 @@ const TIMEOUT_MS = 45_000;
 export const planModel = () => process.env.OPENROUTER_MODEL || "google/gemini-2.5-flash";
 export const chatModel = () => process.env.OPENROUTER_CHAT_MODEL || "google/gemini-2.5-flash";
 
-type Opts = { model: string; messages: ChatMessage[]; json?: boolean; tools?: ToolDef[]; temperature?: number };
+type Opts = { model: string; messages: ChatMessage[]; json?: boolean; tools?: ToolDef[]; temperature?: number; maxTokens?: number };
 type Completion = { content: string | null; toolCalls: ToolCall[] };
 
 /** Builds the request; shared by the plain and streaming calls. */
@@ -39,6 +39,7 @@ function request(opts: Opts, stream: boolean): { init: RequestInit } {
     messages: opts.messages,
     temperature: opts.temperature ?? 0.4,
     stream,
+    max_tokens: opts.maxTokens ?? 3000, // cap output so OpenRouter does not reserve credit for the model maximum
   };
   if (opts.json) body.response_format = { type: "json_object" };
   if (opts.tools?.length) body.tools = opts.tools;
