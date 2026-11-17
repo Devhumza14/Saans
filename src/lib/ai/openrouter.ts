@@ -81,3 +81,43 @@ export async function chatCompletion(opts: Opts): Promise<Completion> {
   if (!msg) throw new AiError("upstream", "The AI returned an empty answer. Please try again.");
   return { content: msg.content ?? null, toolCalls: msg.tool_calls ?? [] };
 }
+
+export type StreamEvent = { text?: string; toolCalls?: ToolCall[] };
+
+/** Streams a completion. Yields text deltas as they arrive; tool calls are assembled and yielded once at the end. */
+export async function* chatStream(opts: Opts): AsyncGenerator<StreamEvent> {
+  const res = await send(request(opts, true).init);
+  if (!res.body) throw new AiError("upstream", "The AI returned an empty answer. Please try again.");
+  const reader = res.body.getReader();
+  const dec = new TextDecoder();
+  const calls: ToolCall[] = [];
+  let buf = "";
+  try {
+    for (;;) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      buf += dec.decode(value, { stream: true });
+      const lines = buf.split("\n");
+      buf = lines.pop() ?? "";
+      for (const line of lines) {
+        if (!line.startsWith("data:")) continue;
+        const payload = line.slice(5).trim();
+        if (!payload || payload === "[DONE]") continue;
+        let delta: { content?: string | null; tool_calls?: { index: number; id?: string; function?: { name?: string; arguments?: string } }[] } | undefined;
+        try { delta = JSON.parse(payload).choices?.[0]?.delta; } catch { continue; }
+        if (delta?.content) yield { text: delta.content };
+        for (const t of delta?.tool_calls ?? []) {
+          const c = (calls[t.index] ??= { id: "", type: "function", function: { name: "", arguments: "" } });
+          if (t.id) c.id = t.id;
+          if (t.function?.name) c.function.name += t.function.name;
+          if (t.function?.arguments) c.function.arguments += t.function.arguments;
+        }
+      }
+    }
+  } catch (e) {
+    if (e instanceof Error && (e.name === "TimeoutError" || e.name === "AbortError")) throw new AiError("timeout", "The AI took too long to answer. Please try again.");
+    throw e;
+  }
+  const valid = calls.filter(Boolean);
+  if (valid.length) yield { toolCalls: valid };
+}

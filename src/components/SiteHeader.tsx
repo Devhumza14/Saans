@@ -1,11 +1,13 @@
 import Link from "next/link";
 import { LogOut } from "lucide-react";
+import { AlertBell } from "@/components/AlertBell";
 import { LangToggle } from "@/components/LangProvider";
 import { signOut } from "@/app/login/actions";
 
 const NAV = [
   { href: "/dashboard", label: "Dashboard" },
   { href: "/compare", label: "Muqabla" },
+  { href: "/chat", label: "Puchho Saans" },
 ];
 
 export function SiteHeader({ cta, signedIn }: { cta?: { href: string; label: string }; signedIn?: boolean }) {
@@ -31,6 +33,7 @@ export function SiteHeader({ cta, signedIn }: { cta?: { href: string; label: str
           {cta && (
             <Link href={cta.href} className="inline-flex min-h-11 items-center rounded-lg bg-cta px-5 text-[15px] font-medium text-white hover:bg-cta-hover">{cta.label}</Link>
           )}
+          {signedIn && <AlertBell />}
           {signedIn && (
             <form action={signOut}>
               <button type="submit" aria-label="Sign out" className="grid size-11 place-items-center rounded-full border border-hairline bg-canvas text-ink hover:bg-soft"><LogOut size={18} aria-hidden /></button>
