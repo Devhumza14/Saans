@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Saans — Family comparison</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&amp;family=Noto+Nastaliq+Urdu:wght@400;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#a9583e}a:hover{color:#7f3f29}
+.serif{font-family:'Source Serif 4',Georgia,serif;font-weight:400}
+.ur{font-family:'Noto Nastaliq Urdu',serif;line-height:2.2}
+.lat{font-family:Inter,sans-serif;line-height:1.5}
+.mono{font-family:'JetBrains Mono',ui-monospace,monospace}
+.seg{border:0;background:transparent;color:#cfcbc2;font:500 14px Inter,sans-serif;padding:0 16px;height:40px;border-radius:9999px;cursor:pointer}
+.seg[aria-pressed="true"]{background:#faf9f5;color:#141413}
+.sk{background:linear-gradient(90deg,#efe9de 0%,#f7f3ec 50%,#efe9de 100%);background-size:200% 100%;animation:sh 1.4s linear infinite;border-radius:8px}
+@keyframes sh{to{background-position:-200% 0}}
+@media (prefers-reduced-motion:reduce){.sk{animation:none}}
+@media (max-width:760px){.sec{padding-left:16px !important;padding-right:16px !important}}
+</style>
+</helmet>
+<div style="font-family: Inter, sans-serif; color: #141413; background: #f1e9f3; min-height: 100vh;">
+
+<section aria-labelledby="cmp-h" style="position: relative; background: #181715; color: #faf9f5; overflow: hidden;">
+  <img src="/_blob/81ebed2df5c73fd8dedbf48b7829990d" alt="" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .38;">
+  <div style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(24,23,21,.92) 0%, rgba(24,23,21,.55) 60%, rgba(24,23,21,.75) 100%);"></div>
+  <div class="sec" style="position: relative; max-width: 1280px; margin: 0 auto; padding: 28px 32px 40px; display: flex; flex-direction: column; gap: 28px;">
+    <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap;">
+      <a href="Dashboard.dc.html" style="color: #faf9f5; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; font: 500 14px Inter, sans-serif; padding: 12px 0;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>Dashboard</a>
+      <div role="group" aria-label="Plan language" style="margin-left: auto; display: flex; background: rgba(250,249,245,.12); border-radius: 9999px; padding: 4px;">
+        <button type="button" class="seg" aria-pressed="{{pr.ur}}" onClick="{{setUr}}"><span class="ur" style="line-height: 1;">اردو</span></button>
+        <button type="button" class="seg" aria-pressed="{{pr.roman}}" onClick="{{setRoman}}">Roman</button>
+        <button type="button" class="seg" aria-pressed="{{pr.en}}" onClick="{{setEn}}">English</button>
+      </div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-end; justify-content: space-between;">
+      <div style="flex: 1 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 12px;">
+        <p style="margin: 0; font: 500 12px Inter, sans-serif; letter-spacing: 1.5px; text-transform: uppercase; color: #e8a55a;">Same air · four different plans</p>
+        <h1 id="cmp-h" class="serif" style="margin: 0; font-size: 52px; line-height: 1.06; letter-spacing: -1.2px;">Aik hi hawa. Har shakhs ka apna plan.</h1>
+        <p style="margin: 0; font-size: 16px; color: #cfcbc2;">Khan Family · Gulberg, Lahore · Tuesday 17 November</p>
+      </div>
+      <div style="display: flex; align-items: center; gap: 20px; background: rgba(24,23,21,.72); border: 1px solid #3a3631; border-radius: 16px; padding: 18px 24px;">
+        <div style="position: relative; width: 96px; height: 96px;">
+          <svg width="96" height="96" viewBox="0 0 96 96" aria-hidden="true"><circle cx="48" cy="48" r="40" fill="none" stroke="#2f2c28" stroke-width="9"/><circle cx="48" cy="48" r="40" fill="none" stroke="#a66bcc" stroke-width="9" stroke-linecap="round" stroke-dasharray="144.3 251.3" transform="rotate(-90 48 48)"/></svg>
+          <span class="serif" style="position: absolute; inset: 0; display: grid; place-items: center; font-size: 32px; letter-spacing: -0.5px;">287</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 4px;">
+          <span style="font-size: 18px; font-weight: 500;">Very unhealthy</span>
+          <span style="font-size: 14px; color: #cfcbc2;">PM2.5 236 µg/m³ · 15.7× WHO</span>
+          <span class="mono" style="font-size: 12px; color: #a09d96; display: inline-flex; align-items: center; gap: 6px;"><span style="width: 7px; height: 7px; border-radius: 50%; background: #5db872;"></span>live · 11:20 · wind 3 km/h</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main class="sec" style="max-width: 1280px; margin: 0 auto; padding: 32px 32px 48px; display: flex; flex-direction: column; gap: 24px;">
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 16px; align-items: stretch;">
+    <sc-for list="{{members}}" as="m" hint-placeholder-count="4">
+      <article style="background: #faf9f5; border-radius: 16px; border: 1px solid #e6dfd8; overflow: hidden; display: flex; flex-direction: column;">
+        <div style="height: 6px; background: {{m.bar}};"></div>
+        <div style="padding: 22px 22px 18px; display: flex; flex-direction: column; gap: 14px; border-bottom: 1px solid #ebe6df;">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <span aria-hidden="true" style="width: 52px; height: 52px; border-radius: 50%; background: {{m.avBg}}; color: {{m.avFg}}; display: grid; place-items: center; font: 600 20px Inter, sans-serif; flex: none;">{{m.initial}}</span>
+            <div style="display: flex; flex-direction: column; gap: 2px; min-width: 0;">
+              <h2 class="serif" style="margin: 0; font-size: 26px; letter-spacing: -0.3px; line-height: 1.1;">{{m.name}}</h2>
+              <span style="font-size: 13px; color: #6c6a64;">{{m.profile}}</span>
+            </div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+            <span style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 9999px; background: {{m.pillBg}}; color: {{m.pillFg}}; font: 600 12px Inter, sans-serif; letter-spacing: .7px; text-transform: uppercase;"><span style="width: 8px; height: 8px; border-radius: 50%; background: {{m.pillFg}};"></span>{{m.level}}</span>
+            <span class="mono" style="font-size: 12px; color: #6c6a64;">sensitivity {{m.score}}×</span>
+          </div>
+        </div>
+
+        <sc-if value="{{m.ready}}" hint-placeholder-val="{{true}}">
+          <div dir="{{dir}}" style="padding: 18px 22px 22px; display: flex; flex-direction: column; gap: 18px; flex: 1;">
+            <p class="{{txt}}" style="margin: 0; font-size: {{hlSize}}; font-weight: 500; color: #141413;">{{m.hl}}</p>
+            <dl style="margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px;">
+              <div style="background: #f5f0e8; border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 2px;">
+                <dt style="font: 500 11px Inter, sans-serif; letter-spacing: 1px; text-transform: uppercase; color: #6c6a64;">Mask</dt>
+                <dd class="mono" style="margin: 0; font-size: 14px; font-weight: 500;">{{m.mask}}</dd>
+              </div>
+              <div style="background: #f5f0e8; border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 2px;">
+                <dt style="font: 500 11px Inter, sans-serif; letter-spacing: 1px; text-transform: uppercase; color: #6c6a64;">Bahar ka waqt</dt>
+                <dd class="mono" style="margin: 0; font-size: 14px; font-weight: 500;">{{m.window}}</dd>
+              </div>
+            </dl>
+            <ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px;">
+              <sc-for list="{{m.acts}}" as="a" hint-placeholder-count="3">
+                <li style="display: flex; gap: 10px; align-items: flex-start;">
+                  <span style="width: 22px; height: 22px; border-radius: 50%; background: #efe9de; color: #a9583e; font: 600 12px/22px Inter, sans-serif; text-align: center; flex: none; margin-top: 2px;">{{a.n}}</span>
+                  <span class="{{txt}}" style="font-size: {{actSize}}; color: #252523;">{{a.t}}</span>
+                </li>
+              </sc-for>
+            </ol>
+            <div dir="ltr" style="margin-top: auto; padding-top: 14px; border-top: 1px dashed #d9d0c3; display: flex; flex-direction: column; gap: 8px;">
+              <span style="font: 500 11px Inter, sans-serif; letter-spacing: 1px; text-transform: uppercase; color: #6c6a64;">Kyun alag? · risk engine</span>
+              <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+                <sc-for list="{{m.reasons}}" as="r" hint-placeholder-count="2">
+                  <span class="mono" style="font-size: 12px; padding: 4px 8px; border-radius: 6px; background: #181715; color: #faf9f5;">{{r}}</span>
+                </sc-for>
+              </div>
+            </div>
+            <a href="Member.dc.html" style="align-self: flex-start; font: 500 14px Inter, sans-serif; padding: 10px 0;">Pura plan →</a>
+          </div>
+        </sc-if>
+        <sc-if value="{{m.loading}}" hint-placeholder-val="{{false}}">
+          <div aria-busy="true" aria-label="Writing {{m.name}}’s plan" style="padding: 18px 22px 22px; display: flex; flex-direction: column; gap: 14px; flex: 1;">
+            <div class="sk" style="height: 22px; width: 92%;"></div>
+            <div class="sk" style="height: 22px; width: 70%;"></div>
+            <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px;"><div class="sk" style="height: 56px;"></div><div class="sk" style="height: 56px;"></div></div>
+            <div class="sk" style="height: 16px; width: 88%;"></div>
+            <div class="sk" style="height: 16px; width: 80%;"></div>
+            <div class="sk" style="height: 16px; width: 64%;"></div>
+            <span class="mono" style="margin-top: auto; font-size: 12px; color: #6c6a64;">risk engine ✓ · writing plan…</span>
+          </div>
+        </sc-if>
+      </article>
+    </sc-for>
+  </div>
+
+  <div style="display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between; padding: 18px 22px; background: #faf9f5; border: 1px solid #e6dfd8; border-radius: 12px;">
+    <p style="margin: 0; font-size: 14px; color: #3d3d3a; flex: 1 1 520px;">The risk levels and time windows come from Saans’s rules engine, using live Open-Meteo data. The AI writes the words and is checked against the engine before anything is shown.</p>
+    <span class="mono" style="font-size: 12px; color: #6c6a64;">4 plans · generated in parallel · 3.8s</span>
+  </div>
+  <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #3d3d3a;">Saans sehat ki aagahi ke liye hai, ilaaj ke liye nahi. Takleef ki soorat mein doctor se rujoo karein. Emergency: <strong>1122</strong>.</p>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"showLoading":{"editor":"boolean","default":false,"section":"States"},"$preview":{"width":1440,"height":1640}}'>
+class Component extends DCLogic {
+  constructor(p) { super(p); this.state = { lang: 'roman' }; }
+  renderVals() {
+    var self = this;
+    var L = this.state.lang;
+    var lv = {
+      severe:   { bg: '#f2e3e3', fg: '#6e1825', bar: '#8a2433', label: 'Severe' },
+      high:     { bg: '#f9ede1', fg: '#8a4510', bar: '#e07b2c', label: 'High' }
+    };
+    var raw = [
+      { name: 'Ammi', initial: 'A', profile: '65 · asthma, heart condition · ghar par', k: 'severe', score: '3.0', avBg: '#e8d5c9', avFg: '#6b3420',
+        mask: 'N95 / KN95', window: { roman: 'Na niklein', en: 'Stay in', ur: 'Stay in' },
+        hl: { roman: 'Ammi, aaj ghar ke andar hi rahein.', en: 'Ammi, please stay indoors today.', ur: 'امی، آج گھر کے اندر ہی رہیں۔' },
+        acts: {
+          roman: ['Subah ki sair aaj band. Ghar mein halki chehel-qadmi karein.', 'Inhaler doctor ki hidayat ke mutabiq hamesha paas rakhein.', 'Sans phoole ya seenay mein dard ho to foran 1122.'],
+          en: ['Skip the morning walk. Walk gently indoors instead.', 'Keep your inhaler with you, as your doctor advised.', 'Breathless or chest pain? Call 1122 right away.'],
+          ur: ['آج صبح کی سیر نہ کریں، گھر میں آہستہ چلیں۔', 'انہیلر ڈاکٹر کی ہدایت کے مطابق پاس رکھیں۔', 'سانس پھولے یا سینے میں درد ہو تو فوراً ۱۱۲۲۔']
+        },
+        reasons: ['age 60+ ×1.4', 'asthma ×1.5', 'heart ×1.3'] },
+      { name: 'Ali', initial: 'A', profile: '27 · delivery rider · bike', k: 'high', score: '1.9', avBg: '#d3e2ea', avFg: '#1e4a5f',
+        mask: 'N95 / KN95', window: { roman: '14:00–16:00', en: '14:00–16:00', ur: '14:00–16:00' },
+        hl: { roman: 'Ali, lambi deliveries 2 se 4 baje ke darmiyan rakhein.', en: 'Ali, put your longest runs between 2 and 4 pm.', ur: 'علی، لمبی ڈیلیوری دو سے چار بجے کے درمیان رکھیں۔' },
+        acts: {
+          roman: ['N95 naak par tight ho, dheela mask kaam nahi karta.', 'Har 2 ghante baad 10 minute kisi band jagah break.', 'Aankhon mein jalan ho to saaf paani se dhoyein.'],
+          en: ['Fit the N95 snugly over your nose; loose masks leak.', 'Take a 10-minute indoor break every 2 hours.', 'Rinse stinging eyes with clean water.'],
+          ur: ['این ۹۵ ناک پر کس کر لگائیں، ڈھیلا ماسک کام نہیں کرتا۔', 'ہر دو گھنٹے بعد دس منٹ کسی بند جگہ وقفہ۔', 'آنکھوں میں جلن ہو تو صاف پانی سے دھوئیں۔']
+        },
+        reasons: ['rider ×1.6', 'bike ×1.2'] },
+      { name: 'Sara', initial: 'S', profile: '30 · pregnant · rickshaw', k: 'high', score: '2.0', avBg: '#ead6e0', avFg: '#6a2a4a',
+        mask: 'N95 / KN95', window: { roman: '14:00–15:00', en: '14:00–15:00', ur: '14:00–15:00' },
+        hl: { roman: 'Sara, aaj rickshaw ki jagah band gaari ya ghar se kaam.', en: 'Sara, take a closed car today, or work from home.', ur: 'سارہ، آج رکشے کی جگہ بند گاڑی یا گھر سے کام۔' },
+        acts: {
+          roman: ['Khula rickshaw sabse zyada dhuaan deta hai, aaj na lein.', 'Check-up ho to doctor se smog ke baare mein poochein.', 'Chakkar ya sans ki takleef ho to doctor se rujoo karein.'],
+          en: ['Open rickshaws bring in the most smoke; skip them today.', 'At your next check-up, ask your doctor about smog.', 'Dizzy or short of breath? See a doctor.'],
+          ur: ['کھلا رکشہ سب سے زیادہ دھواں دیتا ہے، آج نہ لیں۔', 'چیک اپ پر ڈاکٹر سے اسموگ کے بارے میں پوچھیں۔', 'چکر یا سانس کی تکلیف ہو تو ڈاکٹر سے رجوع کریں۔']
+        },
+        reasons: ['pregnancy ×1.5', 'rickshaw ×1.2', 'mixed ×1.1'] },
+      { name: 'Zara', initial: 'Z', profile: '8 · allergies · school, walks', k: 'high', score: '2.0', avBg: '#f0dcc0', avFg: '#6b4310',
+        mask: 'Child-size N95', window: { roman: 'School andar', en: 'Indoors only', ur: 'Indoors only' },
+        hl: { roman: 'Zara ko school gaari mein chhorein, walk aaj nahi.', en: 'Drive Zara to school today, no walking.', ur: 'زارا کو آج اسکول گاڑی میں چھوڑیں، پیدل نہیں۔' },
+        acts: {
+          roman: ['Teacher se kahein: khel aur assembly aaj andar.', 'Ghar aakar haath munh dhoyein, kapre badlein.', 'Khansi ya sans mein seeti ho to doctor ko dikhayein.'],
+          en: ['Ask the teacher to keep play and assembly indoors.', 'Wash face and hands and change clothes after school.', 'Coughing or wheezing? Take her to a doctor.'],
+          ur: ['ٹیچر سے کہیں: کھیل اور اسمبلی آج اندر۔', 'گھر آ کر ہاتھ منہ دھوئیں، کپڑے بدلیں۔', 'کھانسی یا سانس میں سیٹی ہو تو ڈاکٹر کو دکھائیں۔']
+        },
+        reasons: ['child <12 ×1.4', 'allergies ×1.2', 'walk ×1.2'] }
+    ];
+    var loadingLast = !!this.props.showLoading;
+    var members = raw.map(function (m, i) {
+      var l = lv[m.k];
+      var loading = loadingLast && i === raw.length - 1;
+      return {
+        name: m.name, initial: m.initial, profile: m.profile, score: m.score, avBg: m.avBg, avFg: m.avFg,
+        level: l.label, pillBg: l.bg, pillFg: l.fg, bar: l.bar, mask: m.mask, window: m.window[L],
+        hl: m.hl[L], reasons: m.reasons,
+        acts: m.acts[L].map(function (t, j) { return { n: j + 1, t: t }; }),
+        ready: !loading, loading: loading
+      };
+    });
+    var isUr = L === 'ur';
+    return {
+      members: members,
+      dir: isUr ? 'rtl' : 'ltr',
+      txt: isUr ? 'ur' : 'lat',
+      hlSize: isUr ? '21px' : '20px',
+      actSize: isUr ? '15px' : '15px',
+      pr: { ur: L === 'ur' ? 'true' : 'false', roman: L === 'roman' ? 'true' : 'false', en: L === 'en' ? 'true' : 'false' },
+      setUr: function () { self.setState({ lang: 'ur' }); },
+      setRoman: function () { self.setState({ lang: 'roman' }); },
+      setEn: function () { self.setState({ lang: 'en' }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

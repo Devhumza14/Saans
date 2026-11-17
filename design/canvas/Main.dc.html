@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Saans — Landing</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&amp;family=Noto+Nastaliq+Urdu:wght@400;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#faf9f5}
+a{color:#a9583e}a:hover{color:#7f3f29}
+.serif{font-family:'Source Serif 4',Georgia,serif;font-weight:400}
+.ur{font-family:'Noto Nastaliq Urdu',serif;direction:rtl;line-height:2.2}
+.mono{font-family:'JetBrains Mono',ui-monospace,monospace}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 20px;border-radius:8px;font:500 15px/1 Inter,sans-serif;text-decoration:none;box-sizing:border-box}
+.btn-p{background:#a9583e;color:#fff}.btn-p:hover{background:#8f4630;color:#fff}
+.btn-s{background:#faf9f5;color:#141413;border:1px solid #d9d0c3}.btn-s:hover{background:#f5f0e8;color:#141413}
+.navlink{color:#3d3d3a;text-decoration:none;font:500 14px/1 Inter,sans-serif;padding:12px 4px}
+.navlink:hover{color:#141413}
+@media (max-width:760px){.hide-sm{display:none !important}.h1{font-size:44px !important}.sec{padding-left:16px !important;padding-right:16px !important}}
+</style>
+</helmet>
+<div style="font-family: Inter, sans-serif; color: #141413; background: #faf9f5; min-height: 100vh;">
+
+<header class="sec" style="max-width: 1200px; margin: 0 auto; padding: 0 32px; height: 72px; display: flex; align-items: center; gap: 32px;">
+  <a href="Main.dc.html" aria-label="Saans home" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #141413;">
+    <svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M4 11c4-4 8 4 12 0s8-4 12 0" stroke="#cc785c" stroke-width="2.4" stroke-linecap="round"/><path d="M4 17c4-4 8 4 12 0s8-4 12 0" stroke="#141413" stroke-width="2.4" stroke-linecap="round"/><path d="M4 23c4-4 8 4 12 0" stroke="#141413" stroke-width="2.4" stroke-linecap="round" opacity=".45"/></svg>
+    <span class="serif" style="font-size: 26px; letter-spacing: -0.5px;">Saans</span>
+    <span class="ur" style="font-size: 18px; color: #6c6a64; line-height: 1;">سانس</span>
+  </a>
+  <nav aria-label="Primary" class="hide-sm" style="display: flex; gap: 24px; flex: 1;">
+    <a class="navlink" href="Dashboard.dc.html">Dashboard</a>
+    <a class="navlink" href="Compare.dc.html">Ghar ka muqabla</a>
+    <a class="navlink" href="Chat.dc.html">Puchho Saans</a>
+    <a class="navlink" href="#orgs">For organizations</a>
+  </nav>
+  <div style="display: flex; align-items: center; gap: 12px; margin-left: auto;">
+    <div role="group" aria-label="Language" class="hide-sm" style="display: flex; background: #efe9de; border-radius: 9999px; padding: 4px;">
+      <button type="button" class="ur" style="border: 0; background: transparent; color: #3d3d3a; font-size: 13px; padding: 0 12px; height: 32px; border-radius: 9999px; line-height: 1; cursor: pointer;">اردو</button>
+      <button type="button" aria-pressed="true" style="border: 0; background: #faf9f5; color: #141413; font: 500 13px Inter, sans-serif; padding: 0 12px; height: 32px; border-radius: 9999px; cursor: pointer; box-shadow: 0 1px 2px rgba(20,20,19,.08);">Roman</button>
+      <button type="button" style="border: 0; background: transparent; color: #3d3d3a; font: 500 13px Inter, sans-serif; padding: 0 12px; height: 32px; border-radius: 9999px; cursor: pointer;">EN</button>
+    </div>
+    <a class="btn btn-p" href="Dashboard.dc.html">Demo Login</a>
+  </div>
+</header>
+
+<section class="sec" style="max-width: 1200px; margin: 0 auto; padding: 48px 32px 96px; display: flex; flex-wrap: wrap; gap: 56px; align-items: center;">
+  <div style="flex: 1 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 24px;">
+    <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+      <span style="display: inline-flex; align-items: center; gap: 8px; background: #e3efe2; color: #24552f; font: 500 12px Inter, sans-serif; letter-spacing: 1.2px; text-transform: uppercase; padding: 8px 12px; border-radius: 9999px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 14c1.5-1.5 3-3.4 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7Z"/></svg>SDG 3 · Good Health &amp; Well-Being</span>
+      <span style="display: inline-flex; align-items: center; background: #efe9de; color: #3d3d3a; font: 500 12px Inter, sans-serif; letter-spacing: 1.2px; text-transform: uppercase; padding: 8px 12px; border-radius: 9999px;">Smog season · Oct–Jan</span>
+    </div>
+    <h1 class="serif h1" style="margin: 0; font-size: 68px; line-height: 1.04; letter-spacing: -1.8px;">Lahore ki hawa,<br>aap ke ghar ke liye.</h1>
+    <p class="ur" lang="ur" style="margin: 0; font-size: 26px; color: #3d3d3a; text-align: right;">لاہور کی ہوا، آپ کے گھر کے لیے</p>
+    <p style="margin: 0; font-size: 18px; line-height: 1.6; color: #3d3d3a; max-width: 520px;">An AQI number tells everyone the same thing. Saans reads the live air in your part of Lahore and writes a separate plan for each person at home: Ammi with asthma, a rider on a 9-hour shift, a child walking to school.</p>
+    <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+      <a class="btn btn-p" href="Onboarding.dc.html">Apna ghar set karein
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="btn btn-s" href="Compare.dc.html">Live demo dekhein</a>
+    </div>
+    <p style="margin: 0; font-size: 13px; color: #6c6a64;">Free for families · Urdu, Roman Urdu &amp; English · No sign-up to check today’s air</p>
+  </div>
+
+  <div style="flex: 1 1 520px; min-width: 0; position: relative;">
+    <img src="/_blob/dc2f364eb40fda75e9726f9302d184e6" alt="Badshahi Mosque in Lahore under a hazy, washed-out sky" style="display: block; width: 100%; height: 560px; object-fit: cover; border-radius: 16px;">
+    <div style="position: absolute; left: 20px; right: 20px; bottom: 20px; background: #181715; color: #faf9f5; border-radius: 12px; padding: 20px 24px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
+      <div style="position: relative; width: 84px; height: 84px; flex: none;">
+        <svg width="84" height="84" viewBox="0 0 84 84" aria-hidden="true"><circle cx="42" cy="42" r="36" fill="none" stroke="#2f2c28" stroke-width="8"/><circle cx="42" cy="42" r="36" fill="none" stroke="#a15cc9" stroke-width="8" stroke-linecap="round" stroke-dasharray="130 226" transform="rotate(-90 42 42)"/></svg>
+        <span class="serif" style="position: absolute; inset: 0; display: grid; place-items: center; font-size: 28px; letter-spacing: -0.5px;">287</span>
+      </div>
+      <div style="flex: 1 1 180px; min-width: 0; display: flex; flex-direction: column; gap: 6px;">
+        <div style="display: flex; align-items: center; gap: 8px; font: 500 12px Inter, sans-serif; letter-spacing: 1.2px; text-transform: uppercase; color: #a09d96;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #5db872;"></span>Live · Gulberg, Lahore</div>
+        <div style="font-size: 20px; font-weight: 500;">Very Unhealthy <span class="ur" lang="ur" style="font-size: 16px; color: #d9b8ea; line-height: 1;">بہت مضر</span></div>
+        <div style="font-size: 14px; color: #a09d96;">PM2.5 236 µg/m³ · <strong style="color: #faf9f5; font-weight: 500;">15.7× the WHO 24-hour limit</strong></div>
+      </div>
+      <div class="mono" style="font-size: 12px; color: #a09d96;">updated 11:20</div>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="problem-h" style="background: #181715; color: #faf9f5;">
+  <div class="sec" style="max-width: 1200px; margin: 0 auto; padding: 96px 32px; display: flex; flex-wrap: wrap; gap: 56px; align-items: stretch;">
+    <img src="/_blob/ccb5e291582c1929124118d278adc956" alt="A city skyline disappearing into thick grey smog" style="flex: 1 1 360px; min-width: 0; width: 100%; max-height: 620px; object-fit: cover; border-radius: 12px;">
+    <div style="flex: 1 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 24px; justify-content: center;">
+      <p style="margin: 0; font: 500 12px Inter, sans-serif; letter-spacing: 1.5px; text-transform: uppercase; color: #e8a55a;">The problem</p>
+      <h2 id="problem-h" class="serif" style="margin: 0; font-size: 48px; line-height: 1.1; letter-spacing: -1px;">Aik number. Chaar zindagiyan.</h2>
+      <p style="margin: 0; font-size: 18px; line-height: 1.6; color: #cfcbc2;">Every winter Lahore’s air ranks among the worst in the world. Air quality apps show one number for everyone, but the risk depends on who is breathing it. Here is the same morning, AQI 287, for four people in one house:</p>
+      <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px;">
+        <li style="display: flex; align-items: center; gap: 16px; padding: 16px 20px; background: #252320; border-radius: 12px 12px 4px 4px;">
+          <span style="width: 40px; height: 40px; border-radius: 50%; background: #e8d5c9; color: #6b3420; display: grid; place-items: center; font-weight: 600; flex: none;">A</span>
+          <span style="flex: 1; min-width: 0;"><strong style="font-weight: 500;">Ammi, 65</strong><span style="color: #a09d96;"> · asthma, heart condition</span></span>
+          <span style="background: #4a1820; color: #ffb3bd; font: 600 12px Inter, sans-serif; letter-spacing: .8px; text-transform: uppercase; padding: 6px 10px; border-radius: 9999px;">Severe</span>
+        </li>
+        <li style="display: flex; align-items: center; gap: 16px; padding: 16px 20px; background: #252320; border-radius: 4px;">
+          <span style="width: 40px; height: 40px; border-radius: 50%; background: #d3e2ea; color: #1e4a5f; display: grid; place-items: center; font-weight: 600; flex: none;">A</span>
+          <span style="flex: 1; min-width: 0;"><strong style="font-weight: 500;">Ali, 27</strong><span style="color: #a09d96;"> · delivery rider, bike</span></span>
+          <span style="background: #4d2414; color: #ffbe98; font: 600 12px Inter, sans-serif; letter-spacing: .8px; text-transform: uppercase; padding: 6px 10px; border-radius: 9999px;">High</span>
+        </li>
+        <li style="display: flex; align-items: center; gap: 16px; padding: 16px 20px; background: #252320; border-radius: 4px;">
+          <span style="width: 40px; height: 40px; border-radius: 50%; background: #f0dcc0; color: #6b4310; display: grid; place-items: center; font-weight: 600; flex: none;">Z</span>
+          <span style="flex: 1; min-width: 0;"><strong style="font-weight: 500;">Zara, 8</strong><span style="color: #a09d96;"> · allergies, walks to school</span></span>
+          <span style="background: #4d2414; color: #ffbe98; font: 600 12px Inter, sans-serif; letter-spacing: .8px; text-transform: uppercase; padding: 6px 10px; border-radius: 9999px;">High</span>
+        </li>
+        <li style="display: flex; align-items: center; gap: 16px; padding: 16px 20px; background: #252320; border-radius: 4px 4px 12px 12px;">
+          <span style="width: 40px; height: 40px; border-radius: 50%; background: #dfe6d6; color: #34502a; display: grid; place-items: center; font-weight: 600; flex: none;">B</span>
+          <span style="flex: 1; min-width: 0;"><strong style="font-weight: 500;">Bilal, 34</strong><span style="color: #a09d96;"> · office job, car</span></span>
+          <span style="background: #463a10; color: #f3d77a; font: 600 12px Inter, sans-serif; letter-spacing: .8px; text-transform: uppercase; padding: 6px 10px; border-radius: 9999px;">Moderate</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="how-h" class="sec" style="max-width: 1200px; margin: 0 auto; padding: 96px 32px; display: flex; flex-direction: column; gap: 48px;">
+  <div style="display: flex; flex-direction: column; gap: 12px; max-width: 720px;">
+    <p style="margin: 0; font: 500 12px Inter, sans-serif; letter-spacing: 1.5px; text-transform: uppercase; color: #a9583e;">Teen qadam</p>
+    <h2 id="how-h" class="serif" style="margin: 0; font-size: 48px; line-height: 1.1; letter-spacing: -1px;">From one city reading to a plan for each person at home.</h2>
+  </div>
+  <ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
+    <li style="background: #efe9de; border-radius: 12px; padding: 32px; display: flex; flex-direction: column; gap: 16px;">
+      <span class="serif" style="font-size: 44px; color: #a9583e; line-height: 1;">1</span>
+      <h3 style="margin: 0; font-size: 20px; font-weight: 500;">Ghar banayein</h3>
+      <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #3d3d3a;">Pick your area of Lahore and add the people at home: age, conditions like asthma or pregnancy, and how they get around.</p>
+    </li>
+    <li style="background: #efe9de; border-radius: 12px; padding: 32px; display: flex; flex-direction: column; gap: 16px;">
+      <span class="serif" style="font-size: 44px; color: #a9583e; line-height: 1;">2</span>
+      <h3 style="margin: 0; font-size: 20px; font-weight: 500;">Live hawa, har ghante</h3>
+      <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #3d3d3a;">Saans pulls live AQI, PM2.5 and wind for your area plus a 48-hour forecast, then scores each person’s risk with clear rules.</p>
+    </li>
+    <li style="background: #efe9de; border-radius: 12px; padding: 32px; display: flex; flex-direction: column; gap: 16px;">
+      <span class="serif" style="font-size: 44px; color: #a9583e; line-height: 1;">3</span>
+      <h3 style="margin: 0; font-size: 20px; font-weight: 500;">Har shakhs ka plan</h3>
+      <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #3d3d3a;">AI turns those numbers into a short daily plan in Urdu, Roman Urdu or English, and alerts you before the air turns for someone at risk.</p>
+    </li>
+  </ol>
+</section>
+
+<section aria-labelledby="arch-h" class="sec" style="max-width: 1200px; margin: 0 auto; padding: 0 32px 96px;">
+  <div style="background: #181715; color: #faf9f5; border-radius: 16px; padding: 48px; display: flex; flex-wrap: wrap; gap: 48px;">
+    <div style="flex: 1 1 340px; min-width: 0; display: flex; flex-direction: column; gap: 16px;">
+      <p style="margin: 0; font: 500 12px Inter, sans-serif; letter-spacing: 1.5px; text-transform: uppercase; color: #5db8a6;">Under the hood</p>
+      <h2 id="arch-h" class="serif" style="margin: 0; font-size: 36px; line-height: 1.15; letter-spacing: -0.5px;">Numbers from data and rules. Words from AI.</h2>
+      <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #cfcbc2;">A deterministic risk engine decides who is at risk and when. The language model never invents an AQI value: it only turns the engine’s output into a plan a grandmother can follow. Every answer is checked against a schema before you see it.</p>
+    </div>
+    <div class="mono" role="img" aria-label="Pipeline: Open-Meteo live data, cached in Supabase, scored by the risk engine, written up by the AI plan writer, alert agent and chat agent, then shown in the app" style="flex: 1 1 520px; min-width: 0; background: #1f1e1b; border: 1px solid #2f2c28; border-radius: 12px; padding: 24px; font-size: 13px; line-height: 1.9; color: #cfcbc2;">
+      <div style="display: flex; gap: 8px; margin-bottom: 12px;"><span style="width: 10px; height: 10px; border-radius: 50%; background: #3a3631;"></span><span style="width: 10px; height: 10px; border-radius: 50%; background: #3a3631;"></span><span style="width: 10px; height: 10px; border-radius: 50%; background: #3a3631;"></span></div>
+      <div><span style="color: #5db8a6;">●</span> open-meteo  <span style="color: #6c6a64;">→ air + weather, gulberg</span></div>
+      <div><span style="color: #5db8a6;">●</span> aq_snapshots <span style="color: #6c6a64;">→ cache 15 min, fallback ready</span></div>
+      <div><span style="color: #e8a55a;">◆</span> risk.engine  <span style="color: #6c6a64;">→ ammi: score 3.0 · </span><span style="color: #ffb3bd;">severe</span></div>
+      <div style="padding-left: 24px; color: #8e8b82;">reasons: [age 60+, asthma, heart disease]</div>
+      <div><span style="color: #e8a55a;">◆</span> bestWindows  <span style="color: #6c6a64;">→ 14:00–16:00 · avg 162</span></div>
+      <div><span style="color: #cc785c;">✦</span> llm.plan     <span style="color: #6c6a64;">→ zod ✓ · risk_level = engine ✓</span></div>
+      <div><span style="color: #cc785c;">✦</span> alert.agent  <span style="color: #6c6a64;">→ triggered by engine, worded by AI</span></div>
+      <div><span style="color: #cc785c;">✦</span> chat.agent   <span style="color: #6c6a64;">→ 5 tools, live numbers only</span></div>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="orgs-h" id="orgs" style="background: #f5f0e8;">
+  <div class="sec" style="max-width: 1200px; margin: 0 auto; padding: 96px 32px; display: flex; flex-wrap: wrap; gap: 48px; align-items: center;">
+    <div style="flex: 1 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 24px;">
+      <p style="margin: 0; font: 500 12px Inter, sans-serif; letter-spacing: 1.5px; text-transform: uppercase; color: #a9583e;">For organizations · roadmap</p>
+      <h2 id="orgs-h" class="serif" style="margin: 0; font-size: 44px; line-height: 1.1; letter-spacing: -1px;">Schools, rider fleets and clinics make the same call every morning.</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;">
+        <div style="background: #faf9f5; border: 1px solid #e6dfd8; border-radius: 12px; padding: 24px; display: flex; flex-direction: column; gap: 8px;">
+          <strong style="font-weight: 500; font-size: 17px;">Schools</strong>
+          <span style="font-size: 15px; line-height: 1.5; color: #3d3d3a;">Assembly outdoors or in the hall? Recess, sports day, parent notices.</span>
+        </div>
+        <div style="background: #faf9f5; border: 1px solid #e6dfd8; border-radius: 12px; padding: 24px; display: flex; flex-direction: column; gap: 8px;">
+          <strong style="font-weight: 500; font-size: 17px;">Rider fleets</strong>
+          <span style="font-size: 15px; line-height: 1.5; color: #3d3d3a;">Shift rotation, break timing and mask policy by area and hour.</span>
+        </div>
+        <div style="background: #faf9f5; border: 1px solid #e6dfd8; border-radius: 12px; padding: 24px; display: flex; flex-direction: column; gap: 8px;">
+          <strong style="font-weight: 500; font-size: 17px;">Clinics &amp; NGOs</strong>
+          <span style="font-size: 15px; line-height: 1.5; color: #3d3d3a;">Reach patients with asthma or COPD before the bad days, in Urdu.</span>
+        </div>
+      </div>
+    </div>
+    <img src="/_blob/e8166f988068050197dec8ff551e301b" alt="A rickshaw and a motorbike on a quiet tree-lined road in Punjab" style="flex: 1 1 400px; min-width: 0; width: 100%; height: 440px; object-fit: cover; border-radius: 16px;">
+  </div>
+</section>
+
+<section class="sec" style="max-width: 1200px; margin: 0 auto; padding: 96px 32px;">
+  <div style="background: #cc785c; color: #141413; border-radius: 16px; padding: 56px 48px; display: flex; flex-wrap: wrap; gap: 32px; align-items: center; justify-content: space-between;">
+    <div style="flex: 1 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 8px;">
+      <h2 class="serif" style="margin: 0; font-size: 40px; line-height: 1.1; letter-spacing: -0.8px;">Aaj ki hawa ka plan, ghar ke har fard ke liye.</h2>
+      <p class="ur" lang="ur" style="margin: 0; font-size: 20px; text-align: right;">آج کی ہوا کا پلان، گھر کے ہر فرد کے لیے</p>
+    </div>
+    <a class="btn" href="Onboarding.dc.html" style="background: #141413; color: #faf9f5; padding: 0 28px; min-height: 52px; font-size: 16px;">Shuru karein</a>
+  </div>
+</section>
+
+<footer style="background: #181715; color: #a09d96;">
+  <div class="sec" style="max-width: 1200px; margin: 0 auto; padding: 56px 32px; display: flex; flex-direction: column; gap: 24px;">
+    <div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: center; justify-content: space-between;">
+      <span class="serif" style="font-size: 24px; color: #faf9f5;">Saans <span class="ur" style="font-size: 18px; color: #a09d96;">سانس</span></span>
+      <span style="font-size: 14px;">Minhaj University Lahore AI Hackathon · SDG 3</span>
+    </div>
+    <p style="margin: 0; padding-top: 24px; border-top: 1px solid #2f2c28; font-size: 15px; line-height: 1.6; color: #cfcbc2;">Saans sehat ki aagahi ke liye hai, ilaaj ke liye nahi. Takleef ki soorat mein doctor se rujoo karein. Emergency: <strong style="color: #faf9f5;">1122</strong>.</p>
+    <p style="margin: 0; font-size: 13px;">Air data: Open-Meteo. Photos: Unsplash (Shazaf Zafar and others).</p>
+  </div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":3560}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

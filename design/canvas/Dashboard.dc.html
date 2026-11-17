@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Saans — Dashboard</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&amp;family=Noto+Nastaliq+Urdu:wght@400;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#a9583e}a:hover{color:#7f3f29}
+.serif{font-family:'Source Serif 4',Georgia,serif;font-weight:400}
+.ur{font-family:'Noto Nastaliq Urdu',serif;direction:rtl;line-height:2.2}
+.mono{font-family:'JetBrains Mono',ui-monospace,monospace}
+.tab{color:#3d3d3a;text-decoration:none;font:500 14px/1 Inter,sans-serif;padding:10px 14px;border-radius:8px}
+.tab:hover{background:#efe9de;color:#141413}
+.card{background:#faf9f5;border:1px solid #e6dfd8;border-radius:16px}
+.btn-p{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 18px;border-radius:8px;background:#a9583e;color:#fff;text-decoration:none;font:500 14px/1 Inter,sans-serif}
+.btn-p:hover{background:#8f4630;color:#fff}
+.icon-btn{width:44px;height:44px;border-radius:9999px;border:1px solid #e6dfd8;background:#faf9f5;display:grid;place-items:center;color:#141413;cursor:pointer;position:relative}
+@media (max-width:760px){.hide-sm{display:none !important}.sec{padding-left:16px !important;padding-right:16px !important}}
+</style>
+</helmet>
+<div style="font-family: Inter, sans-serif; color: #141413; background: {{b.tint}}; min-height: 100vh; transition: background .6s ease;">
+
+<header style="background: rgba(250,249,245,.86); border-bottom: 1px solid #e6dfd8;">
+  <div class="sec" style="max-width: 1200px; margin: 0 auto; padding: 0 32px; height: 68px; display: flex; align-items: center; gap: 24px;">
+    <a href="Main.dc.html" aria-label="Saans home" style="display: flex; align-items: center; gap: 8px; text-decoration: none; color: #141413;">
+      <svg width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M4 11c4-4 8 4 12 0s8-4 12 0" stroke="#cc785c" stroke-width="2.4" stroke-linecap="round"/><path d="M4 17c4-4 8 4 12 0s8-4 12 0" stroke="#141413" stroke-width="2.4" stroke-linecap="round"/><path d="M4 23c4-4 8 4 12 0" stroke="#141413" stroke-width="2.4" stroke-linecap="round" opacity=".45"/></svg>
+      <span class="serif" style="font-size: 22px;">Saans</span>
+    </a>
+    <nav aria-label="App" class="hide-sm" style="display: flex; gap: 4px;">
+      <a class="tab" href="Dashboard.dc.html" aria-current="page" style="background: #efe9de; color: #141413;">Dashboard</a>
+      <a class="tab" href="Compare.dc.html">Muqabla</a>
+      <a class="tab" href="Chat.dc.html">Puchho Saans</a>
+      <a class="tab" href="#map">Lahore map</a>
+    </nav>
+    <div style="margin-left: auto; display: flex; align-items: center; gap: 10px;">
+      <div role="group" aria-label="Language" class="hide-sm" style="display: flex; background: #efe9de; border-radius: 9999px; padding: 4px;">
+        <button type="button" class="ur" style="border: 0; background: transparent; color: #3d3d3a; font-size: 13px; padding: 0 12px; height: 32px; border-radius: 9999px; line-height: 1; cursor: pointer;">اردو</button>
+        <button type="button" aria-pressed="true" style="border: 0; background: #faf9f5; color: #141413; font: 500 13px Inter, sans-serif; padding: 0 12px; height: 32px; border-radius: 9999px; cursor: pointer;">Roman</button>
+        <button type="button" style="border: 0; background: transparent; color: #3d3d3a; font: 500 13px Inter, sans-serif; padding: 0 12px; height: 32px; border-radius: 9999px; cursor: pointer;">EN</button>
+      </div>
+      <button type="button" class="hide-sm" aria-pressed="false" style="height: 40px; padding: 0 14px; border-radius: 9999px; border: 1px solid #e6dfd8; background: #faf9f5; font: 500 13px Inter, sans-serif; color: #141413; cursor: pointer;"><span style="font-size: 16px;">A</span><span style="font-size: 12px;">a</span> Bara Text</button>
+      <button type="button" class="icon-btn" aria-label="Alerts, 2 unread">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+        <span style="position: absolute; top: -2px; right: -2px; min-width: 20px; height: 20px; padding: 0 5px; box-sizing: border-box; border-radius: 9999px; background: #c64545; color: #fff; font: 600 11px/20px Inter, sans-serif; text-align: center;">2</span>
+      </button>
+      <span aria-label="Khan Family" style="width: 40px; height: 40px; border-radius: 50%; background: #181715; color: #faf9f5; display: grid; place-items: center; font: 500 14px Inter, sans-serif;">KF</span>
+    </div>
+  </div>
+</header>
+
+<main class="sec" style="max-width: 1200px; margin: 0 auto; padding: 32px 32px 64px; display: flex; flex-direction: column; gap: 24px;">
+
+  <div style="display: flex; flex-wrap: wrap; align-items: flex-end; gap: 16px; justify-content: space-between;">
+    <div style="display: flex; flex-direction: column; gap: 4px;">
+      <p style="margin: 0; font-size: 14px; color: #6c6a64;">Assalam-o-alaikum, Khan Family</p>
+      <h1 class="serif" style="margin: 0; font-size: 40px; letter-spacing: -0.8px; line-height: 1.1;">Aaj ki hawa</h1>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
+      <label for="area" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0);">Area of Lahore</label>
+      <div style="position: relative;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6c6a64" stroke-width="2" aria-hidden="true" style="position: absolute; left: 14px; top: 14px;"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        <select id="area" style="appearance: none; height: 44px; padding: 0 40px 0 38px; border-radius: 8px; border: 1px solid #d9d0c3; background: #faf9f5; font: 500 15px Inter, sans-serif; color: #141413;">
+          <option selected>Gulberg</option><option>DHA</option><option>Johar Town</option><option>Model Town</option><option>Walled City / Androon</option><option>Shahdara</option><option>Cantt</option><option>Township</option><option>Bahria Town</option><option>Raiwind Road</option><option>Allama Iqbal Town</option><option>Wapda Town</option>
+        </select>
+      </div>
+      <button type="button" style="height: 44px; padding: 0 16px; border-radius: 8px; border: 1px solid #d9d0c3; background: #faf9f5; font: 500 14px Inter, sans-serif; color: #141413; display: inline-flex; align-items: center; gap: 8px; cursor: pointer;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>Meri location</button>
+      <sc-if value="{{cached}}" hint-placeholder-val="{{false}}">
+        <span class="mono" style="height: 32px; padding: 0 12px; border-radius: 9999px; background: #f6ecd2; color: #6b5408; font-size: 12px; display: inline-flex; align-items: center; gap: 6px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>cached data from 11:05</span>
+      </sc-if>
+      <sc-if value="{{live}}" hint-placeholder-val="{{true}}">
+        <span class="mono" style="height: 32px; padding: 0 12px; border-radius: 9999px; background: #e3efe2; color: #24552f; font-size: 12px; display: inline-flex; align-items: center; gap: 6px;"><span style="width: 7px; height: 7px; border-radius: 50%; background: #2f8a45;"></span>live · updated 11:20</span>
+      </sc-if>
+    </div>
+  </div>
+
+  <div style="display: flex; flex-wrap: wrap; gap: 24px;">
+    <section aria-label="Current air quality" class="card" style="flex: 1 1 560px; min-width: 0; padding: 32px; display: flex; flex-wrap: wrap; gap: 32px; align-items: center; background: #faf9f5;">
+      <div style="position: relative; width: 260px; height: 260px; flex: none; margin: 0 auto;">
+        <svg width="260" height="260" viewBox="0 0 260 260" role="img" aria-label="AQI {{b.aqi}} of 500, {{b.label}}">
+          <circle cx="130" cy="130" r="110" fill="none" stroke="#efe9de" stroke-width="18"/>
+          <circle cx="130" cy="130" r="110" fill="none" stroke="{{b.ring}}" stroke-width="18" stroke-linecap="round" stroke-dasharray="{{dash}}" transform="rotate(-90 130 130)" style="transition: stroke-dasharray 1.2s cubic-bezier(.2,.8,.2,1), stroke .6s;"/>
+        </svg>
+        <div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;">
+          <span style="font: 500 12px Inter, sans-serif; letter-spacing: 1.5px; text-transform: uppercase; color: #6c6a64;">US AQI</span>
+          <span class="serif" style="font-size: 76px; line-height: 1; letter-spacing: -2px;">{{b.aqi}}</span>
+          <span style="font-size: 13px; color: #6c6a64;">of 500</span>
+        </div>
+      </div>
+      <div style="flex: 1 1 240px; min-width: 0; display: flex; flex-direction: column; gap: 14px;">
+        <span style="align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 9999px; background: {{b.tint}}; color: {{b.text}}; font: 600 13px Inter, sans-serif; letter-spacing: .6px; text-transform: uppercase;"><span style="width: 9px; height: 9px; border-radius: 50%; background: {{b.ring}};"></span>{{b.label}}</span>
+        <p class="ur" lang="ur" style="margin: 0; font-size: 26px; color: {{b.text}}; text-align: left;">{{b.ur}}</p>
+        <p style="margin: 0; font-size: 17px; line-height: 1.55; color: #3d3d3a;">{{b.line}}</p>
+        <p style="margin: 0; font-size: 13px; color: #6c6a64;">Gulberg, Lahore · Open-Meteo</p>
+      </div>
+    </section>
+
+    <section aria-label="Pollutants and weather" style="flex: 1 1 380px; min-width: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px;">
+      <div class="card" style="grid-column: 1 / -1; padding: 24px; display: flex; flex-direction: column; gap: 12px;">
+        <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px;">
+          <span style="font: 500 14px Inter, sans-serif; color: #3d3d3a;">PM2.5</span>
+          <span><span class="serif" style="font-size: 34px; letter-spacing: -0.5px;">{{b.pm}}</span> <span style="font-size: 13px; color: #6c6a64;">µg/m³</span></span>
+        </div>
+        <div style="position: relative; height: 12px; border-radius: 9999px; background: #efe9de; overflow: hidden;">
+          <div style="width: {{pmWidth}}; height: 100%; background: {{b.ring}}; border-radius: 9999px; transition: width 1s ease;"></div>
+        </div>
+        <div style="display: flex; justify-content: space-between; font-size: 13px; color: #6c6a64;"><span>WHO 24h guideline: 15 µg/m³</span><strong style="color: {{b.text}}; font-weight: 600;">{{b.times}}× the WHO limit</strong></div>
+      </div>
+      <div class="card" style="padding: 20px; display: flex; flex-direction: column; gap: 8px;">
+        <span style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #6c6a64;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2M9.6 4.6A2 2 0 1 1 11 8H2M12.6 19.4A2 2 0 1 0 14 16H2"/></svg>Wind</span>
+        <span><span class="serif" style="font-size: 30px;">3</span> <span style="font-size: 13px; color: #6c6a64;">km/h</span></span>
+        <span style="font-size: 13px; line-height: 1.4; color: #3d3d3a;">Hawa ruki hui hai, smog jama ho raha hai</span>
+      </div>
+      <div class="card" style="padding: 20px; display: flex; flex-direction: column; gap: 8px;">
+        <span style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #6c6a64;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 4v10.5a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"/></svg>Temp · Humidity</span>
+        <span><span class="serif" style="font-size: 30px;">17°</span> <span style="font-size: 13px; color: #6c6a64;">· 72%</span></span>
+        <span style="font-size: 13px; line-height: 1.4; color: #3d3d3a;">Thandi, nam hawa: dhund aur dhuaan mil jaate hain</span>
+      </div>
+      <div class="card" style="grid-column: 1 / -1; padding: 16px 20px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px;">
+        <div style="display: flex; flex-direction: column; gap: 2px;"><span style="font-size: 12px; color: #6c6a64;">PM10</span><span class="mono" style="font-size: 15px;">{{b.pm10}}</span></div>
+        <div style="display: flex; flex-direction: column; gap: 2px;"><span style="font-size: 12px; color: #6c6a64;">NO₂</span><span class="mono" style="font-size: 15px;">48</span></div>
+        <div style="display: flex; flex-direction: column; gap: 2px;"><span style="font-size: 12px; color: #6c6a64;">O₃</span><span class="mono" style="font-size: 15px;">22</span></div>
+        <div style="display: flex; flex-direction: column; gap: 2px;"><span style="font-size: 12px; color: #6c6a64;">CO</span><span class="mono" style="font-size: 15px;">1,240</span></div>
+      </div>
+    </section>
+  </div>
+
+  <div role="status" style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px; padding: 18px 20px; border-radius: 12px; background: #181715; color: #faf9f5;">
+    <span style="width: 40px; height: 40px; border-radius: 50%; background: #4a1820; color: #ffb3bd; display: grid; place-items: center; flex: none;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg></span>
+    <div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 4px;">
+      <strong style="font-weight: 500; font-size: 16px;">Ammi ke liye alert: aaj subah ki sair na karein, khidkiyan band rakhein.</strong>
+      <span class="mono" style="font-size: 12px; color: #a09d96;">Alert decided by risk engine · message written by AI · 11:20</span>
+    </div>
+    <a href="Member.dc.html" style="color: #faf9f5; font: 500 14px Inter, sans-serif; text-decoration: underline; text-underline-offset: 4px; padding: 12px 4px;">Plan dekhein</a>
+  </div>
+
+  <section aria-labelledby="fc-h" class="card" style="padding: 28px 28px 20px; display: flex; flex-direction: column; gap: 16px;">
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; align-items: baseline;">
+      <h2 id="fc-h" class="serif" style="margin: 0; font-size: 28px; letter-spacing: -0.3px;">Agle 24 ghante</h2>
+      <span style="display: inline-flex; align-items: center; gap: 8px; font-size: 14px; color: #3d3d3a;"><span style="width: 14px; height: 14px; border-radius: 3px; background: rgba(93,184,166,.28); border: 1px dashed #2e7f70;"></span>Best window for going out: <strong style="font-weight: 600;">14:00–16:00</strong> · avg AQI 163</span>
+    </div>
+    <div style="width: 100%; overflow-x: auto;">
+      <svg viewBox="0 0 1000 270" role="img" aria-label="Hourly AQI forecast: clears to about 160 between 14:00 and 16:00, then climbs past 300 after dark" style="display: block; width: 100%; min-width: 640px; height: auto;">
+        <defs>
+          <linearGradient id="bandg" gradientUnits="userSpaceOnUse" x1="0" y1="20" x2="0" y2="240">
+            <stop offset="0" stop-color="#8a2433"/><stop offset=".25" stop-color="#8a2433"/>
+            <stop offset=".25" stop-color="#8b4fb3"/><stop offset=".5" stop-color="#8b4fb3"/>
+            <stop offset=".5" stop-color="#d64545"/><stop offset=".625" stop-color="#d64545"/>
+            <stop offset=".625" stop-color="#e07b2c"/><stop offset=".75" stop-color="#e07b2c"/>
+            <stop offset=".75" stop-color="#c9a227"/><stop offset=".875" stop-color="#c9a227"/>
+            <stop offset=".875" stop-color="#3f9a52"/><stop offset="1" stop-color="#3f9a52"/>
+          </linearGradient>
+        </defs>
+        <rect x="{{winX}}" y="12" width="{{winW}}" height="228" fill="rgba(93,184,166,.18)" stroke="#2e7f70" stroke-dasharray="4 4" rx="6"/>
+        <text x="{{winLabelX}}" y="30" text-anchor="middle" font-family="Inter" font-size="12" font-weight="600" fill="#1f5f53">best window</text>
+        <line x1="0" x2="1000" y1="75" y2="75" stroke="#d9d0c3" stroke-dasharray="3 5"/>
+        <line x1="0" x2="1000" y1="130" y2="130" stroke="#d9d0c3" stroke-dasharray="3 5"/>
+        <line x1="0" x2="1000" y1="185" y2="185" stroke="#d9d0c3" stroke-dasharray="3 5"/>
+        <text x="996" y="70" text-anchor="end" font-family="Inter" font-size="11" fill="#6c6a64">300 · hazardous</text>
+        <text x="996" y="125" text-anchor="end" font-family="Inter" font-size="11" fill="#6c6a64">200 · very unhealthy</text>
+        <text x="996" y="180" text-anchor="end" font-family="Inter" font-size="11" fill="#6c6a64">100 · moderate</text>
+        <path d="{{areaPath}}" fill="url(#bandg)" opacity=".22"/>
+        <path d="{{linePath}}" fill="none" stroke="url(#bandg)" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+        <circle cx="0" cy="{{nowY}}" r="6" fill="#141413" stroke="#faf9f5" stroke-width="3"/>
+        <sc-for list="{{ticks}}" as="t" hint-placeholder-count="8">
+          <text x="{{t.x}}" y="262" text-anchor="{{t.anchor}}" font-family="JetBrains Mono" font-size="12" fill="#6c6a64">{{t.label}}</text>
+        </sc-for>
+      </svg>
+    </div>
+    <p style="margin: 0; font-size: 13px; color: #6c6a64;">Colours follow US EPA bands, and every band is also written out. The forecast comes from Open-Meteo. Best windows are computed by the risk engine, not the AI.</p>
+  </section>
+
+  <section aria-labelledby="fam-h" style="display: flex; flex-direction: column; gap: 16px;">
+    <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 12px;">
+      <h2 id="fam-h" class="serif" style="margin: 0; font-size: 28px; letter-spacing: -0.3px;">Ghar ke log</h2>
+      <a href="Compare.dc.html" style="font: 500 14px Inter, sans-serif; padding: 12px 0;">Sab ko saath dekhein →</a>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px;">
+      <sc-for list="{{family}}" as="m" hint-placeholder-count="4">
+        <article class="card" style="padding: 24px; display: flex; flex-direction: column; gap: 14px;">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <span aria-hidden="true" style="width: 48px; height: 48px; border-radius: 50%; background: {{m.avBg}}; color: {{m.avFg}}; display: grid; place-items: center; font: 600 18px Inter, sans-serif; flex: none;">{{m.initial}}</span>
+            <div style="display: flex; flex-direction: column; gap: 2px; min-width: 0;">
+              <h3 style="margin: 0; font-size: 18px; font-weight: 500;">{{m.name}}</h3>
+              <span style="font-size: 13px; color: #6c6a64;">{{m.profile}}</span>
+            </div>
+          </div>
+          <span style="align-self: flex-start; display: inline-flex; align-items: center; gap: 6px; padding: 5px 10px; border-radius: 9999px; background: {{m.pillBg}}; color: {{m.pillFg}}; font: 600 12px Inter, sans-serif; letter-spacing: .6px; text-transform: uppercase;"><span style="width: 7px; height: 7px; border-radius: 50%; background: {{m.pillFg}};"></span>{{m.level}} risk</span>
+          <p style="margin: 0; font-size: 15px; line-height: 1.5; color: #252523; flex: 1;">{{m.headline}}</p>
+          <a class="btn-p" href="Member.dc.html" style="align-self: stretch;">Plan dekhein</a>
+        </article>
+      </sc-for>
+    </div>
+  </section>
+</main>
+
+<footer style="border-top: 1px solid #e6dfd8;">
+  <p class="sec" style="max-width: 1200px; margin: 0 auto; padding: 24px 32px; font-size: 14px; line-height: 1.6; color: #3d3d3a;">Saans sehat ki aagahi ke liye hai, ilaaj ke liye nahi. Takleef ki soorat mein doctor se rujoo karein. Emergency: <strong>1122</strong>.</p>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"band":{"editor":"enum","options":["good","moderate","sensitive","unhealthy","very","hazardous"],"default":"very","section":"Air"},"cached":{"editor":"boolean","default":false,"section":"Air"},"$preview":{"width":1440,"height":2000}}'>
+class Component extends DCLogic {
+  renderVals() {
+    var BANDS = {
+      good:      { aqi: 42,  label: 'Good', ur: 'ہوا اچھی ہے', ring: '#3f9a52', tint: '#eef4ea', text: '#24552f', pm: 10, pm10: 21, times: '0.7', line: 'Hawa saaf hai. Sab ke liye bahar jaana theek hai.' },
+      moderate:  { aqi: 88,  label: 'Moderate', ur: 'درمیانی ہوا', ring: '#c9a227', tint: '#f7f1de', text: '#6b5408', pm: 29, pm10: 52, times: '1.9', line: 'Zyada tar logon ke liye theek, lekin asthma wale lambi walk kam karein.' },
+      sensitive: { aqi: 136, label: 'Unhealthy for sensitive groups', ur: 'حساس افراد کے لیے مضر', ring: '#e07b2c', tint: '#f9ede1', text: '#8a4510', pm: 50, pm10: 88, times: '3.3', line: 'Bachon, buzurgon aur asthma walon ke liye bahar ka waqt kam karein.' },
+      unhealthy: { aqi: 178, label: 'Unhealthy', ur: 'مضرِ صحت', ring: '#d64545', tint: '#f9e9e5', text: '#8f2525', pm: 107, pm10: 160, times: '7.1', line: 'Sab ke liye nuqsan deh. Bahar jaana ho to N95 mask pehnein.' },
+      very:      { aqi: 287, label: 'Very unhealthy', ur: 'بہت مضرِ صحت', ring: '#8b4fb3', tint: '#f1e9f3', text: '#5e2d80', pm: 236, pm10: 318, times: '15.7', line: 'Ghar ke andar rahein. Hassas log bilkul bahar na niklein.' },
+      hazardous: { aqi: 356, label: 'Hazardous', ur: 'خطرناک', ring: '#8a2433', tint: '#f2e3e3', text: '#6e1825', pm: 310, pm10: 402, times: '20.7', line: 'Emergency jaisi soorat-e-haal. Sirf zaroorat par bahar, N95 ke saath.' }
+    };
+    var b = BANDS[this.props.band] || BANDS.very;
+    var C = 2 * Math.PI * 110;
+    var f = Math.min(b.aqi / 500, 1);
+    var dash = (C * f).toFixed(1) + ' ' + C.toFixed(1);
+    var pmWidth = Math.min(100, Math.max(3, b.pm / 320 * 100)).toFixed(1) + '%';
+
+    var vals = [287,262,221,172,160,158,176,205,248,286,312,330,338,341,336,322,305,298,301,318,331,327,309,296];
+    var hours = [];
+    for (var h = 0; h < 24; h++) hours.push(((11 + h) % 24));
+    var X = function (i) { return (i * 1000 / 23); };
+    var Y = function (v) { return 20 + (1 - Math.min(v, 400) / 400) * 220; };
+    var line = vals.map(function (v, i) { return (i ? 'L' : 'M') + X(i).toFixed(1) + ' ' + Y(v).toFixed(1); }).join(' ');
+    var area = line + ' L1000 240 L0 240 Z';
+    var ticks = [];
+    for (var i = 0; i < 24; i += 3) ticks.push({ x: X(i).toFixed(1), label: (hours[i] < 10 ? '0' : '') + hours[i] + ':00', anchor: i === 0 ? 'start' : 'middle' });
+    ticks.push({ x: '1000', label: '10:00', anchor: 'end' });
+    var winX = X(3) - 14, winW = X(5) - X(3) + 28;
+
+    var lv = {
+      severe:   { bg: '#f2e3e3', fg: '#6e1825' },
+      high:     { bg: '#f9ede1', fg: '#8a4510' },
+      moderate: { bg: '#f7f1de', fg: '#6b5408' }
+    };
+    var fam = [
+      { name: 'Ammi', initial: 'A', profile: '65 · asthma, heart condition', level: 'Severe', k: 'severe', avBg: '#e8d5c9', avFg: '#6b3420', headline: 'Aaj ghar ke andar hi rahein. Inhaler doctor ki hidayat ke mutabiq paas rakhein.' },
+      { name: 'Ali', initial: 'A', profile: '27 · delivery rider, bike', level: 'High', k: 'high', avBg: '#d3e2ea', avFg: '#1e4a5f', headline: 'N95 pehnein, har 2 ghante baad 10 minute andar break lein.' },
+      { name: 'Sara', initial: 'S', profile: '30 · pregnant, rickshaw', level: 'High', k: 'high', avBg: '#ead6e0', avFg: '#6a2a4a', headline: 'Rickshaw ki jagah band gaari, ya aaj ghar se kaam behtar hai.' },
+      { name: 'Zara', initial: 'Z', profile: '8 · allergies, walks to school', level: 'High', k: 'high', avBg: '#f0dcc0', avFg: '#6b4310', headline: 'School tak walk ki jagah gaari. Khel aur assembly andar.' }
+    ].map(function (m) { return Object.assign({}, m, { pillBg: lv[m.k].bg, pillFg: lv[m.k].fg }); });
+
+    return {
+      b: b, dash: dash, pmWidth: pmWidth,
+      cached: !!this.props.cached, live: !this.props.cached,
+      linePath: line, areaPath: area, nowY: Y(vals[0]).toFixed(1), ticks: ticks,
+      winX: winX.toFixed(1), winW: winW.toFixed(1), winLabelX: (winX + winW / 2).toFixed(1),
+      family: fam
+    };
+  }
+}
+</script>
+</body>
+</html>
