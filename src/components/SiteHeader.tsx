@@ -7,6 +7,7 @@ import { signOut } from "@/app/login/actions";
 const NAV = [
   { href: "/dashboard", label: "Dashboard" },
   { href: "/compare", label: "Muqabla" },
+  { href: "/map", label: "Naqsha" },
   { href: "/chat", label: "Puchho Saans" },
 ];
 
