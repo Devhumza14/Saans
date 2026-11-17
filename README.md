@@ -2,6 +2,8 @@
 
 Minhaj University Lahore AI Hackathon · **SDG 3: Good Health & Well-Being**
 
+Live demo: https://gentle-lightseagreen-tarsier-98.hostingersite.com (register with any email and password)
+
 Saans turns live Lahore air quality into a **personal daily plan for each person at home**, in Urdu, Roman Urdu and English. A deterministic risk engine decides who is at risk and when; an AI model only writes the words. Saans is a health-awareness tool, **not** a medical device.
 
 ## Problem
@@ -15,7 +17,7 @@ Households in Lahore, especially those with children, seniors, pregnant women, p
 ## Solution & user journey
 
 1. **Landing** shows live AQI for a Lahore area and how the same air affects a sample family differently.
-2. **Sign in** with a magic link (or the one-click demo login), then **onboard** the household: area, and for each person age group, conditions, pregnancy, daily exposure and commute.
+2. **Register or sign in** with email and password (or a magic link), then **onboard** the household: area, and for each person age group, conditions, pregnancy, daily exposure and commute.
 3. **Dashboard**: live AQI ring, PM2.5 vs the WHO guideline, 24h forecast with the best window, and a card per person with their own risk.
 4. **Member plan** (`/member/[id]`): outdoor advice with best/avoid windows, mask, home, activity, health-watch signs, hydration, 1122 emergency routing, and a "why is my plan different?" box showing the engine's reasoning. Listen (speech), share on WhatsApp, regenerate.
 5. **Compare** (`/compare`): the whole family side by side, plans generated in parallel from the same air.
@@ -84,8 +86,8 @@ Next.js 16 (App Router, TypeScript strict), Tailwind CSS v4, Supabase (Auth, Pos
 1. `npm install`
 2. Copy `.env.example` to `.env.local` and fill it in.
 3. Run `supabase/schema.sql` in the Supabase SQL editor.
-4. In Supabase Auth, create a demo user (auto-confirmed) and put its credentials in `DEMO_EMAIL` / `DEMO_PASSWORD`.
-5. `npm run dev`, open the app, press **Demo Login**, then **Demo family load karein** on onboarding.
+4. In Supabase Auth settings, turn off "Confirm email" for instant sign-up. Optionally create a demo user and put it in `DEMO_EMAIL` / `DEMO_PASSWORD` to show a one-click Demo Login button.
+5. `npm run dev`, register an account, then press **Demo family load karein** on onboarding for a sample family.
 6. `npm test` runs the unit tests (risk engine, plan validation/override/retry).
 
 ## Environment variables
@@ -94,4 +96,6 @@ Next.js 16 (App Router, TypeScript strict), Tailwind CSS v4, Supabase (Auth, Pos
 
 ## Team
 
-Minhaj University Lahore AI Hackathon team: add names here.
+- Humza Naqvi
+
+(Add the other team members here.)
