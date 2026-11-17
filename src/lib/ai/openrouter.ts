@@ -24,15 +24,18 @@ export class AiError extends Error {
 const URL = "https://openrouter.ai/api/v1/chat/completions";
 const TIMEOUT_MS = 45_000;
 
-export const planModel = () => process.env.OPENROUTER_MODEL || "google/gemini-2.5-flash";
-export const chatModel = () => process.env.OPENROUTER_CHAT_MODEL || "google/gemini-2.5-flash";
+/** Env values pasted from a .env file may carry quotes or an inline "# comment"; keep just the value. */
+export const cleanEnv = (v?: string) => (v ?? "").split(/\s+#/)[0].trim().replace(/^["']|["']$/g, "");
+
+export const planModel = () => cleanEnv(process.env.OPENROUTER_MODEL) || "google/gemini-2.5-flash";
+export const chatModel = () => cleanEnv(process.env.OPENROUTER_CHAT_MODEL) || "google/gemini-2.5-flash";
 
 type Opts = { model: string; messages: ChatMessage[]; json?: boolean; tools?: ToolDef[]; temperature?: number; maxTokens?: number };
 type Completion = { content: string | null; toolCalls: ToolCall[] };
 
 /** Builds the request; shared by the plain and streaming calls. */
 function request(opts: Opts, stream: boolean): { init: RequestInit } {
-  const key = process.env.OPENROUTER_API_KEY;
+  const key = cleanEnv(process.env.OPENROUTER_API_KEY);
   if (!key) throw new AiError("config", "The AI service is not configured yet.");
   const body: Record<string, unknown> = {
     model: opts.model,
@@ -49,7 +52,7 @@ function request(opts: Opts, stream: boolean): { init: RequestInit } {
       headers: {
         Authorization: `Bearer ${key}`,
         "Content-Type": "application/json",
-        "HTTP-Referer": process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
+        "HTTP-Referer": cleanEnv(process.env.NEXT_PUBLIC_SITE_URL) || "http://localhost:3000",
         "X-Title": "Saans",
       },
       body: JSON.stringify(body),

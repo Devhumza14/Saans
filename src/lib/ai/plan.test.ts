@@ -51,3 +51,12 @@ describe("generatePlan", () => {
     expect(mocked).toHaveBeenCalledTimes(2);
   });
 });
+
+import { cleanEnv } from "./openrouter";
+describe("cleanEnv", () => {
+  it("drops inline comments, quotes and spaces", () => {
+    expect(cleanEnv("sk-or-v1-abc   # server only")).toBe("sk-or-v1-abc");
+    expect(cleanEnv('"google/gemini-2.5-flash"')).toBe("google/gemini-2.5-flash");
+    expect(cleanEnv(undefined)).toBe("");
+  });
+});
