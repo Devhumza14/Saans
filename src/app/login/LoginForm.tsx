@@ -4,20 +4,47 @@ import { Mail, Zap } from "lucide-react";
 import { supabaseBrowser } from "@/lib/supabase/browser";
 import { demoLogin } from "./actions";
 
-export function LoginForm({ next }: { next: string }) {
-  const [demo, demoAction, demoPending] = useActionState(demoLogin, null);
-  const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<{ kind: "idle" | "sending" | "sent" | "error"; msg?: string }>({ kind: "idle" });
+type Mode = "signin" | "register";
+type Status = { kind: "idle" | "busy" | "sent" | "error"; msg?: string };
 
-  async function sendLink(e: React.FormEvent) {
+const input = "h-12 rounded-lg border border-[#d9d0c3] bg-canvas px-4 text-base";
+const secondary = "inline-flex min-h-12 items-center justify-center gap-2 rounded-lg border border-[#d9d0c3] bg-canvas px-5 text-base font-medium hover:bg-soft disabled:opacity-60";
+
+export function LoginForm({ next, demoEnabled }: { next: string; demoEnabled: boolean }) {
+  const [demo, demoAction, demoPending] = useActionState(demoLogin, null);
+  const [mode, setMode] = useState<Mode>("register");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [status, setStatus] = useState<Status>({ kind: "idle" });
+  const busy = status.kind === "busy";
+  const redirectTo = () => `${location.origin}/auth/callback?next=${encodeURIComponent(next)}`;
+
+  async function submit(e: React.FormEvent) {
     e.preventDefault();
-    setStatus({ kind: "sending" });
+    setStatus({ kind: "busy" });
     try {
-      const { error } = await supabaseBrowser().auth.signInWithOtp({
-        email,
-        options: { emailRedirectTo: `${location.origin}/auth/callback?next=${encodeURIComponent(next)}` },
-      });
-      setStatus(error ? { kind: "error", msg: "We could not send the link. Check the email address and try again." } : { kind: "sent" });
+      const sb = supabaseBrowser();
+      if (mode === "register") {
+        const { data, error } = await sb.auth.signUp({ email, password, options: { emailRedirectTo: redirectTo() } });
+        if (error) return setStatus({ kind: "error", msg: /registered|exists/i.test(error.message) ? "This email already has an account. Please sign in." : error.message });
+        if (data.user && data.user.identities?.length === 0) return setStatus({ kind: "error", msg: "This email already has an account. Please sign in." });
+        if (!data.session) return setStatus({ kind: "sent", msg: "Account created. Check your email and open the link to confirm, then sign in." });
+      } else {
+        const { error } = await sb.auth.signInWithPassword({ email, password });
+        if (error) return setStatus({ kind: "error", msg: "Email or password is not correct." });
+      }
+      window.location.assign(next); // full load so the new session cookie is sent
+    } catch {
+      setStatus({ kind: "error", msg: "Something went wrong. Please try again." });
+    }
+  }
+
+  async function magicLink() {
+    if (!email) return setStatus({ kind: "error", msg: "Type your email first." });
+    setStatus({ kind: "busy" });
+    try {
+      const { error } = await supabaseBrowser().auth.signInWithOtp({ email, options: { emailRedirectTo: redirectTo() } });
+      setStatus(error ? { kind: "error", msg: "We could not send the link. Please try again in a few minutes." } : { kind: "sent", msg: "Link sent. Check your email." });
     } catch {
       setStatus({ kind: "error", msg: "Something went wrong. Please try again." });
     }
@@ -25,25 +52,33 @@ export function LoginForm({ next }: { next: string }) {
 
   return (
     <div className="flex flex-col gap-6">
-      <form action={demoAction} className="flex flex-col gap-2">
-        <button type="submit" disabled={demoPending} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-cta px-5 text-base font-medium text-white hover:bg-cta-hover disabled:opacity-60">
-          <Zap size={18} aria-hidden /> {demoPending ? "Signing in…" : "Demo Login"}
-        </button>
-        <p className="text-[13px] text-muted">One click, no email. Opens the synthetic Khan Family.</p>
-        {demo?.error && <p role="alert" className="text-sm text-[#8f2525]">{demo.error}</p>}
-      </form>
+      <div role="group" aria-label="Sign in or register" className="flex rounded-xl bg-card p-1">
+        {([["register", "Register"], ["signin", "Sign in"]] as const).map(([m, l]) => (
+          <button key={m} type="button" aria-pressed={mode === m} onClick={() => { setMode(m); setStatus({ kind: "idle" }); }}
+            className={`min-h-11 flex-1 rounded-lg text-sm font-medium ${mode === m ? "bg-canvas text-ink shadow-sm" : "text-body"}`}>{l}</button>
+        ))}
+      </div>
 
-      <div className="flex items-center gap-3 text-xs uppercase tracking-[1.5px] text-muted"><span className="h-px flex-1 bg-hairline" /> ya <span className="h-px flex-1 bg-hairline" /></div>
-
-      <form onSubmit={sendLink} className="flex flex-col gap-3">
-        <label htmlFor="email" className="text-sm font-medium text-body">Email se magic link</label>
-        <input id="email" type="email" required autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="aap@example.com" className="h-12 rounded-lg border border-[#d9d0c3] bg-canvas px-4 text-base" />
-        <button type="submit" disabled={status.kind === "sending"} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg border border-[#d9d0c3] bg-canvas px-5 text-base font-medium hover:bg-soft disabled:opacity-60">
-          <Mail size={18} aria-hidden /> {status.kind === "sending" ? "Sending…" : "Link bhejein"}
+      <form onSubmit={submit} className="flex flex-col gap-3">
+        <label htmlFor="email" className="text-sm font-medium text-body">Email</label>
+        <input id="email" type="email" required autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="aap@example.com" className={input} />
+        <label htmlFor="pw" className="text-sm font-medium text-body">Password {mode === "register" && <span className="font-normal text-muted">· at least 8 characters</span>}</label>
+        <input id="pw" type="password" required minLength={8} autoComplete={mode === "register" ? "new-password" : "current-password"} value={password} onChange={(e) => setPassword(e.target.value)} className={input} />
+        <button type="submit" disabled={busy} className="mt-1 min-h-12 rounded-lg bg-cta px-5 text-base font-medium text-white hover:bg-cta-hover disabled:opacity-60">
+          {busy ? "Please wait…" : mode === "register" ? "Account banayein" : "Sign in"}
         </button>
-        {status.kind === "sent" && <p role="status" className="text-sm text-[#24552f]">Link bhej diya gaya. Apna email check karein.</p>}
+        {status.kind === "sent" && <p role="status" className="text-sm text-[#24552f]">{status.msg}</p>}
         {status.kind === "error" && <p role="alert" className="text-sm text-[#8f2525]">{status.msg}</p>}
       </form>
+
+      <button type="button" onClick={magicLink} disabled={busy} className={secondary}><Mail size={18} aria-hidden /> Password ke baghair: email link</button>
+
+      {demoEnabled && (
+        <form action={demoAction} className="flex flex-col gap-2 border-t border-hairline pt-5">
+          <button type="submit" disabled={demoPending} className={secondary}><Zap size={18} aria-hidden /> {demoPending ? "Signing in…" : "Demo Login"}</button>
+          {demo?.error && <p role="alert" className="text-sm text-[#8f2525]">{demo.error}</p>}
+        </form>
+      )}
     </div>
   );
 }

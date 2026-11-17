@@ -3,6 +3,8 @@ import { LoginForm } from "./LoginForm";
 
 const safeNext = (n?: string) => (n && n.startsWith("/") && !n.startsWith("//") ? n : "/dashboard");
 
+export const dynamic = "force-dynamic";
+
 export default async function Login({ searchParams }: { searchParams: Promise<{ next?: string }> }) {
   const { next } = await searchParams;
   return (
@@ -13,7 +15,7 @@ export default async function Login({ searchParams }: { searchParams: Promise<{ 
           <h1 className="font-serif text-[40px] leading-[1.1] tracking-[-0.8px]">Wapis khush amdeed</h1>
           <p className="text-body">Sign in to see today’s plan for everyone at home.</p>
         </div>
-        <LoginForm next={safeNext(next)} />
+        <LoginForm next={safeNext(next)} demoEnabled={Boolean(process.env.DEMO_EMAIL && process.env.DEMO_PASSWORD)} />
       </main>
     </>
   );
