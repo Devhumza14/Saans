@@ -63,9 +63,11 @@ export default async function Landing() {
                     <span className="size-2 rounded-full bg-[#5db872]" /> {air.cached ? "Cached" : "Live"} · Gulberg, Lahore
                   </div>
                   <div className="text-xl font-medium">{band.label}</div>
-                  <div className="text-sm text-[#a09d96]">
-                    PM2.5 {Math.round(air.data.current.pm25)} µg/m³ · <strong className="font-medium text-canvas">{whoMultiple(air.data.current.pm25)}× the WHO 24-hour limit</strong>
-                  </div>
+                  {!air.data.station && (
+                    <div className="text-sm text-[#a09d96]">
+                      PM2.5 {Math.round(air.data.current.pm25)} µg/m³ · <strong className="font-medium text-canvas">{whoMultiple(air.data.current.pm25)}× the WHO 24-hour limit</strong>
+                    </div>
+                  )}
                 </div>
                 <div className="font-mono text-xs text-[#a09d96]">{air.cached ? `cached ${hhmm(air.fetchedAt)}` : `updated ${hhmm(air.fetchedAt)}`}</div>
               </>

@@ -59,7 +59,7 @@ export default async function Compare() {
               <div className="flex size-24 items-center justify-center rounded-full border-[9px] font-serif text-[32px]" style={{ borderColor: band.color }}>{aqi}</div>
               <div className="flex flex-col gap-1">
                 <span className="text-lg font-medium">{band.label}</span>
-                <span className="text-sm text-[#cfcbc2]">PM2.5 {Math.round(air.data.current.pm25)} µg/m³ · {whoMultiple(air.data.current.pm25)}× WHO</span>
+                {!air.data.station && <span className="text-sm text-[#cfcbc2]">PM2.5 {Math.round(air.data.current.pm25)} µg/m³ · {whoMultiple(air.data.current.pm25)}× WHO</span>}
                 <span className="inline-flex items-center gap-1.5 font-mono text-xs text-[#a09d96]"><span className="size-[7px] rounded-full bg-[#5db872]" />{air.cached ? `cached ${hhmm(air.fetchedAt)}` : `live · ${hhmm(air.fetchedAt)}`}{air.data.current.wind != null ? ` · wind ${Math.round(air.data.current.wind)} km/h` : ""}</span>
               </div>
             </div>

@@ -49,8 +49,9 @@ export function planMessages(i: PlanInput): ChatMessage[] {
     now: {
       aqi: Math.round(c.aqi),
       band: aqiBand(c.aqi).label,
-      pm25: Math.round(c.pm25),
-      pm25_times_who_limit: whoMultiple(c.pm25),
+      // The model PM2.5 would contradict a ground-station AQI, so leave it out in that case.
+      pm25: i.air.station ? null : Math.round(c.pm25),
+      pm25_times_who_limit: i.air.station ? null : whoMultiple(c.pm25),
       wind_kmh: c.wind != null ? Math.round(c.wind) : null,
       temp_c: c.temp != null ? Math.round(c.temp) : null,
       local_time: c.time.slice(11, 16),

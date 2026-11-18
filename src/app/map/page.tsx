@@ -82,7 +82,7 @@ export default async function MapPage() {
                     <span className="grid size-20 shrink-0 place-items-center rounded-full border-8 font-serif text-[28px]" style={{ borderColor: band.color }}>{mine.aqi}</span>
                     <div className="flex flex-col gap-1">
                       <span className="text-[17px] font-medium">{band.label}</span>
-                      <span className="text-[13px] text-[#cfcbc2]">PM2.5 {Math.round(mine.air.data.current.pm25)} µg/m³ · {whoMultiple(mine.air.data.current.pm25)}× WHO</span>
+                      {!mine.air.data.station && <span className="text-[13px] text-[#cfcbc2]">PM2.5 {Math.round(mine.air.data.current.pm25)} µg/m³ · {whoMultiple(mine.air.data.current.pm25)}× WHO</span>}
                     </div>
                   </div>
                   <ul className="flex flex-wrap gap-1.5" aria-label="Family risk here">
@@ -105,7 +105,7 @@ export default async function MapPage() {
                         <Link href={`/dashboard?area=${encodeURIComponent(area.name)}`} className="flex min-h-11 items-center gap-3 px-1 text-ink no-underline hover:bg-soft">
                           <span className={`grid h-7 w-11 place-items-center rounded-full text-[13px] font-semibold ${DARK_TEXT.has(b.key) ? "text-ink" : "text-white"}`} style={{ background: b.key === "unhealthy" ? "#c23b3b" : b.color }}>{aqi}</span>
                           <span className="flex-1 text-[15px] font-medium">{area.name}</span>
-                          <span className="font-mono text-xs text-muted">{Math.round(air.data.current.pm25)} PM2.5</span>
+                          {!air.data.station && <span className="font-mono text-xs text-muted">{Math.round(air.data.current.pm25)} PM2.5</span>}
                         </Link>
                       </li>
                     );

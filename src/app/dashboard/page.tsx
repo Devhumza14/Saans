@@ -87,11 +87,12 @@ export default async function Dashboard({ searchParams }: { searchParams: Promis
                 <span className="size-[9px] rounded-full" style={{ background: band.color }} />{band.label}
               </span>
               <p className="text-[17px] leading-relaxed text-body">{LINE[band.key]}</p>
-              <p className="text-[13px] text-muted">{data.area}, Lahore · Open-Meteo</p>
+              <p className="text-[13px] text-muted">{data.area}, Lahore · {data.station ? `${data.station} station` : "Open-Meteo"}</p>
             </div>
           </section>
 
           <section aria-label="Pollutants and weather" className="grid min-w-0 flex-[1_1_380px] grid-cols-2 gap-4">
+            {!data.station && (
             <div className="col-span-2 flex flex-col gap-3 rounded-2xl border border-hairline bg-canvas p-6">
               <div className="flex items-baseline justify-between gap-3">
                 <span className="text-sm font-medium text-body">PM2.5</span>
@@ -105,6 +106,7 @@ export default async function Dashboard({ searchParams }: { searchParams: Promis
                 <strong className="font-semibold" style={{ color: band.text }}>{whoMultiple(c.pm25)}× the WHO limit</strong>
               </div>
             </div>
+            )}
             <div className="flex flex-col gap-2 rounded-2xl border border-hairline bg-canvas p-5">
               <span className="flex items-center gap-2 text-[13px] text-muted"><Wind size={16} aria-hidden /> Wind</span>
               <span><span className="font-serif text-3xl">{c.wind != null ? Math.round(c.wind) : "—"}</span> <span className="text-[13px] text-muted">km/h</span></span>
