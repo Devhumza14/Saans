@@ -9,12 +9,11 @@
 <x-dc>
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&amp;family=Noto+Nastaliq+Urdu:wght@400;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
 <style>
 body{margin:0;background:#faf9f5}
 a{color:#a9583e}a:hover{color:#7f3f29}
 .serif{font-family:'Source Serif 4',Georgia,serif;font-weight:400}
-.ur{font-family:'Noto Nastaliq Urdu',serif;direction:rtl;line-height:2.2}
 .mono{font-family:'JetBrains Mono',ui-monospace,monospace}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 20px;border-radius:8px;font:500 15px/1 Inter,sans-serif;text-decoration:none;box-sizing:border-box}
 .btn-p{background:#a9583e;color:#fff}.btn-p:hover{background:#8f4630;color:#fff}
@@ -30,20 +29,14 @@ a{color:#a9583e}a:hover{color:#7f3f29}
   <a href="Main.dc.html" aria-label="Saans home" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #141413;">
     <svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M4 11c4-4 8 4 12 0s8-4 12 0" stroke="#cc785c" stroke-width="2.4" stroke-linecap="round"/><path d="M4 17c4-4 8 4 12 0s8-4 12 0" stroke="#141413" stroke-width="2.4" stroke-linecap="round"/><path d="M4 23c4-4 8 4 12 0" stroke="#141413" stroke-width="2.4" stroke-linecap="round" opacity=".45"/></svg>
     <span class="serif" style="font-size: 26px; letter-spacing: -0.5px;">Saans</span>
-    <span class="ur" style="font-size: 18px; color: #6c6a64; line-height: 1;">سانس</span>
   </a>
   <nav aria-label="Primary" class="hide-sm" style="display: flex; gap: 24px; flex: 1;">
     <a class="navlink" href="Dashboard.dc.html">Dashboard</a>
-    <a class="navlink" href="Compare.dc.html">Ghar ka muqabla</a>
-    <a class="navlink" href="Chat.dc.html">Puchho Saans</a>
+    <a class="navlink" href="Compare.dc.html">Compare household</a>
+    <a class="navlink" href="Chat.dc.html">Ask Saans</a>
     <a class="navlink" href="#orgs">For organizations</a>
   </nav>
   <div style="display: flex; align-items: center; gap: 12px; margin-left: auto;">
-    <div role="group" aria-label="Language" class="hide-sm" style="display: flex; background: #efe9de; border-radius: 9999px; padding: 4px;">
-      <button type="button" class="ur" style="border: 0; background: transparent; color: #3d3d3a; font-size: 13px; padding: 0 12px; height: 32px; border-radius: 9999px; line-height: 1; cursor: pointer;">اردو</button>
-      <button type="button" aria-pressed="true" style="border: 0; background: #faf9f5; color: #141413; font: 500 13px Inter, sans-serif; padding: 0 12px; height: 32px; border-radius: 9999px; cursor: pointer; box-shadow: 0 1px 2px rgba(20,20,19,.08);">Roman</button>
-      <button type="button" style="border: 0; background: transparent; color: #3d3d3a; font: 500 13px Inter, sans-serif; padding: 0 12px; height: 32px; border-radius: 9999px; cursor: pointer;">EN</button>
-    </div>
     <a class="btn btn-p" href="Dashboard.dc.html">Demo Login</a>
   </div>
 </header>
@@ -54,15 +47,14 @@ a{color:#a9583e}a:hover{color:#7f3f29}
       <span style="display: inline-flex; align-items: center; gap: 8px; background: #e3efe2; color: #24552f; font: 500 12px Inter, sans-serif; letter-spacing: 1.2px; text-transform: uppercase; padding: 8px 12px; border-radius: 9999px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 14c1.5-1.5 3-3.4 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7Z"/></svg>SDG 3 · Good Health &amp; Well-Being</span>
       <span style="display: inline-flex; align-items: center; background: #efe9de; color: #3d3d3a; font: 500 12px Inter, sans-serif; letter-spacing: 1.2px; text-transform: uppercase; padding: 8px 12px; border-radius: 9999px;">Smog season · Oct–Jan</span>
     </div>
-    <h1 class="serif h1" style="margin: 0; font-size: 68px; line-height: 1.04; letter-spacing: -1.8px;">Lahore ki hawa,<br>aap ke ghar ke liye.</h1>
-    <p class="ur" lang="ur" style="margin: 0; font-size: 26px; color: #3d3d3a; text-align: right;">لاہور کی ہوا، آپ کے گھر کے لیے</p>
+    <h1 class="serif h1" style="margin: 0; font-size: 68px; line-height: 1.04; letter-spacing: -1.8px;">Lahore’s air,<br>for your home.</h1>
     <p style="margin: 0; font-size: 18px; line-height: 1.6; color: #3d3d3a; max-width: 520px;">An AQI number tells everyone the same thing. Saans reads the live air in your part of Lahore and writes a separate plan for each person at home: Ammi with asthma, a rider on a 9-hour shift, a child walking to school.</p>
     <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-      <a class="btn btn-p" href="Onboarding.dc.html">Apna ghar set karein
+      <a class="btn btn-p" href="Onboarding.dc.html">Set up your home
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-      <a class="btn btn-s" href="Compare.dc.html">Live demo dekhein</a>
+      <a class="btn btn-s" href="Compare.dc.html">See the live demo</a>
     </div>
-    <p style="margin: 0; font-size: 13px; color: #6c6a64;">Free for families · Urdu, Roman Urdu &amp; English · No sign-up to check today’s air</p>
+    <p style="margin: 0; font-size: 13px; color: #6c6a64;">Free for families · English · No sign-up to check today’s air</p>
   </div>
 
   <div style="flex: 1 1 520px; min-width: 0; position: relative;">
@@ -74,7 +66,7 @@ a{color:#a9583e}a:hover{color:#7f3f29}
       </div>
       <div style="flex: 1 1 180px; min-width: 0; display: flex; flex-direction: column; gap: 6px;">
         <div style="display: flex; align-items: center; gap: 8px; font: 500 12px Inter, sans-serif; letter-spacing: 1.2px; text-transform: uppercase; color: #a09d96;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #5db872;"></span>Live · Gulberg, Lahore</div>
-        <div style="font-size: 20px; font-weight: 500;">Very Unhealthy <span class="ur" lang="ur" style="font-size: 16px; color: #d9b8ea; line-height: 1;">بہت مضر</span></div>
+        <div style="font-size: 20px; font-weight: 500;">Very Unhealthy</div>
         <div style="font-size: 14px; color: #a09d96;">PM2.5 236 µg/m³ · <strong style="color: #faf9f5; font-weight: 500;">15.7× the WHO 24-hour limit</strong></div>
       </div>
       <div class="mono" style="font-size: 12px; color: #a09d96;">updated 11:20</div>
@@ -87,7 +79,7 @@ a{color:#a9583e}a:hover{color:#7f3f29}
     <img src="/_blob/ccb5e291582c1929124118d278adc956" alt="A city skyline disappearing into thick grey smog" style="flex: 1 1 360px; min-width: 0; width: 100%; max-height: 620px; object-fit: cover; border-radius: 12px;">
     <div style="flex: 1 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 24px; justify-content: center;">
       <p style="margin: 0; font: 500 12px Inter, sans-serif; letter-spacing: 1.5px; text-transform: uppercase; color: #e8a55a;">The problem</p>
-      <h2 id="problem-h" class="serif" style="margin: 0; font-size: 48px; line-height: 1.1; letter-spacing: -1px;">Aik number. Chaar zindagiyan.</h2>
+      <h2 id="problem-h" class="serif" style="margin: 0; font-size: 48px; line-height: 1.1; letter-spacing: -1px;">One number. Four lives.</h2>
       <p style="margin: 0; font-size: 18px; line-height: 1.6; color: #cfcbc2;">Every winter Lahore’s air ranks among the worst in the world. Air quality apps show one number for everyone, but the risk depends on who is breathing it. Here is the same morning, AQI 287, for four people in one house:</p>
       <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px;">
         <li style="display: flex; align-items: center; gap: 16px; padding: 16px 20px; background: #252320; border-radius: 12px 12px 4px 4px;">
@@ -117,24 +109,24 @@ a{color:#a9583e}a:hover{color:#7f3f29}
 
 <section aria-labelledby="how-h" class="sec" style="max-width: 1200px; margin: 0 auto; padding: 96px 32px; display: flex; flex-direction: column; gap: 48px;">
   <div style="display: flex; flex-direction: column; gap: 12px; max-width: 720px;">
-    <p style="margin: 0; font: 500 12px Inter, sans-serif; letter-spacing: 1.5px; text-transform: uppercase; color: #a9583e;">Teen qadam</p>
+    <p style="margin: 0; font: 500 12px Inter, sans-serif; letter-spacing: 1.5px; text-transform: uppercase; color: #a9583e;">Three steps</p>
     <h2 id="how-h" class="serif" style="margin: 0; font-size: 48px; line-height: 1.1; letter-spacing: -1px;">From one city reading to a plan for each person at home.</h2>
   </div>
   <ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
     <li style="background: #efe9de; border-radius: 12px; padding: 32px; display: flex; flex-direction: column; gap: 16px;">
       <span class="serif" style="font-size: 44px; color: #a9583e; line-height: 1;">1</span>
-      <h3 style="margin: 0; font-size: 20px; font-weight: 500;">Ghar banayein</h3>
+      <h3 style="margin: 0; font-size: 20px; font-weight: 500;">Set up your home</h3>
       <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #3d3d3a;">Pick your area of Lahore and add the people at home: age, conditions like asthma or pregnancy, and how they get around.</p>
     </li>
     <li style="background: #efe9de; border-radius: 12px; padding: 32px; display: flex; flex-direction: column; gap: 16px;">
       <span class="serif" style="font-size: 44px; color: #a9583e; line-height: 1;">2</span>
-      <h3 style="margin: 0; font-size: 20px; font-weight: 500;">Live hawa, har ghante</h3>
+      <h3 style="margin: 0; font-size: 20px; font-weight: 500;">Live air, every hour</h3>
       <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #3d3d3a;">Saans pulls live AQI, PM2.5 and wind for your area plus a 48-hour forecast, then scores each person’s risk with clear rules.</p>
     </li>
     <li style="background: #efe9de; border-radius: 12px; padding: 32px; display: flex; flex-direction: column; gap: 16px;">
       <span class="serif" style="font-size: 44px; color: #a9583e; line-height: 1;">3</span>
-      <h3 style="margin: 0; font-size: 20px; font-weight: 500;">Har shakhs ka plan</h3>
-      <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #3d3d3a;">AI turns those numbers into a short daily plan in Urdu, Roman Urdu or English, and alerts you before the air turns for someone at risk.</p>
+      <h3 style="margin: 0; font-size: 20px; font-weight: 500;">A plan for each person</h3>
+      <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #3d3d3a;">AI turns those numbers into a short daily plan and alerts you before the air turns for someone at risk.</p>
     </li>
   </ol>
 </section>
@@ -176,7 +168,7 @@ a{color:#a9583e}a:hover{color:#7f3f29}
         </div>
         <div style="background: #faf9f5; border: 1px solid #e6dfd8; border-radius: 12px; padding: 24px; display: flex; flex-direction: column; gap: 8px;">
           <strong style="font-weight: 500; font-size: 17px;">Clinics &amp; NGOs</strong>
-          <span style="font-size: 15px; line-height: 1.5; color: #3d3d3a;">Reach patients with asthma or COPD before the bad days, in Urdu.</span>
+          <span style="font-size: 15px; line-height: 1.5; color: #3d3d3a;">Reach patients with asthma or COPD before the bad days.</span>
         </div>
       </div>
     </div>
@@ -187,20 +179,19 @@ a{color:#a9583e}a:hover{color:#7f3f29}
 <section class="sec" style="max-width: 1200px; margin: 0 auto; padding: 96px 32px;">
   <div style="background: #cc785c; color: #141413; border-radius: 16px; padding: 56px 48px; display: flex; flex-wrap: wrap; gap: 32px; align-items: center; justify-content: space-between;">
     <div style="flex: 1 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 8px;">
-      <h2 class="serif" style="margin: 0; font-size: 40px; line-height: 1.1; letter-spacing: -0.8px;">Aaj ki hawa ka plan, ghar ke har fard ke liye.</h2>
-      <p class="ur" lang="ur" style="margin: 0; font-size: 20px; text-align: right;">آج کی ہوا کا پلان، گھر کے ہر فرد کے لیے</p>
+      <h2 class="serif" style="margin: 0; font-size: 40px; line-height: 1.1; letter-spacing: -0.8px;">Today’s air plan, for everyone at home.</h2>
     </div>
-    <a class="btn" href="Onboarding.dc.html" style="background: #141413; color: #faf9f5; padding: 0 28px; min-height: 52px; font-size: 16px;">Shuru karein</a>
+    <a class="btn" href="Onboarding.dc.html" style="background: #141413; color: #faf9f5; padding: 0 28px; min-height: 52px; font-size: 16px;">Get started</a>
   </div>
 </section>
 
 <footer style="background: #181715; color: #a09d96;">
   <div class="sec" style="max-width: 1200px; margin: 0 auto; padding: 56px 32px; display: flex; flex-direction: column; gap: 24px;">
     <div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: center; justify-content: space-between;">
-      <span class="serif" style="font-size: 24px; color: #faf9f5;">Saans <span class="ur" style="font-size: 18px; color: #a09d96;">سانس</span></span>
+      <span class="serif" style="font-size: 24px; color: #faf9f5;">Saans</span>
       <span style="font-size: 14px;">Minhaj University Lahore AI Hackathon · SDG 3</span>
     </div>
-    <p style="margin: 0; padding-top: 24px; border-top: 1px solid #2f2c28; font-size: 15px; line-height: 1.6; color: #cfcbc2;">Saans sehat ki aagahi ke liye hai, ilaaj ke liye nahi. Takleef ki soorat mein doctor se rujoo karein. Emergency: <strong style="color: #faf9f5;">1122</strong>.</p>
+    <p style="margin: 0; padding-top: 24px; border-top: 1px solid #2f2c28; font-size: 15px; line-height: 1.6; color: #cfcbc2;">Saans is for health awareness, not treatment. If you feel unwell, see a doctor. Emergency: <strong style="color: #faf9f5;">1122</strong>.</p>
     <p style="margin: 0; font-size: 13px;">Air data: Open-Meteo. Photos: Unsplash (Shazaf Zafar and others).</p>
   </div>
 </footer>

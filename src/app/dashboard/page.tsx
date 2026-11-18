@@ -127,7 +127,7 @@ export default async function Dashboard({ searchParams }: { searchParams: Promis
 
         <section aria-labelledby="fc-h" className="flex flex-col gap-4 rounded-2xl border border-hairline bg-canvas px-7 pb-5 pt-7">
           <div className="flex flex-wrap items-baseline justify-between gap-3">
-            <h2 id="fc-h" className="font-serif text-[28px] tracking-[-0.3px]">Agle 24 ghante</h2>
+            <h2 id="fc-h" className="font-serif text-[28px] tracking-[-0.3px]">Next 24 hours</h2>
             {win && (
               <span className="inline-flex items-center gap-2 text-sm text-body">
                 <span className="size-3.5 rounded-[3px] border border-dashed border-[#2e7f70] bg-[#5db8a6]/30" aria-hidden />

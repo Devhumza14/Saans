@@ -8,11 +8,10 @@
 <body>
 <x-dc>
 <helmet>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&amp;family=Noto+Nastaliq+Urdu:wght@400;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
 <style>
 body{margin:0}
 .serif{font-family:'Source Serif 4',Georgia,serif;font-weight:400}
-.ur{font-family:'Noto Nastaliq Urdu',serif;direction:rtl;line-height:2.2}
 .mono{font-family:'JetBrains Mono',ui-monospace,monospace}
 .cap{font:500 12px Inter,sans-serif;letter-spacing:1.5px;text-transform:uppercase;color:#6c6a64;margin:0}
 .sw{display:flex;flex-direction:column;gap:6px}
@@ -48,12 +47,12 @@ body{margin:0}
   <section style="display: flex; flex-direction: column; gap: 16px;">
     <p class="cap">AQI bands · US EPA · fill / text / tint</p>
     <div style="display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px;">
-      <div style="border-radius: 12px; overflow: hidden; border: 1px solid #e6dfd8;"><div style="height: 56px; background: #3f9a52;"></div><div style="background: #eef4ea; padding: 12px; display: flex; flex-direction: column; gap: 2px;"><strong style="color: #24552f; font-weight: 600; font-size: 14px;">Good</strong><span class="ur" lang="ur" style="color: #24552f; font-size: 14px; text-align: left;">اچھی</span><code class="mono" style="font-size: 11px; color: #3d3d3a;">0–50</code></div></div>
-      <div style="border-radius: 12px; overflow: hidden; border: 1px solid #e6dfd8;"><div style="height: 56px; background: #c9a227;"></div><div style="background: #f7f1de; padding: 12px; display: flex; flex-direction: column; gap: 2px;"><strong style="color: #6b5408; font-weight: 600; font-size: 14px;">Moderate</strong><span class="ur" lang="ur" style="color: #6b5408; font-size: 14px; text-align: left;">درمیانی</span><code class="mono" style="font-size: 11px; color: #3d3d3a;">51–100</code></div></div>
-      <div style="border-radius: 12px; overflow: hidden; border: 1px solid #e6dfd8;"><div style="height: 56px; background: #e07b2c;"></div><div style="background: #f9ede1; padding: 12px; display: flex; flex-direction: column; gap: 2px;"><strong style="color: #8a4510; font-weight: 600; font-size: 14px;">Sensitive</strong><span class="ur" lang="ur" style="color: #8a4510; font-size: 14px; text-align: left;">حساس کے لیے مضر</span><code class="mono" style="font-size: 11px; color: #3d3d3a;">101–150</code></div></div>
-      <div style="border-radius: 12px; overflow: hidden; border: 1px solid #e6dfd8;"><div style="height: 56px; background: #d64545;"></div><div style="background: #f9e9e5; padding: 12px; display: flex; flex-direction: column; gap: 2px;"><strong style="color: #8f2525; font-weight: 600; font-size: 14px;">Unhealthy</strong><span class="ur" lang="ur" style="color: #8f2525; font-size: 14px; text-align: left;">مضرِ صحت</span><code class="mono" style="font-size: 11px; color: #3d3d3a;">151–200</code></div></div>
-      <div style="border-radius: 12px; overflow: hidden; border: 1px solid #e6dfd8;"><div style="height: 56px; background: #8b4fb3;"></div><div style="background: #f1e9f3; padding: 12px; display: flex; flex-direction: column; gap: 2px;"><strong style="color: #5e2d80; font-weight: 600; font-size: 14px;">Very unhealthy</strong><span class="ur" lang="ur" style="color: #5e2d80; font-size: 14px; text-align: left;">بہت مضر</span><code class="mono" style="font-size: 11px; color: #3d3d3a;">201–300</code></div></div>
-      <div style="border-radius: 12px; overflow: hidden; border: 1px solid #e6dfd8;"><div style="height: 56px; background: #8a2433;"></div><div style="background: #f2e3e3; padding: 12px; display: flex; flex-direction: column; gap: 2px;"><strong style="color: #6e1825; font-weight: 600; font-size: 14px;">Hazardous</strong><span class="ur" lang="ur" style="color: #6e1825; font-size: 14px; text-align: left;">خطرناک</span><code class="mono" style="font-size: 11px; color: #3d3d3a;">301+</code></div></div>
+      <div style="border-radius: 12px; overflow: hidden; border: 1px solid #e6dfd8;"><div style="height: 56px; background: #3f9a52;"></div><div style="background: #eef4ea; padding: 12px; display: flex; flex-direction: column; gap: 2px;"><strong style="color: #24552f; font-weight: 600; font-size: 14px;">Good</strong><code class="mono" style="font-size: 11px; color: #3d3d3a;">0–50</code></div></div>
+      <div style="border-radius: 12px; overflow: hidden; border: 1px solid #e6dfd8;"><div style="height: 56px; background: #c9a227;"></div><div style="background: #f7f1de; padding: 12px; display: flex; flex-direction: column; gap: 2px;"><strong style="color: #6b5408; font-weight: 600; font-size: 14px;">Moderate</strong><code class="mono" style="font-size: 11px; color: #3d3d3a;">51–100</code></div></div>
+      <div style="border-radius: 12px; overflow: hidden; border: 1px solid #e6dfd8;"><div style="height: 56px; background: #e07b2c;"></div><div style="background: #f9ede1; padding: 12px; display: flex; flex-direction: column; gap: 2px;"><strong style="color: #8a4510; font-weight: 600; font-size: 14px;">Sensitive</strong><code class="mono" style="font-size: 11px; color: #3d3d3a;">101–150</code></div></div>
+      <div style="border-radius: 12px; overflow: hidden; border: 1px solid #e6dfd8;"><div style="height: 56px; background: #d64545;"></div><div style="background: #f9e9e5; padding: 12px; display: flex; flex-direction: column; gap: 2px;"><strong style="color: #8f2525; font-weight: 600; font-size: 14px;">Unhealthy</strong><code class="mono" style="font-size: 11px; color: #3d3d3a;">151–200</code></div></div>
+      <div style="border-radius: 12px; overflow: hidden; border: 1px solid #e6dfd8;"><div style="height: 56px; background: #8b4fb3;"></div><div style="background: #f1e9f3; padding: 12px; display: flex; flex-direction: column; gap: 2px;"><strong style="color: #5e2d80; font-weight: 600; font-size: 14px;">Very unhealthy</strong><code class="mono" style="font-size: 11px; color: #3d3d3a;">201–300</code></div></div>
+      <div style="border-radius: 12px; overflow: hidden; border: 1px solid #e6dfd8;"><div style="height: 56px; background: #8a2433;"></div><div style="background: #f2e3e3; padding: 12px; display: flex; flex-direction: column; gap: 2px;"><strong style="color: #6e1825; font-weight: 600; font-size: 14px;">Hazardous</strong><code class="mono" style="font-size: 11px; color: #3d3d3a;">301+</code></div></div>
     </div>
     <p style="margin: 0; font-size: 13px; color: #3d3d3a;">The page background takes the band’s tint. A band is always written out as text as well as shown in colour, and every text colour passes AA on its tint.</p>
   </section>
@@ -61,16 +60,15 @@ body{margin:0}
   <section style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px;">
     <div style="display: flex; flex-direction: column; gap: 18px;">
       <p class="cap">Type</p>
-      <div style="display: flex; flex-direction: column; gap: 4px;"><span class="serif" style="font-size: 56px; letter-spacing: -1.4px; line-height: 1.05;">Aaj ki hawa</span><code class="mono" style="font-size: 12px; color: #6c6a64;">Source Serif 4 · 400 · −1.5px (stand-in for Copernicus)</code></div>
+      <div style="display: flex; flex-direction: column; gap: 4px;"><span class="serif" style="font-size: 56px; letter-spacing: -1.4px; line-height: 1.05;">Today’s air</span><code class="mono" style="font-size: 12px; color: #6c6a64;">Source Serif 4 · 400 · −1.5px (stand-in for Copernicus)</code></div>
       <div style="display: flex; flex-direction: column; gap: 4px;"><span style="font-size: 18px; line-height: 1.55;">Inter for body text, labels and buttons. Humanist and calm, and it reads well at small sizes.</span><code class="mono" style="font-size: 12px; color: #6c6a64;">Inter · 400 / 500 · 16–18px · 1.55</code></div>
-      <div style="display: flex; flex-direction: column; gap: 4px;"><span class="ur" lang="ur" style="font-size: 30px; text-align: left;">لاہور کی ہوا، آپ کے گھر کے لیے</span><code class="mono" style="font-size: 12px; color: #6c6a64;">Noto Nastaliq Urdu · dir=rtl · line-height 2.2</code></div>
       <div style="display: flex; flex-direction: column; gap: 4px;"><span class="mono" style="font-size: 15px;">risk.engine → score 3.0 · severe</span><code class="mono" style="font-size: 12px; color: #6c6a64;">JetBrains Mono · data, tool calls, engine output</code></div>
     </div>
 
     <div style="display: flex; flex-direction: column; gap: 18px;">
       <p class="cap">Components</p>
       <div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
-        <a href="Onboarding.dc.html" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; border-radius: 8px; background: #a9583e; color: #fff; font: 500 15px Inter, sans-serif; text-decoration: none;">Plan dekhein</a>
+        <a href="Onboarding.dc.html" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; border-radius: 8px; background: #a9583e; color: #fff; font: 500 15px Inter, sans-serif; text-decoration: none;">View plan</a>
         <a href="Compare.dc.html" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; border-radius: 8px; border: 1px solid #d9d0c3; color: #141413; font: 500 15px Inter, sans-serif; text-decoration: none;">Live demo</a>
         <a href="tel:1122" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; border-radius: 9999px; background: #6e1825; color: #faf9f5; font: 600 15px Inter, sans-serif; text-decoration: none;">Call 1122</a>
       </div>
@@ -86,7 +84,7 @@ body{margin:0}
         <span class="mono" style="font-size: 12px; padding: 6px 12px; border-radius: 9999px; background: #f6ecd2; color: #6b5408;">cached data from 11:05</span>
       </div>
       <div style="display: flex; gap: 14px; align-items: center; padding: 16px 18px; border-radius: 12px; background: #181715; color: #faf9f5;">
-        <span style="font-size: 14px; flex: 1;">Alert for Ammi: aaj subah ki sair na karein.</span>
+        <span style="font-size: 14px; flex: 1;">Alert for Ammi: skip this morning’s walk.</span>
         <span class="mono" style="font-size: 11px; color: #a09d96;">engine decided · AI wrote</span>
       </div>
       <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; font: 12px 'JetBrains Mono', monospace; color: #3d3d3a;">

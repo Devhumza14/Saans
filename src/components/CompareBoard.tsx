@@ -117,7 +117,7 @@ export function CompareBoard({ members }: { members: CompareMember[] }) {
                       <span className="text-[11px] font-medium uppercase tracking-[1px] text-muted">Why different? · risk engine</span>
                       <div className="flex flex-wrap gap-1.5">{m.reasons.map((r) => <span key={r} className="rounded-md bg-dark px-2 py-1 font-mono text-xs text-canvas">{r}</span>)}</div>
                     </div>
-                    <Link href={`/member/${m.id}`} className="inline-flex min-h-11 items-center self-start text-sm font-medium text-cta hover:text-cta-hover">Pura plan →</Link>
+                    <Link href={`/member/${m.id}`} className="inline-flex min-h-11 items-center self-start text-sm font-medium text-cta hover:text-cta-hover">Full plan →</Link>
                   </div>
                 );
               })()}

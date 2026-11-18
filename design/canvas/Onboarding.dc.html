@@ -8,11 +8,10 @@
 <body>
 <x-dc>
 <helmet>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&amp;family=Noto+Nastaliq+Urdu:wght@400;600&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&amp;display=swap">
 <style>
 body{margin:0}
 .serif{font-family:'Source Serif 4',Georgia,serif;font-weight:400}
-.ur{font-family:'Noto Nastaliq Urdu',serif;direction:rtl;line-height:2.2}
 .lbl{font:500 13px Inter,sans-serif;color:#3d3d3a}
 .inp{height:48px;border-radius:8px;border:1px solid #d9d0c3;background:#faf9f5;padding:0 14px;font:15px Inter,sans-serif;color:#141413;box-sizing:border-box;width:100%}
 .chip{min-height:40px;padding:0 14px;border-radius:9999px;border:1px solid #d9d0c3;background:#faf9f5;font:500 13px Inter,sans-serif;color:#141413;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
@@ -28,20 +27,20 @@ legend{padding:0;margin-bottom:8px}
   <header style="padding: 20px 20px 8px; display: flex; flex-direction: column; gap: 16px;">
     <div style="display: flex; align-items: center; justify-content: space-between;">
       <span class="serif" style="font-size: 22px;">Saans</span>
-      <span style="font-size: 13px; color: #3d3d3a;">Qadam 2 / 3</span>
+      <span style="font-size: 13px; color: #3d3d3a;">Step 2 / 3</span>
     </div>
     <div role="progressbar" aria-label="Setup progress" aria-valuemin="0" aria-valuemax="3" aria-valuenow="2" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px;">
       <span style="height: 4px; border-radius: 9999px; background: #a9583e;"></span>
       <span style="height: 4px; border-radius: 9999px; background: #a9583e;"></span>
       <span style="height: 4px; border-radius: 9999px; background: #e6dfd8;"></span>
     </div>
-    <h1 class="serif" style="margin: 8px 0 0; font-size: 32px; line-height: 1.1; letter-spacing: -0.6px;">Ghar mein kaun kaun hai?</h1>
-    <p style="margin: 0; font-size: 15px; line-height: 1.5; color: #3d3d3a;">Har shakhs ka plan alag banta hai. Sirf utna batayein jitna zaroori ho.</p>
+    <h1 class="serif" style="margin: 8px 0 0; font-size: 32px; line-height: 1.1; letter-spacing: -0.6px;">Who lives in your home?</h1>
+    <p style="margin: 0; font-size: 15px; line-height: 1.5; color: #3d3d3a;">Each person gets their own plan. Share only what you need to.</p>
   </header>
 
   <section style="padding: 12px 20px; display: flex; flex-direction: column; gap: 12px;">
     <div style="display: flex; flex-direction: column; gap: 6px;">
-      <label class="lbl" for="hh">Ghar ka naam</label>
+      <label class="lbl" for="hh">Household name</label>
       <input class="inp" id="hh" type="text" value="Khan Family">
     </div>
     <div style="display: flex; flex-direction: column; gap: 6px;">
@@ -63,57 +62,57 @@ legend{padding:0;margin-bottom:8px}
     <div style="display: flex; align-items: center; gap: 12px;">
       <span aria-hidden="true" style="width: 48px; height: 48px; border-radius: 50%; background: #f0dcc0; color: #6b4310; display: grid; place-items: center; font: 600 18px Inter, sans-serif;">Z</span>
       <div style="flex: 1; display: flex; flex-direction: column; gap: 4px;">
-        <label class="lbl" for="nm" id="mem-h">Naam</label>
+        <label class="lbl" for="nm" id="mem-h">Name</label>
         <input class="inp" id="nm" type="text" value="Zara" style="height: 44px;">
       </div>
     </div>
 
     <fieldset>
-      <legend class="lbl">Umar</legend>
+      <legend class="lbl">Age</legend>
       <div style="display: flex; background: #e8e0d2; border-radius: 10px; padding: 4px; gap: 4px;">
-        <button type="button" class="seg" aria-pressed="true">Bacha</button>
+        <button type="button" class="seg" aria-pressed="true">Child</button>
         <button type="button" class="seg" aria-pressed="false">Teen</button>
-        <button type="button" class="seg" aria-pressed="false">Bara</button>
+        <button type="button" class="seg" aria-pressed="false">Adult</button>
         <button type="button" class="seg" aria-pressed="false">60+</button>
       </div>
     </fieldset>
 
     <fieldset>
-      <legend class="lbl">Sehat ke masail <span style="color: #6c6a64; font-weight: 400;">· jitne lagu hon</span></legend>
+      <legend class="lbl">Health conditions <span style="color: #6c6a64; font-weight: 400;">· select all that apply</span></legend>
       <div style="display: flex; flex-wrap: wrap; gap: 8px;">
         <button type="button" class="chip" aria-pressed="false">Asthma</button>
         <button type="button" class="chip" aria-pressed="false">COPD</button>
-        <button type="button" class="chip" aria-pressed="false">Dil ki bimari</button>
-        <button type="button" class="chip" aria-pressed="false">Sugar</button>
+        <button type="button" class="chip" aria-pressed="false">Heart condition</button>
+        <button type="button" class="chip" aria-pressed="false">Diabetes</button>
         <button type="button" class="chip" aria-pressed="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Allergy</button>
-        <button type="button" class="chip" aria-pressed="false">Hamal (pregnant)</button>
+        <button type="button" class="chip" aria-pressed="false">Pregnant</button>
       </div>
     </fieldset>
 
     <fieldset>
-      <legend class="lbl">Din ka zyada waqt</legend>
+      <legend class="lbl">Most of the day</legend>
       <div style="display: flex; background: #e8e0d2; border-radius: 10px; padding: 4px; gap: 4px;">
-        <button type="button" class="seg" aria-pressed="true">Andar</button>
-        <button type="button" class="seg" aria-pressed="false">Mix</button>
-        <button type="button" class="seg" aria-pressed="false">Bahar</button>
+        <button type="button" class="seg" aria-pressed="true">Indoor</button>
+        <button type="button" class="seg" aria-pressed="false">Mixed</button>
+        <button type="button" class="seg" aria-pressed="false">Outdoor</button>
         <button type="button" class="seg" aria-pressed="false">Rider</button>
       </div>
     </fieldset>
 
     <fieldset>
-      <legend class="lbl">Aana jaana</legend>
+      <legend class="lbl">Commute</legend>
       <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-        <button type="button" class="chip" aria-pressed="false">Koi nahi</button>
-        <button type="button" class="chip" aria-pressed="false">Gaari</button>
+        <button type="button" class="chip" aria-pressed="false">None</button>
+        <button type="button" class="chip" aria-pressed="false">Car</button>
         <button type="button" class="chip" aria-pressed="false">Bike</button>
         <button type="button" class="chip" aria-pressed="false">Rickshaw</button>
         <button type="button" class="chip" aria-pressed="false">Bus / wagon</button>
-        <button type="button" class="chip" aria-pressed="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Paidal</button>
+        <button type="button" class="chip" aria-pressed="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Walk</button>
       </div>
     </fieldset>
 
     <label style="display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 44px; cursor: pointer;">
-      <span class="lbl" style="font-size: 15px; color: #141413;">School jaati / jaata hai</span>
+      <span class="lbl" style="font-size: 15px; color: #141413;">Goes to school</span>
       <span style="position: relative; width: 52px; height: 30px; flex: none;">
         <input type="checkbox" checked style="position: absolute; inset: 0; opacity: 0; margin: 0; cursor: pointer;">
         <span aria-hidden="true" style="position: absolute; inset: 0; border-radius: 9999px; background: #1f5f53;"></span>
@@ -129,13 +128,13 @@ legend{padding:0;margin-bottom:8px}
   </section>
 
   <div style="padding: 4px 20px;">
-    <button type="button" style="width: 100%; min-height: 48px; border-radius: 12px; border: 1.5px dashed #c9bfb0; background: transparent; font: 500 14px Inter, sans-serif; color: #3d3d3a; display: flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Aur fard shamil karein</button>
+    <button type="button" style="width: 100%; min-height: 48px; border-radius: 12px; border: 1.5px dashed #c9bfb0; background: transparent; font: 500 14px Inter, sans-serif; color: #3d3d3a; display: flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Add another person</button>
   </div>
 
   <div style="margin-top: auto; padding: 20px; border-top: 1px solid #e6dfd8; display: flex; flex-direction: column; gap: 10px;">
-    <a href="Dashboard.dc.html" style="min-height: 52px; border-radius: 10px; background: #a9583e; color: #fff; font: 500 16px Inter, sans-serif; display: flex; align-items: center; justify-content: center; text-decoration: none;">Aage chalein</a>
-    <a href="Compare.dc.html" style="min-height: 48px; border-radius: 10px; border: 1px solid #d9d0c3; color: #141413; font: 500 14px Inter, sans-serif; display: flex; align-items: center; justify-content: center; text-decoration: none;">Demo family load karein</a>
-    <p style="margin: 4px 0 0; font-size: 12px; line-height: 1.5; color: #6c6a64;">Ye maloomat sirf aap ke ghar ke plan ke liye hai aur kisi aur ko nazar nahi aati.</p>
+    <a href="Dashboard.dc.html" style="min-height: 52px; border-radius: 10px; background: #a9583e; color: #fff; font: 500 16px Inter, sans-serif; display: flex; align-items: center; justify-content: center; text-decoration: none;">Continue</a>
+    <a href="Compare.dc.html" style="min-height: 48px; border-radius: 10px; border: 1px solid #d9d0c3; color: #141413; font: 500 14px Inter, sans-serif; display: flex; align-items: center; justify-content: center; text-decoration: none;">Load demo family</a>
+    <p style="margin: 4px 0 0; font-size: 12px; line-height: 1.5; color: #6c6a64;">This information is only for your household’s plan and is not visible to anyone else.</p>
   </div>
 </div>
 </x-dc>

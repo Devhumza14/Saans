@@ -8,12 +8,11 @@
 <body>
 <x-dc>
 <helmet>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&amp;family=Noto+Nastaliq+Urdu:wght@400;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
 <style>
 body{margin:0}
 a{color:#a9583e}a:hover{color:#7f3f29}
 .serif{font-family:'Source Serif 4',Georgia,serif;font-weight:400}
-.ur{font-family:'Noto Nastaliq Urdu',serif;direction:rtl;line-height:2.2}
 .mono{font-family:'JetBrains Mono',ui-monospace,monospace}
 .tab{color:#3d3d3a;text-decoration:none;font:500 14px/1 Inter,sans-serif;padding:10px 14px;border-radius:8px}
 .tab:hover{background:#efe9de;color:#141413}
@@ -34,17 +33,12 @@ a{color:#a9583e}a:hover{color:#7f3f29}
     </a>
     <nav aria-label="App" class="hide-sm" style="display: flex; gap: 4px;">
       <a class="tab" href="Dashboard.dc.html" aria-current="page" style="background: #efe9de; color: #141413;">Dashboard</a>
-      <a class="tab" href="Compare.dc.html">Muqabla</a>
-      <a class="tab" href="Chat.dc.html">Puchho Saans</a>
+      <a class="tab" href="Compare.dc.html">Compare</a>
+      <a class="tab" href="Chat.dc.html">Ask Saans</a>
       <a class="tab" href="#map">Lahore map</a>
     </nav>
     <div style="margin-left: auto; display: flex; align-items: center; gap: 10px;">
-      <div role="group" aria-label="Language" class="hide-sm" style="display: flex; background: #efe9de; border-radius: 9999px; padding: 4px;">
-        <button type="button" class="ur" style="border: 0; background: transparent; color: #3d3d3a; font-size: 13px; padding: 0 12px; height: 32px; border-radius: 9999px; line-height: 1; cursor: pointer;">اردو</button>
-        <button type="button" aria-pressed="true" style="border: 0; background: #faf9f5; color: #141413; font: 500 13px Inter, sans-serif; padding: 0 12px; height: 32px; border-radius: 9999px; cursor: pointer;">Roman</button>
-        <button type="button" style="border: 0; background: transparent; color: #3d3d3a; font: 500 13px Inter, sans-serif; padding: 0 12px; height: 32px; border-radius: 9999px; cursor: pointer;">EN</button>
-      </div>
-      <button type="button" class="hide-sm" aria-pressed="false" style="height: 40px; padding: 0 14px; border-radius: 9999px; border: 1px solid #e6dfd8; background: #faf9f5; font: 500 13px Inter, sans-serif; color: #141413; cursor: pointer;"><span style="font-size: 16px;">A</span><span style="font-size: 12px;">a</span> Bara Text</button>
+      <button type="button" class="hide-sm" aria-pressed="false" style="height: 40px; padding: 0 14px; border-radius: 9999px; border: 1px solid #e6dfd8; background: #faf9f5; font: 500 13px Inter, sans-serif; color: #141413; cursor: pointer;"><span style="font-size: 16px;">A</span><span style="font-size: 12px;">a</span> Large text</button>
       <button type="button" class="icon-btn" aria-label="Alerts, 2 unread">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
         <span style="position: absolute; top: -2px; right: -2px; min-width: 20px; height: 20px; padding: 0 5px; box-sizing: border-box; border-radius: 9999px; background: #c64545; color: #fff; font: 600 11px/20px Inter, sans-serif; text-align: center;">2</span>
@@ -58,8 +52,8 @@ a{color:#a9583e}a:hover{color:#7f3f29}
 
   <div style="display: flex; flex-wrap: wrap; align-items: flex-end; gap: 16px; justify-content: space-between;">
     <div style="display: flex; flex-direction: column; gap: 4px;">
-      <p style="margin: 0; font-size: 14px; color: #6c6a64;">Assalam-o-alaikum, Khan Family</p>
-      <h1 class="serif" style="margin: 0; font-size: 40px; letter-spacing: -0.8px; line-height: 1.1;">Aaj ki hawa</h1>
+      <p style="margin: 0; font-size: 14px; color: #6c6a64;">Welcome, Khan Family</p>
+      <h1 class="serif" style="margin: 0; font-size: 40px; letter-spacing: -0.8px; line-height: 1.1;">Today’s air</h1>
     </div>
     <div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
       <label for="area" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0);">Area of Lahore</label>
@@ -69,7 +63,7 @@ a{color:#a9583e}a:hover{color:#7f3f29}
           <option selected>Gulberg</option><option>DHA</option><option>Johar Town</option><option>Model Town</option><option>Walled City / Androon</option><option>Shahdara</option><option>Cantt</option><option>Township</option><option>Bahria Town</option><option>Raiwind Road</option><option>Allama Iqbal Town</option><option>Wapda Town</option>
         </select>
       </div>
-      <button type="button" style="height: 44px; padding: 0 16px; border-radius: 8px; border: 1px solid #d9d0c3; background: #faf9f5; font: 500 14px Inter, sans-serif; color: #141413; display: inline-flex; align-items: center; gap: 8px; cursor: pointer;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>Meri location</button>
+      <button type="button" style="height: 44px; padding: 0 16px; border-radius: 8px; border: 1px solid #d9d0c3; background: #faf9f5; font: 500 14px Inter, sans-serif; color: #141413; display: inline-flex; align-items: center; gap: 8px; cursor: pointer;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>My location</button>
       <sc-if value="{{cached}}" hint-placeholder-val="{{false}}">
         <span class="mono" style="height: 32px; padding: 0 12px; border-radius: 9999px; background: #f6ecd2; color: #6b5408; font-size: 12px; display: inline-flex; align-items: center; gap: 6px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>cached data from 11:05</span>
       </sc-if>
@@ -94,7 +88,6 @@ a{color:#a9583e}a:hover{color:#7f3f29}
       </div>
       <div style="flex: 1 1 240px; min-width: 0; display: flex; flex-direction: column; gap: 14px;">
         <span style="align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 9999px; background: {{b.tint}}; color: {{b.text}}; font: 600 13px Inter, sans-serif; letter-spacing: .6px; text-transform: uppercase;"><span style="width: 9px; height: 9px; border-radius: 50%; background: {{b.ring}};"></span>{{b.label}}</span>
-        <p class="ur" lang="ur" style="margin: 0; font-size: 26px; color: {{b.text}}; text-align: left;">{{b.ur}}</p>
         <p style="margin: 0; font-size: 17px; line-height: 1.55; color: #3d3d3a;">{{b.line}}</p>
         <p style="margin: 0; font-size: 13px; color: #6c6a64;">Gulberg, Lahore · Open-Meteo</p>
       </div>
@@ -114,12 +107,12 @@ a{color:#a9583e}a:hover{color:#7f3f29}
       <div class="card" style="padding: 20px; display: flex; flex-direction: column; gap: 8px;">
         <span style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #6c6a64;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2M9.6 4.6A2 2 0 1 1 11 8H2M12.6 19.4A2 2 0 1 0 14 16H2"/></svg>Wind</span>
         <span><span class="serif" style="font-size: 30px;">3</span> <span style="font-size: 13px; color: #6c6a64;">km/h</span></span>
-        <span style="font-size: 13px; line-height: 1.4; color: #3d3d3a;">Hawa ruki hui hai, smog jama ho raha hai</span>
+        <span style="font-size: 13px; line-height: 1.4; color: #3d3d3a;">Wind is calm, smog is building up</span>
       </div>
       <div class="card" style="padding: 20px; display: flex; flex-direction: column; gap: 8px;">
         <span style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #6c6a64;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 4v10.5a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"/></svg>Temp · Humidity</span>
         <span><span class="serif" style="font-size: 30px;">17°</span> <span style="font-size: 13px; color: #6c6a64;">· 72%</span></span>
-        <span style="font-size: 13px; line-height: 1.4; color: #3d3d3a;">Thandi, nam hawa: dhund aur dhuaan mil jaate hain</span>
+        <span style="font-size: 13px; line-height: 1.4; color: #3d3d3a;">Cool, damp air: fog and smoke mix together</span>
       </div>
       <div class="card" style="grid-column: 1 / -1; padding: 16px 20px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px;">
         <div style="display: flex; flex-direction: column; gap: 2px;"><span style="font-size: 12px; color: #6c6a64;">PM10</span><span class="mono" style="font-size: 15px;">{{b.pm10}}</span></div>
@@ -133,15 +126,15 @@ a{color:#a9583e}a:hover{color:#7f3f29}
   <div role="status" style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px; padding: 18px 20px; border-radius: 12px; background: #181715; color: #faf9f5;">
     <span style="width: 40px; height: 40px; border-radius: 50%; background: #4a1820; color: #ffb3bd; display: grid; place-items: center; flex: none;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg></span>
     <div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 4px;">
-      <strong style="font-weight: 500; font-size: 16px;">Ammi ke liye alert: aaj subah ki sair na karein, khidkiyan band rakhein.</strong>
+      <strong style="font-weight: 500; font-size: 16px;">Alert for Ammi: skip this morning’s walk, keep windows closed.</strong>
       <span class="mono" style="font-size: 12px; color: #a09d96;">Alert decided by risk engine · message written by AI · 11:20</span>
     </div>
-    <a href="Member.dc.html" style="color: #faf9f5; font: 500 14px Inter, sans-serif; text-decoration: underline; text-underline-offset: 4px; padding: 12px 4px;">Plan dekhein</a>
+    <a href="Member.dc.html" style="color: #faf9f5; font: 500 14px Inter, sans-serif; text-decoration: underline; text-underline-offset: 4px; padding: 12px 4px;">View plan</a>
   </div>
 
   <section aria-labelledby="fc-h" class="card" style="padding: 28px 28px 20px; display: flex; flex-direction: column; gap: 16px;">
     <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; align-items: baseline;">
-      <h2 id="fc-h" class="serif" style="margin: 0; font-size: 28px; letter-spacing: -0.3px;">Agle 24 ghante</h2>
+      <h2 id="fc-h" class="serif" style="margin: 0; font-size: 28px; letter-spacing: -0.3px;">Next 24 hours</h2>
       <span style="display: inline-flex; align-items: center; gap: 8px; font-size: 14px; color: #3d3d3a;"><span style="width: 14px; height: 14px; border-radius: 3px; background: rgba(93,184,166,.28); border: 1px dashed #2e7f70;"></span>Best window for going out: <strong style="font-weight: 600;">14:00–16:00</strong> · avg AQI 163</span>
     </div>
     <div style="width: 100%; overflow-x: auto;">
@@ -177,8 +170,8 @@ a{color:#a9583e}a:hover{color:#7f3f29}
 
   <section aria-labelledby="fam-h" style="display: flex; flex-direction: column; gap: 16px;">
     <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 12px;">
-      <h2 id="fam-h" class="serif" style="margin: 0; font-size: 28px; letter-spacing: -0.3px;">Ghar ke log</h2>
-      <a href="Compare.dc.html" style="font: 500 14px Inter, sans-serif; padding: 12px 0;">Sab ko saath dekhein →</a>
+      <h2 id="fam-h" class="serif" style="margin: 0; font-size: 28px; letter-spacing: -0.3px;">Your household</h2>
+      <a href="Compare.dc.html" style="font: 500 14px Inter, sans-serif; padding: 12px 0;">See everyone together →</a>
     </div>
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px;">
       <sc-for list="{{family}}" as="m" hint-placeholder-count="4">
@@ -192,7 +185,7 @@ a{color:#a9583e}a:hover{color:#7f3f29}
           </div>
           <span style="align-self: flex-start; display: inline-flex; align-items: center; gap: 6px; padding: 5px 10px; border-radius: 9999px; background: {{m.pillBg}}; color: {{m.pillFg}}; font: 600 12px Inter, sans-serif; letter-spacing: .6px; text-transform: uppercase;"><span style="width: 7px; height: 7px; border-radius: 50%; background: {{m.pillFg}};"></span>{{m.level}} risk</span>
           <p style="margin: 0; font-size: 15px; line-height: 1.5; color: #252523; flex: 1;">{{m.headline}}</p>
-          <a class="btn-p" href="Member.dc.html" style="align-self: stretch;">Plan dekhein</a>
+          <a class="btn-p" href="Member.dc.html" style="align-self: stretch;">View plan</a>
         </article>
       </sc-for>
     </div>
@@ -200,7 +193,7 @@ a{color:#a9583e}a:hover{color:#7f3f29}
 </main>
 
 <footer style="border-top: 1px solid #e6dfd8;">
-  <p class="sec" style="max-width: 1200px; margin: 0 auto; padding: 24px 32px; font-size: 14px; line-height: 1.6; color: #3d3d3a;">Saans sehat ki aagahi ke liye hai, ilaaj ke liye nahi. Takleef ki soorat mein doctor se rujoo karein. Emergency: <strong>1122</strong>.</p>
+  <p class="sec" style="max-width: 1200px; margin: 0 auto; padding: 24px 32px; font-size: 14px; line-height: 1.6; color: #3d3d3a;">Saans is for health awareness, not treatment. If you feel unwell, see a doctor. Emergency: <strong>1122</strong>.</p>
 </footer>
 </div>
 </x-dc>
@@ -208,12 +201,12 @@ a{color:#a9583e}a:hover{color:#7f3f29}
 class Component extends DCLogic {
   renderVals() {
     var BANDS = {
-      good:      { aqi: 42,  label: 'Good', ur: 'ہوا اچھی ہے', ring: '#3f9a52', tint: '#eef4ea', text: '#24552f', pm: 10, pm10: 21, times: '0.7', line: 'Hawa saaf hai. Sab ke liye bahar jaana theek hai.' },
-      moderate:  { aqi: 88,  label: 'Moderate', ur: 'درمیانی ہوا', ring: '#c9a227', tint: '#f7f1de', text: '#6b5408', pm: 29, pm10: 52, times: '1.9', line: 'Zyada tar logon ke liye theek, lekin asthma wale lambi walk kam karein.' },
-      sensitive: { aqi: 136, label: 'Unhealthy for sensitive groups', ur: 'حساس افراد کے لیے مضر', ring: '#e07b2c', tint: '#f9ede1', text: '#8a4510', pm: 50, pm10: 88, times: '3.3', line: 'Bachon, buzurgon aur asthma walon ke liye bahar ka waqt kam karein.' },
-      unhealthy: { aqi: 178, label: 'Unhealthy', ur: 'مضرِ صحت', ring: '#d64545', tint: '#f9e9e5', text: '#8f2525', pm: 107, pm10: 160, times: '7.1', line: 'Sab ke liye nuqsan deh. Bahar jaana ho to N95 mask pehnein.' },
-      very:      { aqi: 287, label: 'Very unhealthy', ur: 'بہت مضرِ صحت', ring: '#8b4fb3', tint: '#f1e9f3', text: '#5e2d80', pm: 236, pm10: 318, times: '15.7', line: 'Ghar ke andar rahein. Hassas log bilkul bahar na niklein.' },
-      hazardous: { aqi: 356, label: 'Hazardous', ur: 'خطرناک', ring: '#8a2433', tint: '#f2e3e3', text: '#6e1825', pm: 310, pm10: 402, times: '20.7', line: 'Emergency jaisi soorat-e-haal. Sirf zaroorat par bahar, N95 ke saath.' }
+      good:      { aqi: 42,  label: 'Good', ring: '#3f9a52', tint: '#eef4ea', text: '#24552f', pm: 10, pm10: 21, times: '0.7', line: 'The air is clean. Fine for everyone to go outside.' },
+      moderate:  { aqi: 88,  label: 'Moderate', ring: '#c9a227', tint: '#f7f1de', text: '#6b5408', pm: 29, pm10: 52, times: '1.9', line: 'Fine for most people, but those with asthma should limit long walks.' },
+      sensitive: { aqi: 136, label: 'Unhealthy for sensitive groups', ring: '#e07b2c', tint: '#f9ede1', text: '#8a4510', pm: 50, pm10: 88, times: '3.3', line: 'Children, older adults and people with asthma should limit time outside.' },
+      unhealthy: { aqi: 178, label: 'Unhealthy', ring: '#d64545', tint: '#f9e9e5', text: '#8f2525', pm: 107, pm10: 160, times: '7.1', line: 'Unhealthy for everyone. Wear an N95 mask if you must go out.' },
+      very:      { aqi: 287, label: 'Very unhealthy', ring: '#8b4fb3', tint: '#f1e9f3', text: '#5e2d80', pm: 236, pm10: 318, times: '15.7', line: 'Stay indoors. Sensitive people should not go out at all.' },
+      hazardous: { aqi: 356, label: 'Hazardous', ring: '#8a2433', tint: '#f2e3e3', text: '#6e1825', pm: 310, pm10: 402, times: '20.7', line: 'Emergency conditions. Go out only if necessary, with an N95.' }
     };
     var b = BANDS[this.props.band] || BANDS.very;
     var C = 2 * Math.PI * 110;
@@ -239,10 +232,10 @@ class Component extends DCLogic {
       moderate: { bg: '#f7f1de', fg: '#6b5408' }
     };
     var fam = [
-      { name: 'Ammi', initial: 'A', profile: '65 · asthma, heart condition', level: 'Severe', k: 'severe', avBg: '#e8d5c9', avFg: '#6b3420', headline: 'Aaj ghar ke andar hi rahein. Inhaler doctor ki hidayat ke mutabiq paas rakhein.' },
-      { name: 'Ali', initial: 'A', profile: '27 · delivery rider, bike', level: 'High', k: 'high', avBg: '#d3e2ea', avFg: '#1e4a5f', headline: 'N95 pehnein, har 2 ghante baad 10 minute andar break lein.' },
-      { name: 'Sara', initial: 'S', profile: '30 · pregnant, rickshaw', level: 'High', k: 'high', avBg: '#ead6e0', avFg: '#6a2a4a', headline: 'Rickshaw ki jagah band gaari, ya aaj ghar se kaam behtar hai.' },
-      { name: 'Zara', initial: 'Z', profile: '8 · allergies, walks to school', level: 'High', k: 'high', avBg: '#f0dcc0', avFg: '#6b4310', headline: 'School tak walk ki jagah gaari. Khel aur assembly andar.' }
+      { name: 'Ammi', initial: 'A', profile: '65 · asthma, heart condition', level: 'Severe', k: 'severe', avBg: '#e8d5c9', avFg: '#6b3420', headline: 'Stay indoors today. Keep your inhaler handy as your doctor advised.' },
+      { name: 'Ali', initial: 'A', profile: '27 · delivery rider, bike', level: 'High', k: 'high', avBg: '#d3e2ea', avFg: '#1e4a5f', headline: 'Wear an N95 and take a 10-minute indoor break every 2 hours.' },
+      { name: 'Sara', initial: 'S', profile: '30 · pregnant, rickshaw', level: 'High', k: 'high', avBg: '#ead6e0', avFg: '#6a2a4a', headline: 'Take a closed car instead of a rickshaw, or work from home today.' },
+      { name: 'Zara', initial: 'Z', profile: '8 · allergies, walks to school', level: 'High', k: 'high', avBg: '#f0dcc0', avFg: '#6b4310', headline: 'Go to school by car instead of walking. Keep play and assembly indoors.' }
     ].map(function (m) { return Object.assign({}, m, { pillBg: lv[m.k].bg, pillFg: lv[m.k].fg }); });
 
     return {

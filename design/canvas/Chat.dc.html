@@ -2,17 +2,16 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Saans — Puchho Saans chat</title>
+<title>Saans — Ask Saans chat</title>
 <script src="./support.js"></script>
 </head>
 <body>
 <x-dc>
 <helmet>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&amp;family=Noto+Nastaliq+Urdu:wght@400;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
 <style>
 body{margin:0}
 .serif{font-family:'Source Serif 4',Georgia,serif;font-weight:400}
-.ur{font-family:'Noto Nastaliq Urdu',serif;direction:rtl;line-height:2.2}
 .mono{font-family:'JetBrains Mono',ui-monospace,monospace}
 .tool{display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#3d3d3a;background:#efe9de;border:1px solid #e6dfd8;border-radius:9999px;padding:5px 10px}
 .tool b{font-weight:500;color:#1f5f53}
@@ -24,14 +23,14 @@ body{margin:0}
   <header style="padding: 16px; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid #e6dfd8;">
     <a href="Dashboard.dc.html" aria-label="Back" style="width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; color: #141413;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></a>
     <div style="display: flex; flex-direction: column; gap: 2px;">
-      <h1 class="serif" style="margin: 0; font-size: 24px; letter-spacing: -0.3px; line-height: 1;">Puchho Saans</h1>
+      <h1 class="serif" style="margin: 0; font-size: 24px; letter-spacing: -0.3px; line-height: 1;">Ask Saans</h1>
       <span style="font-size: 12px; color: #3d3d3a; display: inline-flex; align-items: center; gap: 6px;"><span style="width: 7px; height: 7px; border-radius: 50%; background: #2f8a45;"></span>Live data · Khan Family, Gulberg</span>
     </div>
   </header>
 
   <div role="log" aria-label="Conversation" style="flex: 1; padding: 20px 16px; display: flex; flex-direction: column; gap: 18px;">
 
-    <div style="align-self: flex-end; max-width: 78%; background: #181715; color: #faf9f5; padding: 12px 16px; border-radius: 18px 18px 4px 18px; font-size: 15px; line-height: 1.5;">Ammi ki walk ke liye aaj best time?</div>
+    <div style="align-self: flex-end; max-width: 78%; background: #181715; color: #faf9f5; padding: 12px 16px; border-radius: 18px 18px 4px 18px; font-size: 15px; line-height: 1.5;">Best time for Ammi’s walk today?</div>
 
     <div style="display: flex; flex-direction: column; gap: 10px; max-width: 92%;">
       <div style="display: flex; flex-wrap: wrap; gap: 6px;" aria-label="Tools used">
@@ -40,26 +39,26 @@ body{margin:0}
         <span class="tool"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1f5f53" stroke-width="2.4" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.4-.6-.6-2.4Z"/></svg><b>find_best_window</b> · 1h before 18:00</span>
       </div>
       <div style="background: #f5f0e8; padding: 14px 16px; border-radius: 4px 18px 18px 18px; font-size: 15px; line-height: 1.55; color: #252523; display: flex; flex-direction: column; gap: 10px;">
-        <p style="margin: 0;">Ammi ke liye aaj sabse kam buri hawa <strong>3 se 4 baje</strong> hogi, AQI takreeban <strong>158</strong>. Ye bhi “unhealthy” hai, is liye:</p>
+        <p style="margin: 0;">The cleanest air for Ammi today will be <strong>3 to 4 pm</strong>, with AQI around <strong>158</strong>. That is still “unhealthy”, so:</p>
         <ul style="margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 4px;">
-          <li>Behtar hai ghar ke andar ya baramde mein 10 minute chalein.</li>
-          <li>Bahar jaayein to N95 pehnein aur inhaler saath rakhein.</li>
-          <li>Maghrib ke baad AQI 300 se upar jaayega, tab bilkul nahi.</li>
+          <li>It is better to walk for 10 minutes indoors or on the veranda.</li>
+          <li>If you go out, wear an N95 and carry your inhaler.</li>
+          <li>After Maghrib the AQI will go above 300, so not then at all.</li>
         </ul>
       </div>
     </div>
 
-    <div class="ur" lang="ur" style="align-self: flex-end; max-width: 78%; background: #181715; color: #faf9f5; padding: 8px 16px; border-radius: 18px 18px 4px 18px; font-size: 16px;">کیا زارا کو کل اسکول بھیجیں؟</div>
+    <div style="align-self: flex-end; max-width: 78%; background: #181715; color: #faf9f5; padding: 8px 16px; border-radius: 18px 18px 4px 18px; font-size: 16px;">Should Zara go to school tomorrow?</div>
 
     <div style="display: flex; flex-direction: column; gap: 10px; max-width: 92%;">
       <div style="display: flex; flex-wrap: wrap; gap: 6px;" aria-label="Tools used">
         <span class="tool"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1f5f53" stroke-width="2.4" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.4-.6-.6-2.4Z"/></svg><b>get_forecast</b> · Gulberg · 24h</span>
         <span class="tool"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1f5f53" stroke-width="2.4" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.4-.6-.6-2.4Z"/></svg><b>get_household_members</b> · Zara</span>
       </div>
-      <div class="ur" lang="ur" style="background: #f5f0e8; padding: 10px 16px; border-radius: 18px 4px 18px 18px; font-size: 16px; color: #252523;">کل صبح ۷ سے ۹ بجے AQI تقریباً ۲۹۰ رہے گا۔ اسکول بھیجنا ہے تو گاڑی میں چھوڑیں، پیدل نہیں۔ ٹیچر سے کہیں کہ کھیل اور اسمبلی اندر ہو۔ کھانسی یا سانس میں سیٹی ہو تو گھر رکھیں اور ڈاکٹر سے پوچھیں۔</div>
+      <div style="background: #f5f0e8; padding: 10px 16px; border-radius: 18px 4px 18px 18px; font-size: 16px; color: #252523;">Tomorrow 7 to 9 am the AQI will be around 290. If she has to go to school, drop her by car, not on foot. Ask the teacher to keep play and assembly indoors. If she has a cough or wheezing, keep her home and ask a doctor.</div>
     </div>
 
-    <div style="align-self: flex-end; max-width: 78%; background: #181715; color: #faf9f5; padding: 12px 16px; border-radius: 18px 18px 4px 18px; font-size: 15px; line-height: 1.5;">DHA vs Shahdara — kahan hawa behtar hai?</div>
+    <div style="align-self: flex-end; max-width: 78%; background: #181715; color: #faf9f5; padding: 12px 16px; border-radius: 18px 18px 4px 18px; font-size: 15px; line-height: 1.5;">DHA vs Shahdara: where is the air better?</div>
 
     <div style="display: flex; flex-direction: column; gap: 10px; max-width: 92%;">
       <div style="display: flex; flex-wrap: wrap; gap: 6px;" aria-label="Tools used">
@@ -70,7 +69,7 @@ body{margin:0}
           <div style="background: #faf9f5; border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 2px;"><span style="font-size: 12px; color: #6c6a64;">DHA</span><span class="serif" style="font-size: 26px;">241</span><span style="font-size: 11px; font-weight: 600; color: #5e2d80; text-transform: uppercase; letter-spacing: .5px;">Very unhealthy</span></div>
           <div style="background: #faf9f5; border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 2px;"><span style="font-size: 12px; color: #6c6a64;">Shahdara</span><span class="serif" style="font-size: 26px;">318</span><span style="font-size: 11px; font-weight: 600; color: #6e1825; text-transform: uppercase; letter-spacing: .5px;">Hazardous</span></div>
         </div>
-        <p style="margin: 0; font-size: 15px; line-height: 1.55; color: #252523;">Abhi DHA mein hawa thori behtar hai, lekin dono jagah bahar rehna nuqsan deh hai.</p>
+        <p style="margin: 0; font-size: 15px; line-height: 1.55; color: #252523;">Right now the air in DHA is slightly better, but being outside is harmful in both places.</p>
       </div>
     </div>
 
@@ -83,15 +82,15 @@ body{margin:0}
 
   <div style="padding: 12px 16px 20px; border-top: 1px solid #e6dfd8; background: #faf9f5; display: flex; flex-direction: column; gap: 12px;">
     <div style="display: flex; gap: 8px; overflow-x: auto; padding-bottom: 2px;">
-      <button type="button" class="sug">Ali ki shift 6 baje se hai, kya karein?</button>
-      <button type="button" class="sug">Kya Zara ko kal school bhejein?</button>
+      <button type="button" class="sug">Ali’s shift starts at 6, what should he do?</button>
+      <button type="button" class="sug">Should Zara go to school tomorrow?</button>
     </div>
     <form style="display: flex; gap: 8px; align-items: center;">
       <label for="q" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0);">Ask Saans</label>
-      <input id="q" type="text" placeholder="Urdu, Roman ya English mein poochein…" style="flex: 1; min-width: 0; height: 48px; border-radius: 9999px; border: 1px solid #d9d0c3; background: #faf9f5; padding: 0 18px; font: 15px Inter, sans-serif; color: #141413;">
+      <input id="q" type="text" placeholder="Ask about the air, the forecast or your household…" style="flex: 1; min-width: 0; height: 48px; border-radius: 9999px; border: 1px solid #d9d0c3; background: #faf9f5; padding: 0 18px; font: 15px Inter, sans-serif; color: #141413;">
       <button type="submit" aria-label="Send" style="width: 48px; height: 48px; border-radius: 50%; border: 0; background: #a9583e; color: #fff; display: grid; place-items: center; cursor: pointer; flex: none;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7Z"/></svg></button>
     </form>
-    <p style="margin: 0; font-size: 11.5px; line-height: 1.5; color: #6c6a64;">Saans sehat ki aagahi ke liye hai, ilaaj ke liye nahi. Emergency: 1122.</p>
+    <p style="margin: 0; font-size: 11.5px; line-height: 1.5; color: #6c6a64;">Saans is for health awareness, not treatment. Emergency: 1122.</p>
   </div>
 </div>
 </x-dc>
