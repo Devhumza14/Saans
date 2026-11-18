@@ -97,7 +97,7 @@ export default async function MapPage() {
               <div className="rounded-2xl border border-hairline bg-canvas px-[18px] pb-3 pt-2">
                 <h2 className="mb-1 mt-3 font-serif text-[22px]">Worst to best</h2>
                 <ol>
-                  {ranked.map(({ area, aqi, air }) => {
+                  {ranked.map(({ area, aqi }) => {
                     const b = aqiBand(aqi);
                     return (
                       <li key={area.name} className="border-b border-[#ebe6df] last:border-0">
