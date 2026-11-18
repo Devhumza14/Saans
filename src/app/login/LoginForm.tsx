@@ -65,13 +65,13 @@ export function LoginForm({ next, demoEnabled }: { next: string; demoEnabled: bo
         <label htmlFor="pw" className="text-sm font-medium text-body">Password {mode === "register" && <span className="font-normal text-muted">· at least 8 characters</span>}</label>
         <input id="pw" type="password" required minLength={8} autoComplete={mode === "register" ? "new-password" : "current-password"} value={password} onChange={(e) => setPassword(e.target.value)} className={input} />
         <button type="submit" disabled={busy} className="mt-1 min-h-12 rounded-lg bg-cta px-5 text-base font-medium text-white hover:bg-cta-hover disabled:opacity-60">
-          {busy ? "Please wait…" : mode === "register" ? "Account banayein" : "Sign in"}
+          {busy ? "Please wait…" : mode === "register" ? "Create account" : "Sign in"}
         </button>
         {status.kind === "sent" && <p role="status" className="text-sm text-[#24552f]">{status.msg}</p>}
         {status.kind === "error" && <p role="alert" className="text-sm text-[#8f2525]">{status.msg}</p>}
       </form>
 
-      <button type="button" onClick={magicLink} disabled={busy} className={secondary}><Mail size={18} aria-hidden /> Password ke baghair: email link</button>
+      <button type="button" onClick={magicLink} disabled={busy} className={secondary}><Mail size={18} aria-hidden /> Email me a sign-in link</button>
 
       {demoEnabled && (
         <form action={demoAction} className="flex flex-col gap-2 border-t border-hairline pt-5">

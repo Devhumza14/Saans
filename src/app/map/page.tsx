@@ -117,7 +117,7 @@ export default async function MapPage() {
         )}
 
         <div className="flex flex-col gap-1.5 rounded-xl bg-soft px-5 py-4">
-          <span className="text-sm font-semibold">Data ka source</span>
+          <span className="text-sm font-semibold">Data source</span>
           <p className="text-sm leading-relaxed text-body">AQI comes from the Open-Meteo Air Quality API (CAMS atmospheric model, at each area’s coordinates). It is a model estimate, not a ground-sensor reading, so it can differ within a neighbourhood. Values refresh every 15 minutes.</p>
         </div>
       </main>

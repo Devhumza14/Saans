@@ -21,7 +21,7 @@ Households in Lahore, especially those with children, seniors, pregnant women, p
 3. **Dashboard**: live AQI ring, PM2.5 vs the WHO guideline, 24h forecast with the best window, and a card per person with their own risk.
 4. **Member plan** (`/member/[id]`): outdoor advice with best/avoid windows, mask, home, activity, health-watch signs, hydration, 1122 emergency routing, and a "why is my plan different?" box showing the engine's reasoning. Listen (speech), share on WhatsApp, regenerate.
 5. **Compare** (`/compare`): the whole family side by side, plans generated in parallel from the same air.
-6. **Puchho Saans** (`/chat`): a tool-using chat agent that answers from live data.
+6. **Ask Saans** (`/chat`): a tool-using chat agent that answers from live data.
 7. **Alerts**: a bell, toast and browser notification when risk reaches high now or within 6 hours.
 
 ## Architecture
@@ -57,8 +57,8 @@ OpenRouter, default `google/gemini-2.5-flash` (`OPENROUTER_MODEL`, `OPENROUTER_C
 
 ## Safety & ethics
 
-- Footer disclaimer on every page: *Saans sehat ki aagahi ke liye hai, ilaaj ke liye nahi. Takleef ki soorat mein doctor se rujoo karein. Emergency: 1122.*
-- The AI is instructed never to diagnose and never to change medication ("apni inhaler/dawai doctor ki hidayat ke mutabiq paas rakhein"); no food or remedy cure claims.
+- Footer disclaimer on every page: *Saans is for health awareness, not treatment. If you feel unwell, see a doctor. Emergency: 1122.*
+- The AI is instructed never to diagnose and never to change medication ("keep your inhaler/medicine handy as your doctor advised"); no food or remedy cure claims.
 - Severe symptoms are routed to **1122**.
 - Row-level security: a household's data is visible only to its owner. Service-role and OpenRouter keys are server-only. No secrets in the repo.
 - The demo family is synthetic. Health details are used only to compute that household's plan.
@@ -87,7 +87,7 @@ Next.js 16 (App Router, TypeScript strict), Tailwind CSS v4, Supabase (Auth, Pos
 2. Copy `.env.example` to `.env.local` and fill it in.
 3. Run `supabase/schema.sql` in the Supabase SQL editor.
 4. In Supabase Auth settings, turn off "Confirm email" for instant sign-up. Optionally create a demo user and put it in `DEMO_EMAIL` / `DEMO_PASSWORD` to show a one-click Demo Login button.
-5. `npm run dev`, register an account, then press **Demo family load karein** on onboarding for a sample family.
+5. `npm run dev`, register an account, then press **Load demo family** on onboarding for a sample family.
 6. `npm test` runs the unit tests (risk engine, plan validation/override/retry).
 
 ## Environment variables
