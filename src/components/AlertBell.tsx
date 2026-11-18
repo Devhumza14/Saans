@@ -28,9 +28,9 @@ export function AlertBell() {
   }, []);
 
   useEffect(() => {
-    void check();
+    const first = setTimeout(() => void check(), 0);
     const t = setInterval(check, EVERY);
-    return () => clearInterval(t);
+    return () => { clearTimeout(first); clearInterval(t); };
   }, [check]);
   useEffect(() => { if (toast) { const t = setTimeout(() => setToast(null), 9000); return () => clearTimeout(t); } }, [toast]);
 

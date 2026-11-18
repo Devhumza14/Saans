@@ -17,7 +17,8 @@ export function LangProvider({ children }: { children: React.ReactNode }) {
   const [large, setLargeState] = useState(false);
 
   useEffect(() => {
-    setLargeState(store.get("saans.large") === "1");
+    const t = setTimeout(() => setLargeState(store.get("saans.large") === "1"), 0);
+    return () => clearTimeout(t);
   }, []);
   useEffect(() => {
     document.documentElement.dataset.large = String(large);

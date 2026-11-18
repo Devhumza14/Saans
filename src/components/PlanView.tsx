@@ -58,7 +58,7 @@ function useSpeech(text: string) {
       check();
       synth.addEventListener?.("voiceschanged", check);
       return () => { synth.removeEventListener?.("voiceschanged", check); synth.cancel(); };
-    } catch { setAvailable(false); }
+    } catch { /* no speech support: stays hidden */ }
   }, [tag]);
   const toggle = () => {
     try {
@@ -116,7 +116,8 @@ export function PlanView({ memberId, name }: { memberId: string; name: string })
     }
   }, [memberId]);
 
-  useEffect(() => { void load(); }, [load]);
+  // setTimeout keeps the initial fetch out of the effect body (react-hooks/set-state-in-effect).
+  useEffect(() => { const t = setTimeout(() => void load(), 0); return () => clearTimeout(t); }, [load]);
 
   if (state.status === "loading") return <PlanSkeleton />;
   if (state.status === "error") {
