@@ -17,6 +17,34 @@ const WxSchema = z.object({
   hourly: z.object({ time: z.array(z.string()), wind_speed_10m: z.array(num) }),
 });
 
+// ---- Optional ground-station AQI (WAQI). Set WAQI_TOKEN to enable; any failure falls back to the model. ----
+const WaqiSchema = z.object({
+  status: z.literal("ok"),
+  data: z.object({
+    aqi: z.union([z.number(), z.string()]),
+    city: z.object({ name: z.string(), geo: z.tuple([z.number(), z.number()]) }),
+    time: z.object({ iso: z.string() }),
+  }),
+});
+const MAX_STATION_KM = 15;
+const MAX_STATION_AGE_MS = 3 * 3600_000;
+const km = (aLat: number, aLng: number, bLat: number, bLng: number) =>
+  Math.hypot((aLat - bLat) * 111, (aLng - bLng) * 111 * Math.cos((aLat * Math.PI) / 180));
+
+async function nearestStation(lat: number, lng: number): Promise<{ aqi: number; name: string } | null> {
+  const token = process.env.WAQI_TOKEN?.split(/[\s#]/)[0].replace(/["']/g, "");
+  if (!token) return null;
+  try {
+    const j = WaqiSchema.parse(await getJson(`https://api.waqi.info/feed/geo:${lat};${lng}/?token=${encodeURIComponent(token)}`));
+    const aqi = Number(j.data.aqi); // "-" when the station has no reading
+    const [sLat, sLng] = j.data.city.geo;
+    if (!Number.isFinite(aqi) || km(lat, lng, sLat, sLng) > MAX_STATION_KM || Date.now() - Date.parse(j.data.time.iso) > MAX_STATION_AGE_MS) return null;
+    return { aqi, name: j.data.city.name };
+  } catch {
+    return null;
+  }
+}
+
 // ---- Normalised shape used everywhere else ----
 export type Hour = { time: string; aqi: number; pm25: number; pm10: number; wind: number | null };
 export type AirData = {
@@ -26,6 +54,7 @@ export type AirData = {
     wind: number | null; temp: number | null; humidity: number | null; time: string;
   };
   hourly: Hour[]; // from the current hour onward (up to 48h)
+  station?: string; // set when current AQI comes from a real ground station (WAQI) instead of the model
 };
 export type AirResult = { data: AirData; cached: boolean; fetchedAt: string };
 
@@ -37,10 +66,11 @@ async function getJson(url: string): Promise<unknown> {
 
 async function fetchLive(areaName: string, lat: number, lng: number): Promise<AirData> {
   const q = `latitude=${lat}&longitude=${lng}&timezone=Asia/Karachi&forecast_days=2`;
-  const [air, wx] = await Promise.all([
+  const [air, wx, station] = await Promise.all([
     getJson(`${AQ_URL}?${q}&current=us_aqi,pm2_5,pm10,nitrogen_dioxide,ozone,carbon_monoxide&hourly=us_aqi,pm2_5,pm10`).then((j) => AirSchema.parse(j)),
     // Weather is a nice-to-have: if it fails we still serve air quality.
     getJson(`${WX_URL}?${q}&current=wind_speed_10m,temperature_2m,relative_humidity_2m&hourly=wind_speed_10m`).then((j) => WxSchema.parse(j)).catch(() => null),
+    nearestStation(lat, lng),
   ]);
   if (air.current.us_aqi == null) throw new Error("Open-Meteo returned no AQI");
 
@@ -53,10 +83,14 @@ async function fetchLive(areaName: string, lat: number, lng: number): Promise<Ai
   });
 
   const c = air.current;
+  // Ground station wins for "now"; shift the model forecast by the same offset so the chart stays continuous.
+  const delta = station ? station.aqi - (c.us_aqi ?? station.aqi) : 0;
+  if (delta) for (const h of hourly) h.aqi = Math.max(0, Math.round(h.aqi + delta));
   return {
     area: areaName,
+    station: station?.name,
     current: {
-      aqi: c.us_aqi ?? 0, pm25: c.pm2_5 ?? 0, pm10: c.pm10 ?? 0, no2: c.nitrogen_dioxide ?? 0, o3: c.ozone ?? 0, co: c.carbon_monoxide ?? 0,
+      aqi: station?.aqi ?? c.us_aqi ?? 0, pm25: c.pm2_5 ?? 0, pm10: c.pm10 ?? 0, no2: c.nitrogen_dioxide ?? 0, o3: c.ozone ?? 0, co: c.carbon_monoxide ?? 0,
       wind: wx?.current.wind_speed_10m ?? null, temp: wx?.current.temperature_2m ?? null, humidity: wx?.current.relative_humidity_2m ?? null,
       time: c.time,
     },

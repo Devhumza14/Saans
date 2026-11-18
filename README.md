@@ -92,7 +92,7 @@ Next.js 16 (App Router, TypeScript strict), Tailwind CSS v4, Supabase (Auth, Pos
 
 ## Environment variables
 
-`NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY` (server-only), `OPENROUTER_API_KEY` (server-only), `OPENROUTER_MODEL`, `OPENROUTER_CHAT_MODEL`, `DEMO_EMAIL`, `DEMO_PASSWORD`. See `.env.example`.
+`NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY` (server-only), `OPENROUTER_API_KEY` (server-only), `OPENROUTER_MODEL`, `OPENROUTER_CHAT_MODEL`, `WAQI_TOKEN` (optional, ground-station AQI), `DEMO_EMAIL`, `DEMO_PASSWORD`. See `.env.example`.
 
 ## Team
 

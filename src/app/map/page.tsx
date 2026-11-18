@@ -53,7 +53,7 @@ export default async function MapPage() {
                 <div aria-hidden className="absolute inset-0 opacity-70 [background-image:linear-gradient(#ebe6df_1px,transparent_1px),linear-gradient(90deg,#ebe6df_1px,transparent_1px)] [background-size:64px_64px]" />
                 <div aria-hidden className="absolute left-[6%] top-[8%] h-[84%] w-[88%] rounded-[46%] border-2 border-dashed border-[#d9d0c3]" />
                 <span aria-hidden className="absolute left-3.5 top-3 text-[11px] font-medium uppercase tracking-[1px] text-muted">Ring Road</span>
-                <span className="absolute bottom-3 right-3.5 font-mono text-xs text-muted">{anyCached ? "cached" : "live"} · {stamp} · Open-Meteo</span>
+                <span className="absolute bottom-3 right-3.5 font-mono text-xs text-muted">{anyCached ? "cached" : "live"} · {stamp} · {rows.some((r) => r.air.data.station) ? "WAQI stations + Open-Meteo" : "Open-Meteo"}</span>
                 {rows.map(({ area, aqi }) => {
                   const b = aqiBand(aqi);
                   const sel = area.name === home.name;
@@ -118,7 +118,7 @@ export default async function MapPage() {
 
         <div className="flex flex-col gap-1.5 rounded-xl bg-soft px-5 py-4">
           <span className="text-sm font-semibold">Data source</span>
-          <p className="text-sm leading-relaxed text-body">AQI comes from the Open-Meteo Air Quality API (CAMS atmospheric model, at each area’s coordinates). It is a model estimate, not a ground-sensor reading, so it can differ within a neighbourhood. Values refresh every 15 minutes.</p>
+          <p className="text-sm leading-relaxed text-body">{rows.some((r) => r.air.data.station) ? "AQI comes from the nearest ground monitoring station (WAQI) when one is within 15 km and reporting recently; otherwise from the Open-Meteo CAMS model at the area’s coordinates. Nearby areas can share a station. " : "AQI comes from the Open-Meteo Air Quality API (CAMS atmospheric model, at each area’s coordinates). It is a model estimate, not a ground-sensor reading, so it can differ within a neighbourhood. "}Values refresh every 15 minutes.</p>
         </div>
       </main>
     </>
