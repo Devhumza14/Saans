@@ -14,7 +14,7 @@ Live canvas: https://claude.ai/artifact/1vjFgNjFvBGQpdBHkKKRYg
 | canvas/Onboarding.dc.html | `/onboarding` (mobile) |
 | canvas/System.dc.html | tokens: colours, AQI bands, type |
 
-`DESIGN.md` is the claude design system the look is based on. Fonts: Source Serif 4 (display), Inter (body), Noto Nastaliq Urdu, JetBrains Mono.
+`DESIGN.md` is the claude design system the look is based on. Fonts: Source Serif 4 (display), Inter (body), JetBrains Mono.
 
 Images in `assets/` map to the `/_blob/<id>` URLs in the canvas: dc2f364e… = badshahi-mosque, ccb5e291… = smog-city, 81ebed2d… = smog-haze, e8166f98… = punjab-road. Copy them to `public/images/` when building.
 Photos: Unsplash (Shazaf Zafar and others), Unsplash License.

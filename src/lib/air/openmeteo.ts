@@ -20,29 +20,38 @@ const WxSchema = z.object({
 // ---- Optional ground-station AQI (WAQI). Set WAQI_TOKEN to enable; any failure falls back to the model. ----
 const WaqiSchema = z.object({
   status: z.literal("ok"),
-  data: z.object({
-    aqi: z.union([z.number(), z.string()]),
-    city: z.object({ name: z.string(), geo: z.tuple([z.number(), z.number()]) }),
-    time: z.object({ iso: z.string() }),
-  }),
+  data: z.array(z.object({ lat: z.number(), lon: z.number(), aqi: z.string(), station: z.object({ name: z.string(), time: z.string() }) })),
 });
 const MAX_STATION_KM = 15;
 const MAX_STATION_AGE_MS = 3 * 3600_000;
 const km = (aLat: number, aLng: number, bLat: number, bLng: number) =>
   Math.hypot((aLat - bLat) * 111, (aLng - bLng) * 111 * Math.cos((aLat * Math.PI) / 180));
 
-async function nearestStation(lat: number, lng: number): Promise<{ aqi: number; name: string } | null> {
+type Station = { lat: number; lng: number; aqi: number; name: string };
+let stations: { at: number; list: Promise<Station[]> } | undefined;
+
+/** All Lahore stations in one call, shared by every area for 5 minutes. */
+function lahoreStations(): Promise<Station[]> {
   const token = process.env.WAQI_TOKEN?.split(/[\s#]/)[0].replace(/["']/g, "");
-  if (!token) return null;
-  try {
-    const j = WaqiSchema.parse(await getJson(`https://api.waqi.info/feed/geo:${lat};${lng}/?token=${encodeURIComponent(token)}`));
-    const aqi = Number(j.data.aqi); // "-" when the station has no reading
-    const [sLat, sLng] = j.data.city.geo;
-    if (!Number.isFinite(aqi) || km(lat, lng, sLat, sLng) > MAX_STATION_KM || Date.now() - Date.parse(j.data.time.iso) > MAX_STATION_AGE_MS) return null;
-    return { aqi, name: j.data.city.name };
-  } catch {
-    return null;
+  if (!token) return Promise.resolve([]);
+  if (stations && Date.now() - stations.at < 5 * 60_000) return stations.list;
+  const list = getJson(`https://api.waqi.info/v2/map/bounds?latlng=31.30,74.10,31.70,74.50&networks=all&token=${encodeURIComponent(token)}`)
+    .then((j) => WaqiSchema.parse(j).data.flatMap((s): Station[] => {
+      const aqi = Number(s.aqi); // "-" when the station has no reading
+      return Number.isFinite(aqi) && Date.now() - Date.parse(s.station.time) < MAX_STATION_AGE_MS ? [{ lat: s.lat, lng: s.lon, aqi, name: s.station.name }] : [];
+    }))
+    .catch(() => []);
+  stations = { at: Date.now(), list };
+  return list;
+}
+
+async function nearestStation(lat: number, lng: number): Promise<{ aqi: number; name: string } | null> {
+  let best: { d: number; s: Station } | null = null;
+  for (const s of await lahoreStations()) {
+    const d = km(lat, lng, s.lat, s.lng);
+    if (d <= MAX_STATION_KM && (!best || d < best.d)) best = { d, s };
   }
+  return best ? { aqi: best.s.aqi, name: best.s.name } : null;
 }
 
 // ---- Normalised shape used everywhere else ----

@@ -92,7 +92,7 @@ export default async function MapPage() {
                       return <li key={m.name} className="rounded-full px-2.5 py-1 text-xs font-semibold" style={{ background: s.bg, color: s.fg }}>{m.name} · {s.label}</li>;
                     })}
                   </ul>
-                  <Link href="/dashboard" className="inline-flex min-h-11 items-center justify-center rounded-lg bg-cta-hover text-[15px] font-medium text-white no-underline hover:bg-cta">Dashboard kholein</Link>
+                  <Link href="/dashboard" className="inline-flex min-h-11 items-center justify-center rounded-lg bg-cta-hover text-[15px] font-medium text-white no-underline hover:bg-cta">Open dashboard</Link>
                 </div>
               )}
               <div className="rounded-2xl border border-hairline bg-canvas px-[18px] pb-3 pt-2">
