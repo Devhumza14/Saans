@@ -4,9 +4,9 @@ import { SiteHeader } from "@/components/SiteHeader";
 const SEGMENTS = [
   { t: "Schools", d: "Per-class outdoor-play and assembly guidance from live AQI, with parent WhatsApp summaries." },
   { t: "Employers & delivery fleets", d: "Rider shift windows and mask guidance for outdoor staff." },
-  { t: "NGOs & clinics", d: "Awareness plans for the households they serve, in Urdu, Roman Urdu and English." },
+  { t: "NGOs & clinics", d: "Awareness plans for the households they serve." },
 ];
-const ROADMAP = ["Neighbourhood sensor and Open-Meteo blend", "WhatsApp bot delivery", "Organisation dashboards with consent-based aggregate risk", "Offline-first Urdu voice plans"];
+const ROADMAP = ["Neighbourhood sensor and Open-Meteo blend", "WhatsApp bot delivery", "Organisation dashboards with consent-based aggregate risk", "Offline-first voice plans"];
 
 export default function ForOrganizations() {
   return (

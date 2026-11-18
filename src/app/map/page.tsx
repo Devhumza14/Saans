@@ -35,17 +35,17 @@ export default async function MapPage() {
       <SiteHeader signedIn={fam.signedIn} />
       <main className="mx-auto flex max-w-[1200px] flex-col gap-7 px-4 pb-14 pt-10 sm:px-8">
         <div className="flex flex-col gap-2.5">
-          <p className="text-xs font-medium uppercase tracking-[1.5px] text-cta">Lahore · Naqsha</p>
-          <h1 className="font-serif text-[36px] leading-[1.08] tracking-[-1px] sm:text-[48px]">Aap ke ilaqe ki hawa, shehar ke muqable mein.</h1>
-          <p className="max-w-[640px] text-[17px] leading-relaxed text-body">Har pin ek ilaqa hai. Rang AQI batata hai. Pin dabayein to us ilaqe ka dashboard khulta hai.</p>
+          <p className="text-xs font-medium uppercase tracking-[1.5px] text-cta">Lahore · Map</p>
+          <h1 className="font-serif text-[36px] leading-[1.08] tracking-[-1px] sm:text-[48px]">Your area’s air, compared with the city.</h1>
+          <p className="max-w-[640px] text-[17px] leading-relaxed text-body">Each pin is an area. The colour shows its AQI. Tap a pin to open that area’s dashboard.</p>
         </div>
 
         {flat && (
-          <p role="status" className="rounded-xl border border-hairline bg-canvas px-5 py-3 text-sm text-body">Abhi Lahore ke tamam ilaqon ki value taqreeban yaksaan hai. Ye model ki resolution (taqreeban 11 km) ki hadd hai, ilaqon mein asal farq nahi chhupaya ja raha.</p>
+          <p role="status" className="rounded-xl border border-hairline bg-canvas px-5 py-3 text-sm text-body">Right now the values for all Lahore areas are almost identical. This is a limit of the model’s resolution (about 11 km), not a real absence of differences between areas.</p>
         )}
 
         {rows.length === 0 ? (
-          <p role="alert" className="rounded-xl border border-hairline bg-canvas p-6 text-body">Hawa ka data abhi nahi mil raha. Thori dair baad dobara koshish karein.</p>
+          <p role="alert" className="rounded-xl border border-hairline bg-canvas p-6 text-body">Air data is unavailable right now. Please try again shortly.</p>
         ) : (
           <div className="flex flex-wrap items-start gap-6">
             <section aria-label="Map of Lahore areas" className="flex min-w-0 flex-[2_1_600px] flex-col gap-3">
@@ -77,7 +77,7 @@ export default async function MapPage() {
             <aside className="flex min-w-0 flex-[1_1_320px] flex-col gap-4">
               {mine && band && (
                 <div className="flex flex-col gap-3.5 rounded-2xl bg-dark p-[22px] text-canvas">
-                  <span className="text-xs font-medium uppercase tracking-[1.5px] text-[#e8a55a]">{fam.signedIn ? "Aap ka ilaqa" : "Selected"} · {home.name}</span>
+                  <span className="text-xs font-medium uppercase tracking-[1.5px] text-[#e8a55a]">{fam.signedIn ? "Your area" : "Selected"} · {home.name}</span>
                   <div className="flex items-center gap-4">
                     <span className="grid size-20 shrink-0 place-items-center rounded-full border-8 font-serif text-[28px]" style={{ borderColor: band.color }}>{mine.aqi}</span>
                     <div className="flex flex-col gap-1">
@@ -96,7 +96,7 @@ export default async function MapPage() {
                 </div>
               )}
               <div className="rounded-2xl border border-hairline bg-canvas px-[18px] pb-3 pt-2">
-                <h2 className="mb-1 mt-3 font-serif text-[22px]">Sab se kharab se behtar</h2>
+                <h2 className="mb-1 mt-3 font-serif text-[22px]">Worst to best</h2>
                 <ol>
                   {ranked.map(({ area, aqi, air }) => {
                     const b = aqiBand(aqi);
@@ -118,7 +118,7 @@ export default async function MapPage() {
 
         <div className="flex flex-col gap-1.5 rounded-xl bg-soft px-5 py-4">
           <span className="text-sm font-semibold">Data ka source</span>
-          <p className="text-sm leading-relaxed text-body">AQI Open-Meteo Air Quality API se aata hai (CAMS atmospheric model, har ilaqe ke coordinates par). Ye zameeni sensor ki reading nahi, model ka andaza hai, is liye mohalle ke andar farq ho sakta hai. Values har 15 minute mein refresh hoti hain.</p>
+          <p className="text-sm leading-relaxed text-body">AQI comes from the Open-Meteo Air Quality API (CAMS atmospheric model, at each area’s coordinates). It is a model estimate, not a ground-sensor reading, so it can differ within a neighbourhood. Values refresh every 15 minutes.</p>
         </div>
       </main>
     </>

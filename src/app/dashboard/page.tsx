@@ -14,12 +14,12 @@ import { aqiBand, bestWindows, personalRisk, whoMultiple, type AqiBand } from "@
 export const dynamic = "force-dynamic";
 
 const LINE: Record<AqiBand["key"], string> = {
-  good: "Hawa saaf hai. Sab ke liye bahar jaana theek hai.",
-  moderate: "Zyada tar logon ke liye theek, lekin asthma wale lambi walk kam karein.",
-  sensitive: "Bachon, buzurgon aur asthma walon ke liye bahar ka waqt kam karein.",
-  unhealthy: "Sab ke liye nuqsan deh. Bahar jaana ho to N95 mask pehnein.",
-  very: "Ghar ke andar rahein. Hassas log bilkul bahar na niklein.",
-  hazardous: "Sirf zaroorat par bahar niklein, N95 ke saath. Hassas log ghar par rahein.",
+  good: "The air is clean. Fine for everyone to go outside.",
+  moderate: "Fine for most people, but those with asthma should limit long walks.",
+  sensitive: "Children, older adults and people with asthma should limit time outside.",
+  unhealthy: "Unhealthy for everyone. Wear an N95 mask if you must go out.",
+  very: "Stay indoors. Sensitive people should not go out at all.",
+  hazardous: "Go out only if necessary, with an N95. Sensitive people should stay home.",
 };
 
 export default async function Dashboard({ searchParams }: { searchParams: Promise<{ area?: string }> }) {
@@ -40,9 +40,9 @@ export default async function Dashboard({ searchParams }: { searchParams: Promis
         <SiteHeader signedIn={fam.signedIn} />
         <main className="mx-auto flex max-w-[640px] flex-col items-start gap-4 px-4 py-24 sm:px-8">
           <AlertTriangle aria-hidden className="text-[#8a4510]" />
-          <h1 className="font-serif text-4xl tracking-[-0.8px]">Hawa ka data abhi nahi mil raha</h1>
+          <h1 className="font-serif text-4xl tracking-[-0.8px]">Air data is unavailable right now</h1>
           <p className="text-body">The live air-quality service did not answer and we have no saved reading for {area.name} yet. Please try again in a minute.</p>
-          <Link href={`/dashboard?area=${encodeURIComponent(area.name)}`} className="inline-flex min-h-11 items-center rounded-lg bg-cta px-5 font-medium text-white hover:bg-cta-hover">Dobara koshish karein</Link>
+          <Link href={`/dashboard?area=${encodeURIComponent(area.name)}`} className="inline-flex min-h-11 items-center rounded-lg bg-cta px-5 font-medium text-white hover:bg-cta-hover">Try again</Link>
         </main>
       </>
     );
@@ -67,7 +67,7 @@ export default async function Dashboard({ searchParams }: { searchParams: Promis
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div className="flex flex-col gap-1">
             <p className="text-sm text-muted">Assalam-o-alaikum, {fam.householdName}</p>
-            <h1 className="font-serif text-[40px] leading-[1.1] tracking-[-0.8px]">Aaj ki hawa</h1>
+            <h1 className="font-serif text-[40px] leading-[1.1] tracking-[-0.8px]">Today’s air</h1>
           </div>
           <div className="flex flex-wrap items-center gap-2.5">
             <AreaSelect area={area.name} />
@@ -86,7 +86,6 @@ export default async function Dashboard({ searchParams }: { searchParams: Promis
               <span className="inline-flex items-center gap-2 self-start rounded-full px-3.5 py-2 text-[13px] font-semibold uppercase tracking-wide" style={{ background: band.tint, color: band.text }}>
                 <span className="size-[9px] rounded-full" style={{ background: band.color }} />{band.label}
               </span>
-              <p className="ur text-[26px]" lang="ur" style={{ color: band.text }}>{band.ur}</p>
               <p className="text-[17px] leading-relaxed text-body">{LINE[band.key]}</p>
               <p className="text-[13px] text-muted">{data.area}, Lahore · Open-Meteo</p>
             </div>
@@ -109,7 +108,7 @@ export default async function Dashboard({ searchParams }: { searchParams: Promis
             <div className="flex flex-col gap-2 rounded-2xl border border-hairline bg-canvas p-5">
               <span className="flex items-center gap-2 text-[13px] text-muted"><Wind size={16} aria-hidden /> Wind</span>
               <span><span className="font-serif text-3xl">{c.wind != null ? Math.round(c.wind) : "—"}</span> <span className="text-[13px] text-muted">km/h</span></span>
-              <span className="text-[13px] leading-snug text-body">{c.wind == null ? "Wind data unavailable" : calm ? "Hawa ruki hui hai, smog jama ho sakta hai" : "Hawa chal rahi hai, smog thoda bikhar sakta hai"}</span>
+              <span className="text-[13px] leading-snug text-body">{c.wind == null ? "Wind data unavailable" : calm ? "Wind is calm, smog can build up" : "Wind is blowing, smog may thin out a little"}</span>
             </div>
             <div className="flex flex-col gap-2 rounded-2xl border border-hairline bg-canvas p-5">
               <span className="flex items-center gap-2 text-[13px] text-muted"><Thermometer size={16} aria-hidden /> Temp · Humidity</span>
@@ -141,7 +140,7 @@ export default async function Dashboard({ searchParams }: { searchParams: Promis
         </section>
 
         <section aria-labelledby="fam-h" className="flex flex-col gap-4">
-          <h2 id="fam-h" className="font-serif text-[28px] tracking-[-0.3px]">Ghar ke log <span className="font-sans text-base text-muted">· {fam.householdName}{fam.signedIn ? "" : ", demo family"}</span></h2>
+          <h2 id="fam-h" className="font-serif text-[28px] tracking-[-0.3px]">Your household <span className="font-sans text-base text-muted">· {fam.householdName}{fam.signedIn ? "" : ", demo family"}</span></h2>
           <div className="grid gap-4 [grid-template-columns:repeat(auto-fit,minmax(250px,1fr))]">
             {fam.members.map((m) => {
               const r = personalRisk(c.aqi, m.profile);

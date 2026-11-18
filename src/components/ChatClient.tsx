@@ -3,9 +3,9 @@ import { useEffect, useRef, useState } from "react";
 import { Loader2, Send, Wrench } from "lucide-react";
 
 type Msg = { role: "user" | "assistant"; text: string; tools: string[]; error?: string };
-const CHIPS = ["Aaj bahar jaana theek hai?", "Ammi ke liye sab se behtar waqt kab hai?", "Gulberg aur DHA mein farq?", "Kal ka forecast kaisa hai?"];
+const CHIPS = ["Is it OK to go outside today?", "When is the best time for Ammi?", "How do Gulberg and DHA compare?", "What is tomorrow’s forecast?"];
 const TOOL_LABEL: Record<string, string> = {
-  get_air_quality: "hawa ka data", get_forecast: "forecast", find_best_window: "behtar waqt", get_household_members: "ghar ke log", compare_areas: "areas ka muqabla",
+  get_air_quality: "air data", get_forecast: "forecast", find_best_window: "best window", get_household_members: "household members", compare_areas: "area comparison",
 };
 
 export function ChatClient({ initial }: { initial: { role: "user" | "assistant"; text: string }[] }) {
@@ -56,7 +56,7 @@ export function ChatClient({ initial }: { initial: { role: "user" | "assistant";
       <div aria-live="polite" className="flex min-h-[320px] flex-col gap-4">
         {msgs.length === 0 && (
           <div className="flex flex-col gap-3 rounded-2xl bg-soft p-5">
-            <p className="text-body">Salam! Mujh se hawa, forecast ya apne ghar walon ke baare mein poochein.</p>
+            <p className="text-body">Hi! Ask me about the air, the forecast, or the people in your household.</p>
             <div className="flex flex-wrap gap-2">{CHIPS.map((c) => <button key={c} type="button" onClick={() => ask(c)} className="min-h-10 rounded-full border border-[#d9d0c3] bg-canvas px-3.5 text-[13px] font-medium hover:bg-card">{c}</button>)}</div>
           </div>
         )}

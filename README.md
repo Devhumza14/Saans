@@ -1,10 +1,10 @@
-# Saans (سانس) — a smog health guardian for Lahore
+# Saans — a smog health guardian for Lahore
 
 Minhaj University Lahore AI Hackathon · **SDG 3: Good Health & Well-Being**
 
 Live demo: https://gentle-lightseagreen-tarsier-98.hostingersite.com (register with any email and password)
 
-Saans turns live Lahore air quality into a **personal daily plan for each person at home**, in Urdu, Roman Urdu and English. A deterministic risk engine decides who is at risk and when; an AI model only writes the words. Saans is a health-awareness tool, **not** a medical device.
+Saans turns live Lahore air quality into a **personal daily plan for each person at home**. A deterministic risk engine decides who is at risk and when; an AI model only writes the words. Saans is a health-awareness tool, **not** a medical device.
 
 ## Problem
 
@@ -12,7 +12,7 @@ Every winter Lahore's AQI regularly passes 200–400. A single city-wide number 
 
 ## Target users
 
-Households in Lahore, especially those with children, seniors, pregnant women, people with asthma/COPD/heart conditions, and outdoor workers (riders, rickshaw drivers). Language and reading level matter: plans are grade-5 reading level, in Urdu script, Roman Urdu or English, with a large-text mode and read-aloud.
+Households in Lahore, especially those with children, seniors, pregnant women, people with asthma/COPD/heart conditions, and outdoor workers (riders, rickshaw drivers). Language and reading level matter: plans are grade-5 reading level, in English, with a large-text mode and read-aloud.
 
 ## Solution & user journey
 
@@ -53,7 +53,7 @@ Language models are good at wording and bad at being a source of truth for healt
 
 ## Models & why
 
-OpenRouter, default `google/gemini-2.5-flash` (`OPENROUTER_MODEL`, `OPENROUTER_CHAT_MODEL`): fast, cheap, handles Urdu and tool calling well. Plans use JSON mode; chat streams and runs up to 4 tool rounds. One gateway means the model can be swapped by changing an environment variable.
+OpenRouter, default `google/gemini-2.5-flash` (`OPENROUTER_MODEL`, `OPENROUTER_CHAT_MODEL`): fast, cheap, handles tool calling well. Plans use JSON mode; chat streams and runs up to 4 tool rounds. One gateway means the model can be swapped by changing an environment variable.
 
 ## Safety & ethics
 
@@ -75,11 +75,11 @@ Success measures we would track in a pilot: households onboarded, share of high-
 
 ## Roadmap
 
-Neighbourhood sensor blending, a WhatsApp bot, organisation dashboards, offline-first Urdu voice plans, and clinical review of the sensitivity factors.
+Neighbourhood sensor blending, a WhatsApp bot, organisation dashboards, offline-first voice plans, and clinical review of the sensitivity factors.
 
 ## Tech stack
 
-Next.js 16 (App Router, TypeScript strict), Tailwind CSS v4, Supabase (Auth, Postgres, RLS via `@supabase/ssr`), OpenRouter, zod, Recharts, lucide-react, Vitest. Air data: Open-Meteo Air Quality and Weather APIs. Fonts: Inter, Source Serif 4, Noto Nastaliq Urdu.
+Next.js 16 (App Router, TypeScript strict), Tailwind CSS v4, Supabase (Auth, Postgres, RLS via `@supabase/ssr`), OpenRouter, zod, Recharts, lucide-react, Vitest. Air data: Open-Meteo Air Quality and Weather APIs. Fonts: Inter, Source Serif 4.
 
 ## Local setup
 

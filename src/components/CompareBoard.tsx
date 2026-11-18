@@ -103,7 +103,7 @@ export function CompareBoard({ members }: { members: CompareMember[] }) {
                     <p className="text-xl font-medium leading-snug"><T text={p.headline} /></p>
                     <dl className="grid grid-cols-2 gap-2.5">
                       <div className="flex flex-col gap-0.5 rounded-[10px] bg-soft px-3 py-2.5"><dt className="text-[11px] font-medium uppercase tracking-[1px] text-muted">Mask</dt><dd className="font-mono text-sm font-medium">{p.mask.type}</dd></div>
-                      <div className="flex flex-col gap-0.5 rounded-[10px] bg-soft px-3 py-2.5"><dt className="text-[11px] font-medium uppercase tracking-[1px] text-muted">Behtar waqt</dt><dd className="font-mono text-sm font-medium">{p.outdoor.best_windows[0] ?? "—"}</dd></div>
+                      <div className="flex flex-col gap-0.5 rounded-[10px] bg-soft px-3 py-2.5"><dt className="text-[11px] font-medium uppercase tracking-[1px] text-muted">Better time</dt><dd className="font-mono text-sm font-medium">{p.outdoor.best_windows[0] ?? "—"}</dd></div>
                     </dl>
                     <ol className="flex flex-col gap-2.5">
                       {actions.map((a, k) => (
@@ -114,7 +114,7 @@ export function CompareBoard({ members }: { members: CompareMember[] }) {
                       ))}
                     </ol>
                     <div className="mt-auto flex flex-col gap-2 border-t border-dashed border-[#d9d0c3] pt-3.5">
-                      <span className="text-[11px] font-medium uppercase tracking-[1px] text-muted">Kyun alag? · risk engine</span>
+                      <span className="text-[11px] font-medium uppercase tracking-[1px] text-muted">Why different? · risk engine</span>
                       <div className="flex flex-wrap gap-1.5">{m.reasons.map((r) => <span key={r} className="rounded-md bg-dark px-2 py-1 font-mono text-xs text-canvas">{r}</span>)}</div>
                     </div>
                     <Link href={`/member/${m.id}`} className="inline-flex min-h-11 items-center self-start text-sm font-medium text-cta hover:text-cta-hover">Pura plan →</Link>

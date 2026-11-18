@@ -40,7 +40,7 @@ export function FamilyCard(p: FamilyCardProps) {
         {p.reasons.length ? p.reasons.map((x) => <li key={x} className="rounded-md bg-dark px-2 py-1 font-mono text-xs text-canvas">{x}</li>) : <li className="text-sm text-muted">No extra risk factors</li>}
       </ul>
       {p.id && (
-        <Link href={`/member/${p.id}`} className="inline-flex min-h-11 items-center justify-center rounded-lg bg-cta px-4 text-sm font-medium text-white hover:bg-cta-hover">Plan dekhein</Link>
+        <Link href={`/member/${p.id}`} className="inline-flex min-h-11 items-center justify-center rounded-lg bg-cta px-4 text-sm font-medium text-white hover:bg-cta-hover">View plan</Link>
       )}
     </article>
   );

@@ -25,7 +25,7 @@ export default async function Compare() {
       <>
         <SiteHeader signedIn={fam.signedIn} />
         <main className="mx-auto max-w-[640px] px-4 py-24 sm:px-8">
-          <h1 className="font-serif text-4xl tracking-[-0.8px]">Hawa ka data abhi nahi mil raha</h1>
+          <h1 className="font-serif text-4xl tracking-[-0.8px]">Air data is unavailable right now</h1>
           <p className="mt-3 text-body">Please try again in a minute.</p>
         </main>
       </>
@@ -52,7 +52,7 @@ export default async function Compare() {
           <div className="flex flex-wrap items-end justify-between gap-10">
             <div className="flex min-w-0 flex-[1_1_520px] flex-col gap-3">
               <p className="text-xs font-medium uppercase tracking-[1.5px] text-[#e8a55a]">Same air · {fam.members.length} different plans</p>
-              <h1 id="cmp-h" className="font-serif text-[36px] leading-[1.06] tracking-[-1.2px] sm:text-[52px]">Aik hi hawa. Har shakhs ka apna plan.</h1>
+              <h1 id="cmp-h" className="font-serif text-[36px] leading-[1.06] tracking-[-1.2px] sm:text-[52px]">One air. A plan for each person.</h1>
               <p className="text-base text-[#cfcbc2]">{fam.householdName} · {area.name}, Lahore</p>
             </div>
             <div className="flex items-center gap-5 rounded-2xl border border-[#3a3631] bg-dark/70 px-6 py-[18px]">

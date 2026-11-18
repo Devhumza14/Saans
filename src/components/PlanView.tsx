@@ -1,30 +1,30 @@
 "use client";
 import { useCallback, useEffect, useState } from "react";
 import { Activity, AlertTriangle, Clock, Droplets, Home, HeartPulse, MessageCircle, Phone, RefreshCw, ShieldCheck, Square, Sun, Volume2 } from "lucide-react";
-import { T, useLang, type Lang } from "@/components/LangProvider";
+import { T } from "@/components/LangProvider";
 import { planToText } from "@/lib/ai/planText";
 import type { Loc, PlanResponse } from "@/lib/ai/schemas";
 import { RISK_STYLE } from "@/lib/risk/style";
 
 const UI = {
-  outdoor: { ur: "باہر جانا", roman: "Bahar jaana", en: "Going outside" },
-  mask: { ur: "ماسک", roman: "Mask", en: "Mask" },
-  home: { ur: "گھر", roman: "Ghar", en: "At home" },
-  activity: { ur: "سرگرمی", roman: "Activity", en: "Activity" },
-  watch: { ur: "صحت پر نظر", roman: "Sehat par nazar", en: "Health watch" },
-  food: { ur: "پانی اور خوراک", roman: "Paani aur khana", en: "Water & food" },
-  why: { ur: "میرا پلان الگ کیوں ہے؟", roman: "Ye plan alag kyun hai?", en: "Why is this plan different?" },
-  best: { ur: "بہتر وقت", roman: "Behtar waqt", en: "Better time" },
-  avoid: { ur: "بچیں", roman: "Bachein", en: "Avoid" },
-  regen: { ur: "نیا پلان", roman: "Naya plan", en: "Regenerate" },
-  call: { ur: "۱۱۲۲ کال کریں", roman: "1122 call karein", en: "Call 1122" },
-  listen: { ur: "سنیں", roman: "Sunein", en: "Listen" },
-  stop: { ur: "روکیں", roman: "Rokein", en: "Stop" },
-  share: { ur: "واٹس ایپ", roman: "WhatsApp par bhejein", en: "Share on WhatsApp" },
-  writing: { ur: "پلان لکھا جا رہا ہے…", roman: "Plan likha ja raha hai…", en: "Writing the plan…" },
-} satisfies Record<string, Loc>;
+  outdoor: "Going outside",
+  mask: "Mask",
+  home: "At home",
+  activity: "Activity",
+  watch: "Health watch",
+  food: "Water & food",
+  why: "Why is this plan different?",
+  best: "Better time",
+  avoid: "Avoid",
+  regen: "Regenerate",
+  call: "Call 1122",
+  listen: "Listen",
+  stop: "Stop",
+  share: "Share on WhatsApp",
+  writing: "Writing the plan…",
+};
 
-const Txt = ({ k }: { k: keyof typeof UI }) => <T text={UI[k]} />;
+const Txt = ({ k }: { k: keyof typeof UI }) => <>{UI[k]}</>;
 
 type State = { status: "loading" } | { status: "error"; msg: string } | { status: "ok"; data: PlanResponse };
 
@@ -45,9 +45,9 @@ const Items = ({ items }: { items: Loc[] }) => (
   </ul>
 );
 
-/** Read-aloud via the browser's speech engine. Urdu voice for Urdu/Roman Urdu, English voice for English. Hidden when no voice exists. */
-function useSpeech(text: string, lang: Lang) {
-  const tag = lang === "en" ? "en-US" : "ur-PK";
+/** Read-aloud via the browser's speech engine. Hidden when no English voice exists. */
+function useSpeech(text: string) {
+  const tag = "en-US";
   const [available, setAvailable] = useState(false);
   const [speaking, setSpeaking] = useState(false);
   useEffect(() => {
@@ -76,10 +76,8 @@ function useSpeech(text: string, lang: Lang) {
 }
 
 function Actions({ data, name }: { data: PlanResponse; name: string }) {
-  const { lang } = useLang();
-  const spokenLang = lang === "en" ? "en" : "ur";
-  const speech = useSpeech(planToText(data.plan, spokenLang, name, { area: data.area, aqi: data.aqi }, { footer: false }), lang);
-  const wa = `https://wa.me/?text=${encodeURIComponent(planToText(data.plan, lang, name, { area: data.area, aqi: data.aqi }))}`;
+  const speech = useSpeech(planToText(data.plan, name, { area: data.area, aqi: data.aqi }, { footer: false }));
+  const wa = `https://wa.me/?text=${encodeURIComponent(planToText(data.plan, name, { area: data.area, aqi: data.aqi }))}`;
   const btn = "inline-flex min-h-11 items-center gap-2 rounded-lg border border-hairline bg-canvas px-4 text-sm font-medium text-ink hover:bg-soft";
   return (
     <div className="flex flex-wrap gap-2">
@@ -94,10 +92,9 @@ function Actions({ data, name }: { data: PlanResponse; name: string }) {
 }
 
 export function PlanSkeleton() {
-  const { lang } = useLang();
   return (
     <div aria-busy="true" role="status" className="flex flex-col gap-5">
-      <span className="font-mono text-xs text-muted">risk engine ✓ · {UI.writing[lang as Lang]}</span>
+      <span className="font-mono text-xs text-muted">risk engine ✓ · {UI.writing}</span>
       <div className="skeleton h-7 w-[90%]" /><div className="skeleton h-7 w-[65%]" />
       <div className="skeleton h-24 w-full" /><div className="skeleton h-5 w-[85%]" /><div className="skeleton h-5 w-[75%]" /><div className="skeleton h-5 w-[60%]" />
     </div>
@@ -127,7 +124,7 @@ export function PlanView({ memberId, name }: { memberId: string; name: string })
       <div role="alert" className="flex flex-col items-start gap-3 rounded-2xl border border-hairline bg-canvas p-6">
         <AlertTriangle className="text-[#8a4510]" aria-hidden />
         <p className="text-body">{state.msg}</p>
-        <button type="button" onClick={() => load()} className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-cta px-5 font-medium text-white hover:bg-cta-hover"><RefreshCw size={16} aria-hidden /> Dobara koshish karein</button>
+        <button type="button" onClick={() => load()} className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-cta px-5 font-medium text-white hover:bg-cta-hover"><RefreshCw size={16} aria-hidden /> Try again</button>
       </div>
     );
   }

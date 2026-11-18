@@ -19,8 +19,8 @@ export default async function Chat() {
       <SiteHeader signedIn />
       <main className="mx-auto flex max-w-[720px] flex-col gap-6 px-4 pb-10 pt-8 sm:px-0">
         <div className="flex flex-col gap-2">
-          <h1 className="font-serif text-[36px] leading-[1.1] tracking-[-0.6px]">Puchho Saans</h1>
-          <p className="text-body">Live data se jawab. Har jawab ke upar dikhta hai ke kaun se tools istemal hue.</p>
+          <h1 className="font-serif text-[36px] leading-[1.1] tracking-[-0.6px]">Ask Saans</h1>
+          <p className="text-body">Answers from live data. Each reply shows which tools were used.</p>
         </div>
         <ChatClient initial={initial} />
       </main>

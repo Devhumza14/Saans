@@ -6,9 +6,9 @@ import { signOut } from "@/app/login/actions";
 
 const NAV = [
   { href: "/dashboard", label: "Dashboard" },
-  { href: "/compare", label: "Muqabla" },
-  { href: "/map", label: "Naqsha" },
-  { href: "/chat", label: "Puchho Saans" },
+  { href: "/compare", label: "Compare" },
+  { href: "/map", label: "Map" },
+  { href: "/chat", label: "Ask Saans" },
 ];
 
 export function SiteHeader({ cta, signedIn }: { cta?: { href: string; label: string }; signedIn?: boolean }) {
@@ -22,7 +22,6 @@ export function SiteHeader({ cta, signedIn }: { cta?: { href: string; label: str
             <path d="M4 23c4-4 8 4 12 0" stroke="#141413" strokeWidth="2.4" strokeLinecap="round" opacity=".45" />
           </svg>
           <span className="font-serif text-[26px] tracking-[-0.5px]">Saans</span>
-          <span className="ur text-lg leading-none text-muted" lang="ur">سانس</span>
         </Link>
         <nav aria-label="Primary" className="hidden gap-1 sm:flex">
           {NAV.map((n) => (

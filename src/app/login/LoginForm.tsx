@@ -61,7 +61,7 @@ export function LoginForm({ next, demoEnabled }: { next: string; demoEnabled: bo
 
       <form onSubmit={submit} className="flex flex-col gap-3">
         <label htmlFor="email" className="text-sm font-medium text-body">Email</label>
-        <input id="email" type="email" required autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="aap@example.com" className={input} />
+        <input id="email" type="email" required autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@example.com" className={input} />
         <label htmlFor="pw" className="text-sm font-medium text-body">Password {mode === "register" && <span className="font-normal text-muted">· at least 8 characters</span>}</label>
         <input id="pw" type="password" required minLength={8} autoComplete={mode === "register" ? "new-password" : "current-password"} value={password} onChange={(e) => setPassword(e.target.value)} className={input} />
         <button type="submit" disabled={busy} className="mt-1 min-h-12 rounded-lg bg-cta px-5 text-base font-medium text-white hover:bg-cta-hover disabled:opacity-60">

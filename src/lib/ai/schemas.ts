@@ -1,6 +1,7 @@
 import { z } from "zod";
 
-export const Loc = z.object({ ur: z.string().min(1), roman: z.string().min(1), en: z.string().min(1) });
+// The UI is English-only; the model writes just "en". ur/roman are mirrored so stored plans and alert columns keep their shape.
+export const Loc = z.object({ en: z.string().min(1) }).transform(({ en }) => ({ ur: en, roman: en, en }));
 export type Loc = z.infer<typeof Loc>;
 
 export const PlanSchema = z.object({

@@ -18,9 +18,9 @@ async function live(): Promise<AirResult | null> {
 }
 
 const STEPS = [
-  { t: "Ghar banayein", d: "Pick your area of Lahore and add the people at home: age, conditions like asthma or pregnancy, and how they get around." },
-  { t: "Live hawa, har ghante", d: "Saans pulls live AQI, PM2.5 and wind for your area plus a 48-hour forecast, then scores each person’s risk with clear rules." },
-  { t: "Har shakhs ka plan", d: "AI turns those numbers into a short daily plan in Urdu, Roman Urdu or English, and alerts you before the air turns for someone at risk." },
+  { t: "Set up your home", d: "Pick your area of Lahore and add the people at home: age, conditions like asthma or pregnancy, and how they get around." },
+  { t: "Live air, every hour", d: "Saans pulls live AQI, PM2.5 and wind for your area plus a 48-hour forecast, then scores each person’s risk with clear rules." },
+  { t: "A plan for each person", d: "AI turns those numbers into a short daily plan , and alerts you before the air turns for someone at risk." },
 ];
 
 export default async function Landing() {
@@ -30,7 +30,7 @@ export default async function Landing() {
 
   return (
     <>
-      <SiteHeader cta={{ href: "/dashboard", label: "Dashboard dekhein" }} />
+      <SiteHeader cta={{ href: "/dashboard", label: "View dashboard" }} />
 
       <section className="mx-auto flex max-w-[1200px] flex-wrap items-center gap-14 px-4 pb-24 pt-12 sm:px-8">
         <div className="flex min-w-0 flex-[1_1_460px] flex-col gap-6">
@@ -40,17 +40,16 @@ export default async function Landing() {
             </span>
             <span className="inline-flex items-center rounded-full bg-card px-3 py-2 text-xs font-medium uppercase tracking-[1.2px] text-body">Smog season · Oct–Jan</span>
           </div>
-          <h1 className="font-serif text-[44px] leading-[1.04] tracking-[-1.8px] sm:text-[68px]">Lahore ki hawa,<br />aap ke ghar ke liye.</h1>
-          <p className="ur text-[26px] text-body" lang="ur">لاہور کی ہوا، آپ کے گھر کے لیے</p>
+          <h1 className="font-serif text-[44px] leading-[1.04] tracking-[-1.8px] sm:text-[68px]">Lahore’s air,<br />for your home.</h1>
           <p className="max-w-[520px] text-lg leading-relaxed text-body">
             An AQI number tells everyone the same thing. Saans reads the live air in your part of Lahore and writes a separate plan for each person at home: Ammi with asthma, a rider on a 9-hour shift, a child walking to school.
           </p>
           <div className="flex flex-wrap gap-3">
             <Link href="/dashboard" className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-cta px-5 text-[15px] font-medium text-white hover:bg-cta-hover">
-              Live dekhein <ArrowRight size={16} aria-hidden />
+              See live air <ArrowRight size={16} aria-hidden />
             </Link>
           </div>
-          <p className="text-[13px] text-muted">Free for families · Urdu, Roman Urdu &amp; English · No sign-up to check today’s air</p>
+          <p className="text-[13px] text-muted">Free for families · English · No sign-up to check today’s air</p>
         </div>
 
         <div className="relative min-w-0 flex-[1_1_520px]">
@@ -63,7 +62,7 @@ export default async function Landing() {
                   <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-[1.2px] text-[#a09d96]">
                     <span className="size-2 rounded-full bg-[#5db872]" /> {air.cached ? "Cached" : "Live"} · Gulberg, Lahore
                   </div>
-                  <div className="text-xl font-medium">{band.label} <span className="ur text-base text-[#d9b8ea]" lang="ur">{band.ur}</span></div>
+                  <div className="text-xl font-medium">{band.label}</div>
                   <div className="text-sm text-[#a09d96]">
                     PM2.5 {Math.round(air.data.current.pm25)} µg/m³ · <strong className="font-medium text-canvas">{whoMultiple(air.data.current.pm25)}× the WHO 24-hour limit</strong>
                   </div>
@@ -82,7 +81,7 @@ export default async function Landing() {
           <Image src="/images/smog-city.jpg" alt="A city skyline disappearing into thick grey smog" width={1600} height={2843} className="max-h-[620px] min-w-0 flex-[1_1_360px] rounded-xl object-cover" />
           <div className="flex min-w-0 flex-[1_1_560px] flex-col justify-center gap-6">
             <p className="text-xs font-medium uppercase tracking-[1.5px] text-[#e8a55a]">The problem</p>
-            <h2 id="problem-h" className="font-serif text-[40px] leading-[1.1] tracking-[-1px] sm:text-5xl">Aik number. Chaar zindagiyan.</h2>
+            <h2 id="problem-h" className="font-serif text-[40px] leading-[1.1] tracking-[-1px] sm:text-5xl">One number. Four lives.</h2>
             <p className="text-lg leading-relaxed text-[#cfcbc2]">
               Every winter Lahore’s air ranks among the worst in the world. Air apps show one number for everyone, but risk depends on who is breathing it.
               {aqi != null ? ` Here is the same air, AQI ${aqi}, for four people in one house, scored right now by our risk engine:` : " Here is how the same air lands on four people in one house:"}
@@ -108,7 +107,7 @@ export default async function Landing() {
 
       <section aria-labelledby="how-h" className="mx-auto flex max-w-[1200px] flex-col gap-12 px-4 py-24 sm:px-8">
         <div className="flex max-w-[720px] flex-col gap-3">
-          <p className="text-xs font-medium uppercase tracking-[1.5px] text-cta">Teen qadam</p>
+          <p className="text-xs font-medium uppercase tracking-[1.5px] text-cta">Three steps</p>
           <h2 id="how-h" className="font-serif text-[40px] leading-[1.1] tracking-[-1px] sm:text-5xl">From one city reading to a plan for each person at home.</h2>
         </div>
         <ol className="grid gap-6 [grid-template-columns:repeat(auto-fit,minmax(280px,1fr))]">
@@ -125,10 +124,9 @@ export default async function Landing() {
       <section className="mx-auto max-w-[1200px] px-4 pb-24 sm:px-8">
         <div className="flex flex-wrap items-center justify-between gap-8 rounded-2xl bg-coral px-8 py-14 sm:px-12">
           <div className="flex min-w-0 flex-[1_1_520px] flex-col gap-2">
-            <h2 className="font-serif text-[34px] leading-[1.1] tracking-[-0.8px] sm:text-[40px]">Aaj ki hawa ka plan, ghar ke har fard ke liye.</h2>
-            <p className="ur text-xl" lang="ur">آج کی ہوا کا پلان، گھر کے ہر فرد کے لیے</p>
+            <h2 className="font-serif text-[34px] leading-[1.1] tracking-[-0.8px] sm:text-[40px]">Today’s air plan, for everyone at home.</h2>
           </div>
-          <Link href="/dashboard" className="inline-flex min-h-[52px] items-center rounded-lg bg-ink px-7 text-base font-medium text-canvas hover:bg-dark-elev">Shuru karein</Link>
+          <Link href="/dashboard" className="inline-flex min-h-[52px] items-center rounded-lg bg-ink px-7 text-base font-medium text-canvas hover:bg-dark-elev">Get started</Link>
         </div>
       </section>
     </>

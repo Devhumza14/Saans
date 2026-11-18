@@ -22,8 +22,6 @@ export type HourPoint = { time: string; aqi: number }; // time: local ISO "YYYY-
 export type AqiBand = {
   key: "good" | "moderate" | "sensitive" | "unhealthy" | "very" | "hazardous";
   label: string;
-  ur: string;
-  roman: string;
   color: string; // fill
   text: string; // AA text colour on `tint`
   tint: string; // page background tint
@@ -32,12 +30,12 @@ export type AqiBand = {
 };
 
 export const BANDS: AqiBand[] = [
-  { key: "good", label: "Good", ur: "اچھی", roman: "Achhi", color: "#3f9a52", text: "#24552f", tint: "#eef4ea", min: 0, max: 50 },
-  { key: "moderate", label: "Moderate", ur: "درمیانی", roman: "Darmiyani", color: "#c9a227", text: "#6b5408", tint: "#f7f1de", min: 51, max: 100 },
-  { key: "sensitive", label: "Unhealthy for sensitive groups", ur: "حساس افراد کے لیے مضر", roman: "Hassas logon ke liye muzir", color: "#e07b2c", text: "#8a4510", tint: "#f9ede1", min: 101, max: 150 },
-  { key: "unhealthy", label: "Unhealthy", ur: "مضرِ صحت", roman: "Muzir-e-sehat", color: "#d64545", text: "#8f2525", tint: "#f9e9e5", min: 151, max: 200 },
-  { key: "very", label: "Very unhealthy", ur: "بہت مضر", roman: "Bohat muzir", color: "#8b4fb3", text: "#5e2d80", tint: "#f1e9f3", min: 201, max: 300 },
-  { key: "hazardous", label: "Hazardous", ur: "خطرناک", roman: "Khatarnak", color: "#8a2433", text: "#6e1825", tint: "#f2e3e3", min: 301, max: Infinity },
+  { key: "good", label: "Good", color: "#3f9a52", text: "#24552f", tint: "#eef4ea", min: 0, max: 50 },
+  { key: "moderate", label: "Moderate", color: "#c9a227", text: "#6b5408", tint: "#f7f1de", min: 51, max: 100 },
+  { key: "sensitive", label: "Unhealthy for sensitive groups", color: "#e07b2c", text: "#8a4510", tint: "#f9ede1", min: 101, max: 150 },
+  { key: "unhealthy", label: "Unhealthy", color: "#d64545", text: "#8f2525", tint: "#f9e9e5", min: 151, max: 200 },
+  { key: "very", label: "Very unhealthy", color: "#8b4fb3", text: "#5e2d80", tint: "#f1e9f3", min: 201, max: 300 },
+  { key: "hazardous", label: "Hazardous", color: "#8a2433", text: "#6e1825", tint: "#f2e3e3", min: 301, max: Infinity },
 ];
 
 export function aqiBand(aqi: number): AqiBand {
